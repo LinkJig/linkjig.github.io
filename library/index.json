@@ -1,0 +1,38 @@
+{
+  "v": 1,
+  "updated": "2026-10-09",
+  "packs": [
+    {
+      "id": "demo-tour",
+      "title": "Demo device tour",
+      "description": "Macros and a passing smoke test for the built-in demo device. Try scenarios without hardware.",
+      "category": "Demo",
+      "author": "LinkJig",
+      "license": "CC-BY-4.0",
+      "links": [
+        "demo"
+      ],
+      "version": "1.0.0",
+      "size": 1386,
+      "sha256": "c1c9b88f1051584aaaa104d3eb2c89bfb40eec10d831cb7cec895e0abdd84185",
+      "file": "packs/demo-tour.ljpack"
+    },
+    {
+      "id": "at-basics",
+      "title": "AT modules: alive check",
+      "description": "Checks that an AT-command module answers and reads its version. Works with most Wi-Fi/BLE modules in AT mode.",
+      "category": "AT commands",
+      "author": "LinkJig",
+      "license": "CC-BY-4.0",
+      "links": [
+        "serial",
+        "ble",
+        "tcp"
+      ],
+      "version": "1.0.0",
+      "size": 1313,
+      "sha256": "a40190bd9a95141fff13c74d631399a5f62e96f7114c992af4465b7a29a8d52d",
+      "file": "packs/at-basics.ljpack"
+    }
+  ]
+}

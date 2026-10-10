@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinkJig Gizlilik Politikası</title>
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="privacy.html" hreflang="en">English</a><span>Türkçe</span><a href="privacy-es.html" hreflang="es">Español</a><a href="privacy-de.html" hreflang="de">Deutsch</a><a href="privacy-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<h1>LinkJig Gizlilik Politikası</h1>
+<p><em>Son güncelleme: 8 Ekim 2026</em></p>
+<p>LinkJig; kendi donanımınızla USB seri, USB HID, Bluetooth Low Energy ve TCP üzerinden konuşmanızı ve bunu tekrarlanabilir testlere dönüştürmenizi sağlayan bir araçtır. Bu politika, uygulamanın Android ve Windows'ta verilerle ne yaptığını açıklar.</p>
+<p><strong>Kısaca:</strong> LinkJig'de hesap, analiz (analytics), reklam ve sunucu yoktur. Sakladığı her şey cihazınızda kalır. Siz kendiniz göndermedikçe hiçbir şey hiçbir yere gönderilmez.</p>
+<h2>Uygulamanın cihazınızda sakladıkları</h2>
+<ul><li><strong>Ayarlar</strong> — tema, terminal seçenekleri, makrolar, tetikleyiciler, senaryolar ve gönderim geçmişi.</li><li><strong>Son cihazlar</strong> — bağlandığınız cihazların adları ve tanımlayıcıları (örneğin bir COM port adı, bir Bluetooth adresi ya da bir host ve port); böylece Cihazlar ekranından yeniden açılabilirler. Kaydettiğiniz bağlantı profilleri de buna dahildir.</li><li><strong>Wi-Fi şifreleri</strong> — yalnızca LinkJig'e hatırlamasını söylediğiniz ağlar için. Android'de Android Keystore'da tutulan bir anahtarla şifrelenir ve yedeklemelere alınmaz; Windows'ta, katıldığınız her ağ gibi sistemin Wi-Fi profilinde tutulur. Proje paketlerine, kısayollara ya da tanılama raporlarına asla konmaz.</li><li><strong>Loglar ve anlık görüntüler</strong> — yalnızca bir logu kaydettiğinizde, otomatik oturum loglarını açtığınızda ya da bir tetikleyici anlık görüntü aldığında. Windows'ta <code>Documents\LinkJig</code> klasöründe, Android'de uygulamanın özel depolama alanındadır.</li></ul>
+<p>Bu veriler LinkJig aracılığıyla cihazınızdan asla çıkmaz. Uygulamayı kaldırmak (veya Android'de depolama alanını temizlemek) başka bir yere kaydettiğiniz dosyalar dışında bunları siler.</p>
+<h2>Uygulamanın gönderdikleri</h2>
+<ul><li><strong>Cihazlarınıza giden veri.</strong> Yazdığınız baytlar, makrolar, göndermeyi seçtiğiniz dosyalar, senaryo adımları ve tetikleyici cevapları bağlandığınız cihaza veya ağ adresine gider — başka hiçbir yere değil.</li><li><strong>Ağ.</strong> LinkJig yalnızca sizin girdiğiniz ya da seçtiğiniz host ve porta ağ bağlantısı açar. Kendine ait hiçbir sunucuyla iletişim kurmaz.</li><li><strong>Ağınızdaki cihazları bulma.</strong> Yalnızca Ağ ekranında "Bul"a dokunduğunuzda LinkJig yerel ağınıza standart mDNS sorguları (yazıcıların ve akıllı hoparlörlerin kullandığı türden) gönderir ve cevap veren cihazları listeler. Bu sorgular yerel ağınızın dışına çıkmaz ve sonrasında açtığınız bağlantılar dışında hiçbir şey saklanmaz.</li><li><strong>Wi-Fi.</strong> LinkJig yakındaki Wi-Fi ağlarını yalnızca Ağ ekranında "Tara"ya dokunduğunuzda listeler ve yalnızca seçtiğiniz ağa katılır; böylece bir TCP bağlantısı bir cihazın kendi erişim noktasına ulaşabilir. Android 10 ve sonrasında bu ağı yalnızca LinkJig kullanır, telefonun geri kalanı internette kalır; Windows'ta ve eski Android sürümlerinde cihaz, siz ayrılana kadar ağ değiştirir.</li><li><strong>Paylaşma.</strong> Bir logu, bir senaryo sonucunu ya da bir proje paketini paylaştığınızda dosya, paylaşım menüsünde seçtiğiniz uygulamaya gider. LinkJig bundan sonra ne olduğunu görmez.</li><li><strong>Tanılama raporu.</strong> "Tanılama raporunu kopyala", bir destek talebine yapıştırabilmeniz için panoya bir metin koyar. Metinde uygulama sürümü, işletim sistemi, telefon modeli (Android), izin durumları ve bağlantı ayarları bulunur. Terminal verisi, seri numarası, Bluetooth adresi veya IP adresi içermez. Uygulama bunu hiçbir yere göndermez.</li></ul>
+<h2>Android izinleri</h2>
+<table><thead><tr><th>İzin</th><th>Neden</th></tr></thead><tbody><tr><td>Yakındaki cihazlar (Bluetooth tarama / bağlanma)</td><td>Seçtiğiniz Bluetooth cihazlarını bulmak ve onlara bağlanmak. Tarama konumunuzu belirlemek için kullanılmaz.</td></tr><tr><td>Konum</td><td>Android bunu Wi-Fi ağlarını listelemek için (her sürümde) ve her Bluetooth taraması için (Android 11'e kadar) ister. LinkJig konumunuzu okumaz.</td></tr><tr><td>USB cihazları</td><td>USB-seri adaptörler ve USB HID cihazlarla konuşmak. Android her cihaz için size sorar.</td></tr><tr><td>İnternet / ağ durumu</td><td>Girdiğiniz adrese TCP bağlantıları.</td></tr><tr><td>Wi-Fi multicast</td><td>Ağ ekranındaki "Bul" (mDNS) cevaplarını almak; yalnızca arama sürerken tutulur.</td></tr><tr><td>Bildirimler ve ön plan hizmeti</td><td>Uygulama arka plandayken açık bir bağlantıyı, görünür bir bildirimle çalışır tutmak.</td></tr><tr><td>Yakındaki Wi-Fi cihazları (Android 13 ve sonrası)</td><td>"Tara"ya dokunduğunuzda Wi-Fi ağlarını listelemek. Konumunuzu belirlemek için kullanılmaz.</td></tr><tr><td>Wi-Fi durumu / Wi-Fi değiştirme</td><td>Seçtiğiniz cihaz erişim noktasına katılmak.</td></tr></tbody></table>
+<p>Windows 11'de Windows, Wi-Fi ağlarını uygulamalara yalnızca uygulamaların konum erişimine izin verildiğinde gösterir. LinkJig bunu yalnızca Wi-Fi listesi çalışsın diye ister; konumunuzu asla okumaz.</p>
+<h2>Çocuklar</h2>
+<p>LinkJig bir geliştirici aracıdır ve çocuklara yönelik değildir.</p>
+<h2>Satın almalar</h2>
+<p>LinkJig Android'de bir Pro yükseltmesi sunarsa ödemeyi Google Play yürütür. LinkJig yalnızca Pro'nun açık olup olmadığını öğrenir; ödeme bilgilerinizi asla görmez.</p>
+<h2>Değişiklikler</h2>
+<p>Bu politika değişirse yeni sürüm aynı adreste, yeni bir tarihle yayımlanır. LinkJig ileride çökme raporlaması eklerse bu özellik varsayılan olarak kapalı olur, önce onayınızı ister ve asla terminal verisi içermez.</p>
+<h2>İletişim</h2>
+<p>Sorular: <strong><a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a></strong></p>
+</main></body>
+</html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sık sorulan sorular</title>
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="faq.html" hreflang="en">English</a><span>Türkçe</span><a href="faq-es.html" hreflang="es">Español</a><a href="faq-de.html" hreflang="de">Deutsch</a><a href="faq-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<p class="back"><a href="index-tr.html">← Ana sayfa</a></p>
+<h1>Sık sorulan sorular</h1>
+<p>En çok sorulan soruların kısa cevapları. Sorunuzu bulamadıysanız tanılama raporunu kopyalayın (Ayarlar → Yardım) ve <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> adresine yazın.</p>
+<h2>Başlarken</h2>
+<details><summary>Nelere bağlanabilirim?</summary>
+<p>Windows: seri portlar ve USB-seri adaptörler, Bluetooth LE, USB HID cihazlar ve TCP. Android: USB-OTG üzerinden USB-seri adaptörler, Bluetooth LE ve TCP. Yerleşik <strong>Demo</strong> cihazı gerçek bir kart gibi cevap verir; her şeyi donanım olmadan deneyebilirsiniz.</p>
+</details>
+<details><summary>Elimde cihaz yok. Uygulamayı nasıl denerim?</summary>
+<p>Cihazlar'ı açıp <strong>Demo</strong>'ya bağlanın. Gönderdiğinizi geri yollar ve birkaç komuta cevap verir. Senaryolar ekranında <strong>Demo senaryoyu yükle</strong> deyip <strong>Çalıştır</strong>'a basın; eksiksiz bir geçti/kaldı testini görürsünüz.</p>
+</details>
+<details><summary>Klasik Bluetooth (HC-05, HC-06) destekleniyor mu?</summary>
+<p>Bu sürümde hayır. LinkJig Bluetooth LE modülleriyle (HM-10, ESP32, nRF ve benzerleri) konuşur. Klasik Bluetooth seri bağlantı planlanıyor.</p>
+</details>
+<details><summary>iPhone, Mac veya Linux sürümü var mı?</summary>
+<p>Henüz yok. LinkJig Windows ve Android'de çalışır.</p>
+</details>
+<h2>Seri ve USB</h2>
+<details><summary>Bağlanınca kartım resetleniyor.</summary>
+<p>Birçok ESP32 ve Arduino kartı DTR veya RTS hattı değişince resetlenir ya da bootloader'a girer. LinkJig ikisini de varsayılan olarak kapalı tutar ve port açıldığı anda ayarlar; bağlanmak onları darbelemez. Kartınız bu hatların açık olmasını istiyorsa seri ayarlarda <strong>Bağlandıktan sonra DTR açık</strong> veya <strong>Bağlandıktan sonra RTS açık</strong> seçeneğini açın.</p>
+</details>
+<details><summary>"COM5 açılamadı: Erişim engellendi."</summary>
+<p>Portu başka bir program açık tutuyor — genellikle bir seri monitör, bir IDE ya da ikinci bir LinkJig penceresi. Onu kapatıp <strong>Yeniden dene</strong>'ye basın. Mesaj gerçek Windows hatasını gösterir; "erişim engellendi" kablo arızası değil, port meşgul demektir.</p>
+</details>
+<details><summary>Ekranda sadece anlamsız karakterler görüyorum.</summary>
+<p>Baud rate cihazınkiyle uyuşmuyor. LinkJig okunamayan veriyi fark edip <strong>Baud değiştir</strong> önerir. Hızı bilmiyorsanız seri ayarlarda <strong>Baud rate bul</strong>'u kullanın: yaygın hızları dener (önce 115200), seçtiğiniz bir komutu (ör. <code>AT</code>) gönderir ya da sadece dinler ve okunabilir cevap veren ilk hızda durur. Veri bitleri, parite ve stop bitleri de uymalı; cihazların çoğu varsayılan olan 8N1'i kullanır.</p>
+</details>
+<details><summary>Komut gönderiyorum ama cevap gelmiyor.</summary>
+<p>Sırasıyla kontrol edin:</p>
+<ul><li><strong>Satır sonu.</strong> Cihazların çoğu ancak satır bitince işlem yapar. Varsayılan CR LF'dir (<code>\r\n</code>); bazı cihazlar yalnız CR ya da yalnız LF ister.</li><li><strong>Kablolama.</strong> TX karşının RX'ine, RX karşının TX'ine gider ve GND'ler birleşiktir.</li><li><strong>Baud rate</strong> ve diğer hat ayarları.</li><li>Gönderme çubuğu, göndermeden önce tam baytları gösterir; cihazın kılavuzuyla karşılaştırabilirsiniz.</li></ul>
+</details>
+<details><summary>Adaptör Android'de görünmüyor.</summary>
+<p>Bir USB-OTG adaptörü veya kablosu kullanın, sonra adaptörü takın. Android, LinkJig'in cihazı kullanıp kullanamayacağını sorar — izin verin. Bazı telefonlarda OTG'nin ayarlardan açılması gerekir. CP210x, CH34x, FTDI ve PL2303 çipli adaptörler ile CDC-ACM kartlar desteklenir.</p>
+</details>
+<details><summary>Telefonun şarjı azalınca bağlantı kopuyor.</summary>
+<p>Bazı telefonlar düşük şarjda USB-OTG beslemesini keser. LinkJig bu ihtimal doğduğunda uyarır. Telefonu şarj edin ya da beslemeli bir OTG hub kullanın.</p>
+</details>
+<h2>Bluetooth LE</h2>
+<details><summary>LinkJig hiç Bluetooth cihazı bulamıyor.</summary>
+<p>Bluetooth'un açık olduğunu ve LinkJig'in "Yakındaki cihazlar" (Android 12 ve üstü) ya da Konum (Android 11 ve altı) iznine sahip olduğunu kontrol edin. İzin eksikse veya Bluetooth kapalıysa LinkJig bunu açıkça söyler; "Cihaz bulunamadı" tarama çalıştı ama kimse cevap vermedi demektir. Birçok BLE modülü başka bir şeye bağlıyken yayın yapmayı bırakır.</p>
+</details>
+<details><summary>Android 11 neden konumumu istiyor?</summary>
+<p>Android 11 ve altında sistem, yakındaki Bluetooth cihazlarını yalnız Konum izni olan uygulamalara gösterir. LinkJig nerede olduğunuzu asla okumaz ve saklamaz.</p>
+</details>
+<details><summary>Hangi BLE UART modülleri çalışır?</summary>
+<p>Nordic UART (NUS), TI CC254x / HM-10 (<code>FFE0</code>) ve Microchip transparent UART otomatik tanınır. Diğer modüllerde LinkJig yazılabilir ve bildirim gönderen bir karakteristiği olan servisi seçer. Yanlışını seçerse terminal menüsünden <strong>GATT gezgini</strong>'ni açın, TX ve RX karakteristiklerini seçip <strong>Terminal için kullan</strong>'a basın.</p>
+</details>
+<h2>Ağ</h2>
+<details><summary>Ağımdaki bir cihaza (TCP) nasıl bağlanırım?</summary>
+<p><strong>Ağ</strong>'ı seçin, ana bilgisayar adını veya IP adresini ve portu girip bağlanın. LinkJig TCP istemcisi olarak bağlanır — ör. bir ESP32'ye ya da seri↔Wi-Fi köprüsüne. Kendini mDNS ile duyuran cihazlar (ör. <code>esp32.local</code>) <strong>Bul</strong>'a bastıktan sonra <strong>Bu ağda</strong> altında görünür.</p>
+</details>
+<details><summary>Bir modülün kendi Wi-Fi'sine (ESP32, AI-Thinker) nasıl bağlanırım?</summary>
+<p><strong>Ağ</strong> ekranında Wi-Fi bölümündeki <strong>Tara</strong>'ya, sonra modülün ağına dokunun. Şifresini bir kez girin; <strong>Şifreyi hatırla</strong> açıksa bir dahaki sefere dokunmak yeter. Katıldıktan sonra LinkJig modülün adresini (genellikle <code>192.168.4.1</code>) doldurur: <strong>Bağlan</strong>'a basın. Kayıtlı bağlantı Wi-Fi'yi hatırlar; sonra tek dokunuş ağa katılır ve bağlanır. Android'de ilk tarama Konum izni ister: Android Wi-Fi ağlarını yalnızca bu izne sahip uygulamalara gösterir. LinkJig konumunuzu asla okumaz.</p>
+</details>
+<details><summary>Telefonum ya da bilgisayarım internetsiz kalır mı?</summary>
+<p>Android 10 ve sonrasında hayır: modülün ağını yalnızca LinkJig kullanır, telefonun geri kalanı internette kalır. Windows'ta ve Android 9'da cihazın tamamı, siz <strong>Ayrıl</strong>'a (Windows'ta <strong>… ağına dön</strong>'e) basana kadar modülün ağına geçer. Windows daha sonra modülün ağına kendiliğinden katılmaz.</p>
+</details>
+<details><summary>Tek tıkla bağlanan bir masaüstü kısayolu yapabilir miyim?</summary>
+<p>Windows'ta evet. <strong>Kayıtlı bağlantılar</strong> altında bağlantının menüsünü açıp <strong>Masaüstü kısayolu oluştur</strong>'u seçin. Kısayol LinkJig'i açar, bağlantının kayıtlı bir Wi-Fi'si varsa ona katılır ve bağlanır. Kısayol asla şifre içermez.</p>
+</details>
+<details><summary>Wi-Fi şifrelerim nerede tutuluyor?</summary>
+<p>Yalnızca cihazınızda: Android'de Android Keystore'daki bir anahtarla şifrelenmiş olarak ve yedeklemelerin dışında; Windows'ta sistemin Wi-Fi profilinde. Silmek için Wi-Fi listesinde ağın menüsünü açıp <strong>Şifreyi unut</strong>'u seçin.</p>
+</details>
+<details><summary>LinkJig TCP sunucusu olabilir mi ya da UDP kullanabilir mi?</summary>
+<p>Bu sürümde hayır.</p>
+</details>
+<h2>Gönderme ve alma</h2>
+<details><summary>Hex bayt nasıl gönderirim?</summary>
+<p>Gönderme çubuğunda giriş biçimini HEX yapın ve <code>01 03 00 00 00 0A</code> gibi baytlar yazın. DEC ve BIN de aynı şekilde çalışır. Metin (ASCII) kipinde kaçış dizileri yazabilirsiniz: <code>\r</code>, <code>\n</code>, <code>\t</code> ve herhangi bir bayt için <code>\xNN</code>.</p>
+</details>
+<details><summary>LinkJig checksum veya CRC'yi kendisi ekleyebilir mi?</summary>
+<p>Evet. Gönderme çubuğunda bir checksum seçin (SUM8, XOR8, CRC-8, CRC-16/MODBUS, CRC-16/CCITT-FALSE veya CRC-32); verinizin arkasına, satır sonundan önce eklenir ve önizleme sonucu gösterir. Ayarlar → Araçlar'daki <strong>Checksum hesaplayıcı</strong> göndermeden herhangi bir bayt dizisi üzerinde çalışır.</p>
+</details>
+<details><summary>Gelen veri neden birkaç satıra bölünüyor (ya da tek satırda birleşiyor)?</summary>
+<p>LinkJig gelen baytları paketlere ayırır. Varsayılan olarak 20 ms boyunca veri gelmezse paket biter (<strong>Boşluk</strong>). Ayarlar → Paket çerçeveleme'den bunun yerine ayraç baytlarında (ör. <code>0D 0A</code>) bölebilir ya da her okumayı geldiği gibi gösterebilirsiniz (<strong>Ham</strong>).</p>
+</details>
+<details><summary>Veriyi hex olarak nasıl görürüm?</summary>
+<p>Terminalde <strong>Görünüm</strong>'ü değiştirin: ASCII, HEX, DEC, BIN veya Dump (ofset + hex + metin). Windows'ta Ctrl+E görünümler, Ctrl+T zaman damgaları arasında geçiş yapar. Görünüm yalnız gösterimi değiştirir; baytlar geldiği gibi saklanır.</p>
+</details>
+<details><summary>Aynı komutu tekrar tekrar ya da bir dosya gönderebilir miyim?</summary>
+<p>Evet. Gönderme çubuğundaki zamanlayıcı düğmesi, siz durdurana kadar mevcut girdiyi sabit aralıkla gönderir. Ataş düğmesi bir dosyayı ikili parçalar hâlinde ya da satır satır, parçalar arasında bekleyerek gönderir.</p>
+</details>
+<details><summary>RX ve TX renkleri ve kenar şeritleri ne anlama geliyor?</summary>
+<p>RX cihazdan gelen, TX sizin gönderdiğiniz veridir. Terminal kenarlarındaki ince şeritler RX'in (solda) ve TX'in (sağda) nerede olduğunu işaretler; oraya gitmek için bir işarete tıklayın.</p>
+</details>
+<h2>Makrolar, tetikleyiciler ve senaryolar</h2>
+<details><summary>Makro nedir?</summary>
+<p>Bir düğmeye kaydedilmiş komut. Terminalin altındaki makro şeridinde dokunun ya da Windows'ta F1–F12'ye basın. Shift+F1–F12 makroyu düzenler.</p>
+</details>
+<details><summary>Tetikleyici nedir?</summary>
+<p>Gelen her paketi bir metin, hex (<code>??</code> joker baytla) veya regex desenine göre izleyen kural. Eşleşince LinkJig cevap gönderebilir, satırı logda işaretleyebilir, bip sesi çıkarabilir, anlık görüntü kaydedebilir ya da çalışan senaryoyu durdurabilir. Tetikleyicilerle bir cihaza otomatik cevap verir ya da bir cihazı taklit edersiniz.</p>
+</details>
+<details><summary>Senaryo nedir?</summary>
+<p>Tekrarlanabilir bir test. Her adım bir mesaj gönderir, beklenen cevabı zaman aşımı içinde bekler ve adımı PASS ya da FAIL olarak işaretler. Hata olunca ne olacağını (devam, yeniden dene ya da dur) ve kaç tur çalışacağını siz seçersiniz. Sonucu metin raporu veya CSV tablo olarak kaydedin.</p>
+</details>
+<details><summary>Senaryoları telefonumda çalıştırabilir miyim?</summary>
+<p>Evet. Masaüstünde hazırlayın, proje paketi olarak paylaşın ve telefonda içe aktarın. Telefon onları çalıştırır ve her adımın sonucunu gösterir.</p>
+</details>
+<details><summary>Profil ile proje paketi arasındaki fark ne?</summary>
+<p>Profil tek bir cihazın bağlantı ve gönderme ayarlarını (isteğe bağlı makrolarla) saklar. Proje paketi profilleri, makroları, tetikleyicileri, senaryoları ve isteğe bağlı örnek logu bir meslektaşla paylaşmak ya da telefona taşımak için tek bir <code>.ljpack</code> dosyasında toplar.</p>
+</details>
+<details><summary>Proje paketini içe aktarmak cihazıma bir şey gönderir mi?</summary>
+<p>Hayır. İçe aktarma yalnız senaryo, makro, tetikleyici ve profil ekler. Çalıştır'a ya da Gönder'e basana kadar hiçbir şey gönderilmez.</p>
+</details>
+<h2>Loglar ve dosyalar</h2>
+<details><summary>Loglarım nerede?</summary>
+<p>Otomatik oturum kaydı varsayılan olarak kapalıdır; Ayarlar → Terminal'de <strong>Her oturumu diske kaydet</strong>'i açın. Windows'ta loglar <code>Documents\LinkJig\logs</code> klasörüne gider (tetikleyici anlık görüntüleri <code>snapshots</code> içinde). Android'de uygulamanın içinde kalır; Loglar ekranındaki <strong>Kopyasını kaydet…</strong> ile bir logu gönderebilir ya da başka yere kaydedebilirsiniz. Mevcut terminali istediğiniz an menüsünden de kaydedebilirsiniz (Windows'ta Ctrl+Shift+S).</p>
+</details>
+<details><summary>Uygulamayı yanlışlıkla kapattım. Oturum kayboldu mu?</summary>
+<p>Hayır. <strong>Son oturumu geri yükle</strong> açıkken (varsayılan) son 2.000 satır bir sonraki açılışta geri gelir. LinkJig kendiliğinden yeniden bağlanmaz; önce sorar.</p>
+</details>
+<details><summary>Uygulama arka plandayken bağlantı açık kalır mı?</summary>
+<p>Android'de, bağlantı etkin olduğu sürece evet: LinkJig "Etkin bağlantı" bildirimi gösterir, böylece sistem onu çalışır tutar. Bildirimleri kapatırsanız bağlantı yine çalışır ama bildirim gizlenir. Bazı telefon üreticileri arka plan uygulamalarını sert biçimde durdurur; bağlantı kopuyorsa LinkJig'in pil kısıtlaması olmadan çalışmasına izin verin.</p>
+</details>
+<h2>Gizlilik ve destek</h2>
+<details><summary>LinkJig verilerimi bir yere gönderiyor mu?</summary>
+<p>Hayır. Hesap yok, analiz yok, sunucu yok. Yazdığınız, aldığınız ve kaydettiğiniz her şey cihazınızda kalır. Gizlilik politikası: Ayarlar → Hakkında.</p>
+</details>
+<details><summary>Dili nasıl değiştiririm?</summary>
+<p>Ayarlar → Görünüm → Dil. <strong>Sistem</strong> cihazınızın dilini izler.</p>
+</details>
+<details><summary>Bir sorunu nasıl bildiririm?</summary>
+<p>Ayarlar → Yardım → <strong>Tanılama raporunu kopyala</strong>, sonra <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> adresine yazdığınız mesaja yapıştırın. Rapor uygulama, sistem ve bağlantı bilgilerini içerir — asla terminal verisi, seri numarası veya adres içermez.</p>
+</details>
+</main></body>
+</html>

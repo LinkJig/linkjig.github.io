@@ -1,0 +1,37 @@
+name: Pack submission
+description: Suggest a project pack for the in-app library
+title: "Pack: "
+labels: [pack-submission]
+body:
+  - type: markdown
+    attributes:
+      value: Attach your .ljpack file below. Every pack is reviewed before it is added to the library.
+  - type: input
+    id: device
+    attributes:
+      label: Device or module
+      placeholder: e.g. HC-05, ESP32 with ESP-AT, Modbus RTU sensor
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What the pack does
+    validations:
+      required: true
+  - type: textarea
+    id: file
+    attributes:
+      label: Pack file
+      description: Drag the .ljpack file here (zip it first if GitHub refuses the extension).
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      options:
+        - label: I share this pack under CC BY 4.0.
+          required: true
+        - label: It has no one else's copyrighted text, no confidential or employer command sets, no passwords and no personal data.
+          required: true

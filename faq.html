@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frequently asked questions</title>
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><span>English</span><a href="faq-tr.html" hreflang="tr">Türkçe</a><a href="faq-es.html" hreflang="es">Español</a><a href="faq-de.html" hreflang="de">Deutsch</a><a href="faq-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<p class="back"><a href="index.html">← Home</a></p>
+<h1>Frequently asked questions</h1>
+<p>Short answers to the questions people ask most. Can't find yours? Copy a diagnostic report (Settings → Help) and write to <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a></p>
+<h2>Getting started</h2>
+<details><summary>What can I connect to?</summary>
+<p>Windows: serial ports and USB-serial adapters, Bluetooth LE, USB HID devices and TCP. Android: USB-serial adapters over USB-OTG, Bluetooth LE and TCP. The built-in <strong>Demo</strong> device answers like a real board, so you can try everything without hardware.</p>
+</details>
+<details><summary>I have no device at hand. How do I try the app?</summary>
+<p>Open Devices and connect to <strong>Demo</strong>. It echoes what you send and answers a few commands. On the Scenarios screen, <strong>Load the demo scenario</strong> and press <strong>Run</strong> to see a complete pass/fail test.</p>
+</details>
+<details><summary>Is classic Bluetooth (HC-05, HC-06) supported?</summary>
+<p>Not in this version. LinkJig talks to Bluetooth LE modules (HM-10, ESP32, nRF and similar). Classic Bluetooth serial is planned.</p>
+</details>
+<details><summary>Is there an iPhone, Mac or Linux version?</summary>
+<p>Not yet. LinkJig runs on Windows and Android.</p>
+</details>
+<h2>Serial and USB</h2>
+<details><summary>My board resets when I connect.</summary>
+<p>Many ESP32 and Arduino boards reset or enter the bootloader when the DTR or RTS line changes. LinkJig keeps both off by default and sets them the moment the port opens, so connecting does not pulse them. If your board needs them on, turn on <strong>DTR on after connecting</strong> or <strong>RTS on after connecting</strong> in the serial settings.</p>
+</details>
+<details><summary>"Could not open COM5: Access is denied."</summary>
+<p>Another program has the port open — usually a serial monitor, an IDE or a second LinkJig window. Close it and press <strong>Retry</strong>. The message shows the real Windows error, so "access denied" means busy, not a broken cable.</p>
+</details>
+<details><summary>I only see strange characters.</summary>
+<p>The baud rate does not match the device. LinkJig notices unreadable data and offers <strong>Change baud</strong>. If you don't know the rate, use <strong>Find baud rate</strong> in the serial settings: it tries the common rates (115200 first), sends a command you choose (for example <code>AT</code>) or just listens, and stops at the first rate that gives a readable answer. Data bits, parity and stop bits must also match; most devices use 8N1, the default.</p>
+</details>
+<details><summary>I send a command but nothing comes back.</summary>
+<p>Check, in this order:</p>
+<ul><li><strong>Line ending.</strong> Most devices act only after the end of a line. The default is CR LF (<code>\r\n</code>); some devices want only CR or only LF.</li><li><strong>Wiring.</strong> TX goes to RX, RX to TX, and the grounds are connected.</li><li><strong>Baud rate</strong> and the other line settings.</li><li>The send bar shows the exact bytes before you send, so you can compare them with the device's manual.</li></ul>
+</details>
+<details><summary>The adapter does not show up on Android.</summary>
+<p>Use a USB-OTG adapter or cable, then plug the adapter in. Android asks whether LinkJig may use the device — allow it. Some phones need OTG switched on in their settings. Adapters with CP210x, CH34x, FTDI and PL2303 chips, and CDC-ACM boards, are supported.</p>
+</details>
+<details><summary>The connection drops when my phone's battery is low.</summary>
+<p>Some phones cut USB-OTG power at low battery. LinkJig warns you when this may happen. Charge the phone or use a powered OTG hub.</p>
+</details>
+<h2>Bluetooth LE</h2>
+<details><summary>LinkJig finds no Bluetooth devices.</summary>
+<p>Check that Bluetooth is on and that LinkJig has the "Nearby devices" permission (Android 12 and newer) or Location (Android 11 and older). LinkJig says plainly when a permission is missing or Bluetooth is off; "No devices found" means the scan worked and nothing answered. Many BLE modules stop advertising while something else is connected to them.</p>
+</details>
+<details><summary>Why does Android 11 ask for my location?</summary>
+<p>On Android 11 and older, the system shows nearby Bluetooth devices only to apps with Location permission. LinkJig never reads or stores where you are.</p>
+</details>
+<details><summary>Which BLE UART modules work?</summary>
+<p>Nordic UART (NUS), TI CC254x / HM-10 (<code>FFE0</code>) and Microchip transparent UART are detected automatically. For other modules LinkJig picks a service with a writable and a notifying characteristic. If it picks the wrong one, open the <strong>GATT explorer</strong> from the terminal menu, choose the TX and RX characteristics and press <strong>Use for terminal</strong>.</p>
+</details>
+<h2>Network</h2>
+<details><summary>How do I connect to a device on my network (TCP)?</summary>
+<p>Choose <strong>Network</strong>, enter the host name or IP address and the port, and connect. LinkJig connects as a TCP client — for example to an ESP32 or a serial-to-Wi-Fi bridge. Devices that announce themselves with mDNS (such as <code>esp32.local</code>) appear under <strong>On this network</strong> after you press <strong>Find</strong>.</p>
+</details>
+<details><summary>How do I connect to a module's own Wi-Fi (ESP32, AI-Thinker)?</summary>
+<p>In <strong>Network</strong>, tap <strong>Scan</strong> in the Wi-Fi section and tap the module's network. Enter its password once; with <strong>Remember password</strong> on, a tap is enough next time. After joining, LinkJig fills in the module's address (usually <code>192.168.4.1</code>): press <strong>Connect</strong>. The saved connection remembers the Wi-Fi, so later one tap joins the network and connects. On Android, the first scan asks for the Location permission: Android lists Wi-Fi networks only to apps that have it. LinkJig never reads where you are.</p>
+</details>
+<details><summary>Will my phone or computer lose internet?</summary>
+<p>On Android 10 and newer, no: only LinkJig uses the module's network and the rest of the phone stays online. On Windows and Android 9 the whole device switches to the module's network until you tap <strong>Leave</strong> (or <strong>Back to …</strong> on Windows). Windows never joins a module's network by itself later.</p>
+</details>
+<details><summary>Can I make a desktop shortcut that connects in one click?</summary>
+<p>On Windows, yes. Under <strong>Saved connections</strong>, open the connection's menu and choose <strong>Create desktop shortcut</strong>. Opening it starts LinkJig, joins the saved Wi-Fi if the connection has one, and connects. The shortcut never contains a password.</p>
+</details>
+<details><summary>Where are my Wi-Fi passwords kept?</summary>
+<p>Only on your device: on Android encrypted with a key in the Android Keystore and left out of backups; on Windows in the system's Wi-Fi profile. To remove one, open the network's menu in the Wi-Fi list and choose <strong>Forget password</strong>.</p>
+</details>
+<details><summary>Can LinkJig be a TCP server or use UDP?</summary>
+<p>Not in this version.</p>
+</details>
+<h2>Sending and receiving</h2>
+<details><summary>How do I send hex bytes?</summary>
+<p>Switch the input format in the send bar to HEX and type bytes such as <code>01 03 00 00 00 0A</code>. DEC and BIN work the same way. In text (ASCII) mode you can write escapes: <code>\r</code>, <code>\n</code>, <code>\t</code> and <code>\xNN</code> for any byte.</p>
+</details>
+<details><summary>Can LinkJig add a checksum or CRC for me?</summary>
+<p>Yes. Pick a checksum in the send bar (SUM8, XOR8, CRC-8, CRC-16/MODBUS, CRC-16/CCITT-FALSE or CRC-32); it is added after your data and before the line ending, and the preview shows the result. The <strong>Checksum calculator</strong> in Settings → Tools works on any bytes without sending.</p>
+</details>
+<details><summary>Why is received data split into several lines (or merged into one)?</summary>
+<p>LinkJig groups received bytes into packets. By default a packet ends when no data arrives for 20 ms (<strong>Time gap</strong>). In Settings → Packet framing you can split at delimiter bytes (for example <code>0D 0A</code>) instead, or show every read as it arrives (<strong>Raw</strong>).</p>
+</details>
+<details><summary>How do I see the data as hex?</summary>
+<p>Change the <strong>View</strong> in the terminal: ASCII, HEX, DEC, BIN or Dump (offset + hex + text). On Windows, Ctrl+E switches between them and Ctrl+T switches timestamps. The view changes only the display; the bytes are kept as received.</p>
+</details>
+<details><summary>Can I send the same command repeatedly, or send a file?</summary>
+<p>Yes. The timer button in the send bar sends the current input at a fixed interval until you stop it. The paperclip button sends a file, either as binary chunks or line by line, with a delay between parts.</p>
+</details>
+<details><summary>What do the RX and TX colors and rails mean?</summary>
+<p>RX is data received from the device, TX is data you sent. The thin rails at the terminal edges mark where RX (left) and TX (right) happened; click a mark to jump there.</p>
+</details>
+<h2>Macros, triggers and scenarios</h2>
+<details><summary>What is a macro?</summary>
+<p>A saved command on a button. Tap it in the macro bar under the terminal, or press F1–F12 on Windows. Shift+F1–F12 edits the macro.</p>
+</details>
+<details><summary>What is a trigger?</summary>
+<p>A rule that watches every received packet for a text, hex (with <code>??</code> wildcards) or regex pattern. When it matches, LinkJig can send a reply, mark the line in the log, beep, save a snapshot or stop a running scenario. Use triggers to answer a device automatically or to simulate one.</p>
+</details>
+<details><summary>What is a scenario?</summary>
+<p>A repeatable test. Each step sends a message, waits for the expected reply within a timeout and marks the step PASS or FAIL. You choose what happens on a failure (continue, retry or stop) and how many loops to run. Save the result as a text report or CSV table.</p>
+</details>
+<details><summary>Can I run scenarios on my phone?</summary>
+<p>Yes. Build them on the desktop, share them as a project pack and import it on the phone. The phone runs them and shows each step's result.</p>
+</details>
+<details><summary>What is the difference between a profile and a project pack?</summary>
+<p>A profile stores connection and send settings (and optionally macros) for one device. A project pack bundles profiles, macros, triggers, scenarios and an optional sample log into one <code>.ljpack</code> file to share with a colleague or move to your phone.</p>
+</details>
+<details><summary>Does importing a project pack send anything to my device?</summary>
+<p>No. Importing only adds scenarios, macros, triggers and profiles. Nothing is sent until you press Run or Send.</p>
+</details>
+<h2>Logs and files</h2>
+<details><summary>Where are my logs?</summary>
+<p>Automatic session logging is off by default; turn on <strong>Save every session to disk</strong> in Settings → Terminal. On Windows the logs go to <code>Documents\LinkJig\logs</code> (trigger snapshots in <code>snapshots</code>). On Android they stay inside the app; on the Logs screen, <strong>Save a copy…</strong> lets you send a log or store it elsewhere. You can also save the current terminal from its menu at any time (Ctrl+Shift+S on Windows).</p>
+</details>
+<details><summary>I closed the app by mistake. Is the session lost?</summary>
+<p>No. With <strong>Restore last session</strong> on (the default), the last 2,000 lines come back on the next start. LinkJig never reconnects by itself; it asks first.</p>
+</details>
+<details><summary>Does the connection stay open when the app is in the background?</summary>
+<p>On Android, yes, while a link is active: LinkJig shows an "Active connection" notification so the system keeps it running. If you turn notifications off, the link still runs but the notification is hidden. Some phone makers stop background apps aggressively; if links drop, allow LinkJig to run without battery restrictions.</p>
+</details>
+<h2>Privacy and support</h2>
+<details><summary>Does LinkJig send my data anywhere?</summary>
+<p>No. There is no account, no analytics and no server. Everything you type, receive and save stays on your device. See the privacy policy in Settings → About.</p>
+</details>
+<details><summary>How do I change the language?</summary>
+<p>Settings → Appearance → Language. <strong>System</strong> follows your device's language.</p>
+</details>
+<details><summary>How do I report a problem?</summary>
+<p>Settings → Help → <strong>Copy diagnostic report</strong>, then paste it into your message to <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a> The report contains app, system and link details — never terminal data, serial numbers or addresses.</p>
+</details>
+</main></body>
+</html>

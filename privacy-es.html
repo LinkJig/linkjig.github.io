@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privacidad de LinkJig</title>
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="privacy.html" hreflang="en">English</a><a href="privacy-tr.html" hreflang="tr">Türkçe</a><span>Español</span><a href="privacy-de.html" hreflang="de">Deutsch</a><a href="privacy-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<h1>Política de privacidad de LinkJig</h1>
+<p><em>Última actualización: 8 de octubre de 2026</em></p>
+<p>LinkJig es una herramienta para comunicarte con tu propio hardware por USB serie, USB HID, Bluetooth Low Energy y TCP, y para convertir esa comunicación en pruebas repetibles. Esta política explica qué hace la app con los datos en Android y Windows.</p>
+<p><strong>En resumen:</strong> LinkJig no tiene cuentas, analíticas, anuncios ni servidor. Todo lo que guarda se queda en tu dispositivo. No se envía nada a ningún sitio salvo que lo envíes tú.</p>
+<h2>Qué guarda la app en tu dispositivo</h2>
+<ul><li><strong>Ajustes</strong> — tema, opciones del terminal, macros, disparadores, escenarios e historial de envíos.</li><li><strong>Dispositivos recientes</strong> — nombres e identificadores de los dispositivos a los que te conectaste (por ejemplo, el nombre de un puerto COM, una dirección Bluetooth o un host y puerto), para poder reabrirlos desde la pantalla Equipos, y los perfiles de conexión que guardes.</li><li><strong>Contraseñas Wi-Fi</strong> — solo de las redes que pides a LinkJig que recuerde. En Android se cifran con una clave guardada en el Android Keystore y quedan fuera de las copias de seguridad; en Windows se guardan en el perfil Wi-Fi del sistema, como cualquier red a la que te unes. Nunca se incluyen en paquetes de proyecto, accesos directos ni informes de diagnóstico.</li><li><strong>Logs y capturas</strong> — solo cuando guardas un log, activas los logs automáticos de sesión o un disparador toma una captura. En Windows están en <code>Documents\LinkJig</code>; en Android, en el almacenamiento privado de la app.</li></ul>
+<p>Estos datos nunca salen de tu dispositivo a través de LinkJig. Al desinstalar la app (o borrar su almacenamiento en Android) se eliminan, salvo los archivos que hayas guardado en otro lugar.</p>
+<h2>Qué envía la app</h2>
+<ul><li><strong>Datos a tus dispositivos.</strong> Los bytes que escribes, las macros, los archivos que eliges enviar, los pasos de los escenarios y las respuestas de los disparadores van al dispositivo o a la dirección de red a la que te conectaste, y a ningún otro sitio.</li><li><strong>Red.</strong> LinkJig abre una conexión de red solo con el host y el puerto que introduces o eliges. No contacta con ningún servidor propio.</li><li><strong>Búsqueda de dispositivos en tu red.</strong> Solo cuando tocas "Buscar" en la pantalla Red, LinkJig envía consultas mDNS estándar (del mismo tipo que usan las impresoras y los altavoces inteligentes) a tu red local y muestra los dispositivos que responden. Estas consultas no salen de tu red local y no se guarda nada, salvo las conexiones que abras después.</li><li><strong>Wi-Fi.</strong> LinkJig muestra las redes Wi-Fi cercanas solo cuando tocas "Escanear" en la sección Wi-Fi de la pantalla Red, y solo se une a la red que eliges, para que una conexión TCP llegue al punto de acceso propio de un equipo. En Android 10 y posteriores solo LinkJig usa esa red y el resto del teléfono sigue con internet; en Windows y en versiones antiguas de Android el equipo cambia de red hasta que la dejas.</li><li><strong>Compartir.</strong> Cuando compartes un log, el resultado de un escenario o un paquete de proyecto, el archivo va a la app que eliges en el menú para compartir. LinkJig no ve lo que ocurre después.</li><li><strong>Informe de diagnóstico.</strong> "Copiar informe de diagnóstico" copia un texto en tu portapapeles para que puedas pegarlo en una solicitud de soporte. Contiene la versión de la app, el sistema operativo, el modelo del teléfono (Android), el estado de los permisos y los ajustes de conexión. No contiene datos del terminal, números de serie, direcciones Bluetooth ni direcciones IP. La app no lo envía a ningún sitio.</li></ul>
+<h2>Permisos de Android</h2>
+<table><thead><tr><th>Permiso</th><th>Motivo</th></tr></thead><tbody><tr><td>Dispositivos cercanos (buscar / conectar por Bluetooth)</td><td>Buscar y conectarte a los dispositivos Bluetooth que elijas. La búsqueda no se usa para determinar tu ubicación.</td></tr><tr><td>Ubicación</td><td>Android la exige para mostrar redes Wi-Fi (todas las versiones) y para cualquier búsqueda Bluetooth (hasta Android 11). LinkJig no lee tu ubicación.</td></tr><tr><td>Dispositivos USB</td><td>Comunicarse con adaptadores USB-serie y dispositivos USB HID. Android te pide permiso para cada dispositivo.</td></tr><tr><td>Internet / estado de la red</td><td>Conexiones TCP a la dirección que introduces.</td></tr><tr><td>Multidifusión Wi-Fi</td><td>Recibir las respuestas a "Buscar" en la pantalla Red (mDNS); se mantiene solo mientras dura la búsqueda.</td></tr><tr><td>Notificaciones y servicio en primer plano</td><td>Mantener activa una conexión abierta mientras la app está en segundo plano, con una notificación visible.</td></tr><tr><td>Dispositivos Wi-Fi cercanos (Android 13 y posteriores)</td><td>Mostrar las redes Wi-Fi cuando tocas "Escanear". No se usa para determinar tu ubicación.</td></tr><tr><td>Estado de Wi-Fi / cambiar Wi-Fi</td><td>Unirse al punto de acceso del equipo que eliges.</td></tr></tbody></table>
+<p>En Windows 11, Windows solo muestra redes Wi-Fi a las apps cuando el acceso a la ubicación está permitido para las apps. LinkJig lo pide solo para que la lista Wi-Fi funcione; nunca lee tu ubicación.</p>
+<h2>Menores</h2>
+<p>LinkJig es una herramienta para desarrolladores y no está dirigida a menores.</p>
+<h2>Compras</h2>
+<p>Si LinkJig ofrece una mejora Pro en Android, el pago lo gestiona Google Play. LinkJig solo sabe si Pro está desbloqueado; nunca ve tus datos de pago.</p>
+<h2>Cambios</h2>
+<p>Si esta política cambia, la nueva versión se publicará en la misma dirección con una nueva fecha. Si LinkJig añade alguna vez informes de fallos, estarán desactivados de forma predeterminada, primero te pedirán tu consentimiento y nunca incluirán datos del terminal.</p>
+<h2>Contacto</h2>
+<p>Preguntas: <strong><a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a></strong></p>
+</main></body>
+</html>

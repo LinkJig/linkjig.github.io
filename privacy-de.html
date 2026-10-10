@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinkJig Datenschutzerklärung</title>
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="privacy.html" hreflang="en">English</a><a href="privacy-tr.html" hreflang="tr">Türkçe</a><a href="privacy-es.html" hreflang="es">Español</a><span>Deutsch</span><a href="privacy-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<h1>LinkJig Datenschutzerklärung</h1>
+<p><em>Zuletzt aktualisiert: 8. Oktober 2026</em></p>
+<p>LinkJig ist ein Werkzeug für die Kommunikation mit eigener Hardware über USB-Seriell, USB HID, Bluetooth Low Energy und TCP und um daraus wiederholbare Tests zu machen. Diese Erklärung beschreibt, was die App unter Android und Windows mit Daten macht.</p>
+<p><strong>Kurzfassung:</strong> LinkJig hat kein Konto, keine Analyse, keine Werbung und keinen Server. Alles, was die App speichert, bleibt auf dem Gerät. Nichts wird irgendwohin gesendet, außer es wird selbst gesendet.</p>
+<h2>Was die App auf dem Gerät speichert</h2>
+<ul><li><strong>Optionen</strong> — Design, Terminal-Optionen, Makros, Trigger, Szenarien und Sendeverlauf.</li><li><strong>Zuletzt verwendete Geräte</strong> — Namen und Kennungen von Geräten, mit denen eine Verbindung bestand (zum Beispiel ein COM-Port-Name, eine Bluetooth-Adresse oder ein Host und Port), damit sie über den Bildschirm „Geräte“ erneut geöffnet werden können, sowie die gespeicherten Verbindungsprofile.</li><li><strong>WLAN-Passwörter</strong> — nur für Netze, die LinkJig sich merken soll. Unter Android werden sie mit einem Schlüssel im Android Keystore verschlüsselt und nicht in Backups übernommen; unter Windows liegen sie im WLAN-Profil des Systems, wie bei jedem Netz, mit dem du dich verbindest. Sie landen nie in Projektpaketen, Verknüpfungen oder Diagnoseberichten.</li><li><strong>Logs und Snapshots</strong> — nur wenn ein Log gespeichert wird, automatische Sitzungs-Logs aktiviert sind oder ein Trigger einen Snapshot erstellt. Unter Windows liegen sie in <code>Documents\LinkJig</code>; unter Android im privaten Speicher der App.</li></ul>
+<p>Diese Daten verlassen das Gerät niemals über LinkJig. Das Deinstallieren der App (oder das Löschen ihres Speichers unter Android) löscht sie, mit Ausnahme von Dateien, die an anderer Stelle gespeichert wurden.</p>
+<h2>Was die App sendet</h2>
+<ul><li><strong>Daten an die eigenen Geräte.</strong> Eingegebene Bytes, Makros, zum Senden ausgewählte Dateien, Szenario-Schritte und Trigger-Antworten gehen an das Gerät oder die Netzwerkadresse, mit der verbunden wurde — nirgendwohin sonst.</li><li><strong>Netzwerk.</strong> LinkJig öffnet eine Netzwerkverbindung nur zu dem Host und Port, der eingegeben oder ausgewählt wurde. Die App kontaktiert keinen eigenen Server.</li><li><strong>Geräte im Netzwerk finden.</strong> Nur beim Tippen auf „Suchen“ im Bildschirm „Netzwerk“ sendet LinkJig standardmäßige mDNS-Anfragen (dieselbe Art, die Drucker und smarte Lautsprecher verwenden) in das lokale Netzwerk und listet die Geräte auf, die antworten. Diese Anfragen verlassen das lokale Netzwerk nicht, und es wird nichts gespeichert außer den Verbindungen, die anschließend geöffnet werden.</li><li><strong>WLAN.</strong> LinkJig listet WLAN-Netze in der Nähe nur beim Tippen auf „Scannen“ im WLAN-Bereich des Bildschirms „Netzwerk“ und verbindet sich nur mit dem gewählten Netz, damit eine TCP-Verbindung den eigenen Access Point eines Geräts erreicht. Ab Android 10 nutzt nur LinkJig dieses Netz und der Rest des Handys bleibt online; unter Windows und älteren Android-Versionen wechselt das Gerät das Netz, bis du es wieder verlässt.</li><li><strong>Teilen.</strong> Beim Teilen eines Logs, eines Szenario-Ergebnisses oder eines Projektpakets geht die Datei an die App, die im Teilen-Dialog ausgewählt wird. LinkJig sieht nicht, was danach geschieht.</li><li><strong>Diagnosebericht.</strong> „Diagnosebericht kopieren“ legt einen Text in die Zwischenablage, der in eine Supportanfrage eingefügt werden kann. Er enthält die App-Version, das Betriebssystem, das Telefonmodell (Android), die Berechtigungsstatus und die Verbindungseinstellungen. Er enthält keine Terminaldaten, Seriennummern, Bluetooth-Adressen oder IP-Adressen. Er wird von der App nirgendwohin gesendet.</li></ul>
+<h2>Android-Berechtigungen</h2>
+<table><thead><tr><th>Berechtigung</th><th>Zweck</th></tr></thead><tbody><tr><td>Geräte in der Nähe (Bluetooth-Suche / -Verbindung)</td><td>Ausgewählte Bluetooth-Geräte finden und mit ihnen verbinden. Die Suche wird nicht zur Bestimmung des Standorts verwendet.</td></tr><tr><td>Standort</td><td>Android verlangt ihn zum Auflisten von WLAN-Netzen (jede Version) und für jede Bluetooth-Suche (bis Android 11). LinkJig liest den Standort nicht.</td></tr><tr><td>USB-Geräte</td><td>Kommunikation mit USB-Seriell-Adaptern und USB-HID-Geräten. Android fragt für jedes Gerät nach.</td></tr><tr><td>Internet / Netzwerkstatus</td><td>TCP-Verbindungen zur eingegebenen Adresse.</td></tr><tr><td>WLAN-Multicast</td><td>Antworten auf „Suchen“ im Bildschirm „Netzwerk“ empfangen (mDNS); wird nur während der Suche gehalten.</td></tr><tr><td>Benachrichtigungen und Vordergrunddienst</td><td>Eine offene Verbindung aktiv halten, während die App im Hintergrund läuft, mit sichtbarer Benachrichtigung.</td></tr><tr><td>Geräte in der Nähe (WLAN, ab Android 13)</td><td>WLAN-Netze beim Tippen auf „Scannen“ auflisten. Wird nicht zur Bestimmung des Standorts verwendet.</td></tr><tr><td>WLAN-Status / WLAN ändern</td><td>Mit dem gewählten Access Point eines Geräts verbinden.</td></tr></tbody></table>
+<p>Unter Windows 11 zeigt Windows Apps WLAN-Netze nur, solange der Standortzugriff für Apps erlaubt ist. LinkJig fragt danach nur, damit die WLAN-Liste funktioniert; den Standort liest es nie.</p>
+<h2>Kinder</h2>
+<p>LinkJig ist ein Entwicklerwerkzeug und richtet sich nicht an Kinder.</p>
+<h2>Käufe</h2>
+<p>Falls LinkJig unter Android ein Pro-Upgrade anbietet, wird die Zahlung über Google Play abgewickelt. LinkJig erfährt nur, ob Pro freigeschaltet ist; die Zahlungsdaten sieht die App nie.</p>
+<h2>Änderungen</h2>
+<p>Wenn sich diese Erklärung ändert, wird die neue Fassung unter derselben Adresse mit neuem Datum veröffentlicht. Falls LinkJig jemals eine Absturzberichterstattung hinzufügt, ist sie standardmäßig deaktiviert, fragt zuerst nach Einwilligung und enthält niemals Terminaldaten.</p>
+<h2>Kontakt</h2>
+<p>Fragen: <strong><a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a></strong></p>
+</main></body>
+</html>

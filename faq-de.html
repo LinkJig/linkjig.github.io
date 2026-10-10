@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Häufige Fragen</title>
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="faq.html" hreflang="en">English</a><a href="faq-tr.html" hreflang="tr">Türkçe</a><a href="faq-es.html" hreflang="es">Español</a><span>Deutsch</span><a href="faq-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<p class="back"><a href="index-de.html">← Start</a></p>
+<h1>Häufige Fragen</h1>
+<p>Kurze Antworten auf die häufigsten Fragen. Deine Frage ist nicht dabei? Diagnosebericht kopieren (Optionen → Hilfe) und an <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> schreiben.</p>
+<h2>Erste Schritte</h2>
+<details><summary>Womit kann ich mich verbinden?</summary>
+<p>Windows: serielle Ports und USB-Seriell-Adapter, Bluetooth LE, USB-HID-Geräte und TCP. Android: USB-Seriell-Adapter über USB-OTG, Bluetooth LE und TCP. Das eingebaute <strong>Demo</strong>-Gerät antwortet wie eine echte Platine, so lässt sich alles ohne Hardware ausprobieren.</p>
+</details>
+<details><summary>Ich habe gerade kein Gerät. Wie teste ich die App?</summary>
+<p>Geräte öffnen und mit <strong>Demo</strong> verbinden. Es sendet das Gesendete zurück und beantwortet einige Befehle. Auf dem Bildschirm Szenarien <strong>Demo-Szenario laden</strong> wählen und <strong>Start</strong> drücken – das zeigt einen vollständigen Test mit bestanden/fehlgeschlagen.</p>
+</details>
+<details><summary>Wird klassisches Bluetooth (HC-05, HC-06) unterstützt?</summary>
+<p>In dieser Version nicht. LinkJig spricht mit Bluetooth-LE-Modulen (HM-10, ESP32, nRF und ähnliche). Klassisches Bluetooth-Seriell ist geplant.</p>
+</details>
+<details><summary>Gibt es eine Version für iPhone, Mac oder Linux?</summary>
+<p>Noch nicht. LinkJig läuft unter Windows und Android.</p>
+</details>
+<h2>Seriell und USB</h2>
+<details><summary>Meine Platine startet beim Verbinden neu.</summary>
+<p>Viele ESP32- und Arduino-Platinen starten neu oder gehen in den Bootloader, wenn sich DTR oder RTS ändert. LinkJig lässt beide standardmäßig aus und setzt sie sofort beim Öffnen des Ports, sodass das Verbinden keinen Impuls erzeugt. Braucht die Platine sie eingeschaltet, in den seriellen Einstellungen <strong>DTR nach dem Verbinden ein</strong> oder <strong>RTS nach dem Verbinden ein</strong> aktivieren.</p>
+</details>
+<details><summary>„COM5 konnte nicht geöffnet werden: Zugriff verweigert.“</summary>
+<p>Ein anderes Programm hat den Port geöffnet – meist ein serieller Monitor, eine IDE oder ein zweites LinkJig-Fenster. Dieses schließen und <strong>Wiederholen</strong> drücken. Die Meldung zeigt den echten Windows-Fehler; „Zugriff verweigert“ heißt belegt, nicht Kabel defekt.</p>
+</details>
+<details><summary>Ich sehe nur seltsame Zeichen.</summary>
+<p>Die Baudrate passt nicht zum Gerät. LinkJig erkennt unlesbare Daten und bietet <strong>Baud ändern</strong> an. Ist die Rate unbekannt, in den seriellen Einstellungen <strong>Baudrate finden</strong> verwenden: Es probiert die üblichen Raten (zuerst 115200), sendet einen frei wählbaren Befehl (z. B. <code>AT</code>) oder hört nur zu und stoppt bei der ersten Rate mit lesbarer Antwort. Datenbits, Parität und Stoppbits müssen ebenfalls passen; die meisten Geräte nutzen 8N1, die Voreinstellung.</p>
+</details>
+<details><summary>Ich sende einen Befehl, aber es kommt nichts zurück.</summary>
+<p>In dieser Reihenfolge prüfen:</p>
+<ul><li><strong>Zeilenende.</strong> Die meisten Geräte reagieren erst am Zeilenende. Voreingestellt ist CR LF (<code>\r\n</code>); manche Geräte wollen nur CR oder nur LF.</li><li><strong>Verdrahtung.</strong> TX an RX, RX an TX, und die Masse (GND) ist verbunden.</li><li><strong>Baudrate</strong> und die übrigen Leitungseinstellungen.</li><li>Die Sendeleiste zeigt vor dem Senden die genauen Bytes – so lassen sie sich mit dem Handbuch des Geräts vergleichen.</li></ul>
+</details>
+<details><summary>Der Adapter erscheint unter Android nicht.</summary>
+<p>Einen USB-OTG-Adapter oder ein OTG-Kabel verwenden und dann den Adapter anstecken. Android fragt, ob LinkJig das Gerät nutzen darf – erlauben. Bei manchen Handys muss OTG in den Einstellungen eingeschaltet werden. Unterstützt werden Adapter mit CP210x-, CH34x-, FTDI- und PL2303-Chips sowie CDC-ACM-Platinen.</p>
+</details>
+<details><summary>Bei schwachem Handy-Akku bricht die Verbindung ab.</summary>
+<p>Manche Handys schalten bei niedrigem Akkustand die USB-OTG-Versorgung ab. LinkJig warnt, wenn das passieren kann. Handy laden oder einen OTG-Hub mit eigener Stromversorgung verwenden.</p>
+</details>
+<h2>Bluetooth LE</h2>
+<details><summary>LinkJig findet keine Bluetooth-Geräte.</summary>
+<p>Prüfen, ob Bluetooth eingeschaltet ist und LinkJig die Berechtigung „Geräte in der Nähe“ (Android 12 und neuer) bzw. Standort (Android 11 und älter) hat. LinkJig sagt klar, wenn eine Berechtigung fehlt oder Bluetooth aus ist; „Keine Geräte gefunden“ heißt, der Scan lief und niemand hat geantwortet. Viele BLE-Module senden keine Advertising-Pakete mehr, solange schon etwas mit ihnen verbunden ist.</p>
+</details>
+<details><summary>Warum fragt Android 11 nach meinem Standort?</summary>
+<p>Unter Android 11 und älter zeigt das System Bluetooth-Geräte in der Nähe nur Apps mit Standortberechtigung. LinkJig liest oder speichert nie, wo du bist.</p>
+</details>
+<details><summary>Welche BLE-UART-Module funktionieren?</summary>
+<p>Nordic UART (NUS), TI CC254x / HM-10 (<code>FFE0</code>) und Microchip Transparent UART werden automatisch erkannt. Bei anderen Modulen wählt LinkJig einen Dienst mit einer beschreibbaren und einer benachrichtigenden Charakteristik. Ist die Wahl falsch, im Terminalmenü den <strong>GATT-Explorer</strong> öffnen, TX- und RX-Charakteristik wählen und <strong>Für Terminal verwenden</strong> drücken.</p>
+</details>
+<h2>Netzwerk</h2>
+<details><summary>Wie verbinde ich mich mit einem Gerät in meinem Netzwerk (TCP)?</summary>
+<p><strong>Netzwerk</strong> wählen, Hostnamen oder IP-Adresse und Port eingeben und verbinden. LinkJig verbindet sich als TCP-Client – etwa mit einem ESP32 oder einer Seriell-WLAN-Brücke. Geräte, die sich per mDNS ankündigen (z. B. <code>esp32.local</code>), erscheinen nach <strong>Suchen</strong> unter <strong>In diesem Netzwerk</strong>.</p>
+</details>
+<details><summary>Wie verbinde ich mich mit dem eigenen WLAN eines Moduls (ESP32, AI-Thinker)?</summary>
+<p>Unter <strong>Netzwerk</strong> im WLAN-Bereich auf <strong>Scannen</strong> tippen, dann auf das Netz des Moduls. Das Passwort einmal eingeben; mit <strong>Passwort merken</strong> reicht beim nächsten Mal ein Tippen. Danach trägt LinkJig die Adresse des Moduls ein (meist <code>192.168.4.1</code>): <strong>Verbinden</strong> drücken. Die gespeicherte Verbindung merkt sich das WLAN, später verbindet ein Tippen erst das WLAN und dann TCP. Unter Android fragt die erste Suche nach der Standortberechtigung: Android zeigt WLAN-Netze nur Apps mit dieser Berechtigung. LinkJig liest den Standort nie.</p>
+</details>
+<details><summary>Verlieren Handy oder Computer das Internet?</summary>
+<p>Ab Android 10 nicht: nur LinkJig nutzt das Netz des Moduls, der Rest des Handys bleibt online. Unter Windows und Android 9 wechselt das ganze Gerät ins Netz des Moduls, bis du <strong>Trennen</strong> (unter Windows <strong>Zurück zu …</strong>) tippst. Windows verbindet sich später nie von selbst mit dem Netz eines Moduls.</p>
+</details>
+<details><summary>Kann ich eine Desktop-Verknüpfung anlegen, die mit einem Klick verbindet?</summary>
+<p>Unter Windows ja. Unter <strong>Gespeicherte Verbindungen</strong> das Menü der Verbindung öffnen und <strong>Desktop-Verknüpfung erstellen</strong> wählen. Sie startet LinkJig, verbindet das gespeicherte WLAN, falls die Verbindung eines hat, und verbindet dann. Die Verknüpfung enthält nie ein Passwort.</p>
+</details>
+<details><summary>Wo werden meine WLAN-Passwörter gespeichert?</summary>
+<p>Nur auf deinem Gerät: unter Android mit einem Schlüssel aus dem Android Keystore verschlüsselt und nicht in Backups; unter Windows im WLAN-Profil des Systems. Zum Löschen im WLAN-Liste das Menü des Netzes öffnen und <strong>Passwort vergessen</strong> wählen.</p>
+</details>
+<details><summary>Kann LinkJig als TCP-Server arbeiten oder UDP nutzen?</summary>
+<p>In dieser Version nicht.</p>
+</details>
+<h2>Senden und Empfangen</h2>
+<details><summary>Wie sende ich Hex-Bytes?</summary>
+<p>In der Sendeleiste das Eingabeformat auf HEX stellen und Bytes wie <code>01 03 00 00 00 0A</code> eingeben. DEC und BIN funktionieren genauso. Im Textmodus (ASCII) sind Escape-Sequenzen möglich: <code>\r</code>, <code>\n</code>, <code>\t</code> und <code>\xNN</code> für jedes Byte.</p>
+</details>
+<details><summary>Kann LinkJig die Prüfsumme oder CRC selbst anhängen?</summary>
+<p>Ja. In der Sendeleiste eine Prüfsumme wählen (SUM8, XOR8, CRC-8, CRC-16/MODBUS, CRC-16/CCITT-FALSE oder CRC-32); sie wird nach den Daten und vor dem Zeilenende angehängt, die Vorschau zeigt das Ergebnis. Der <strong>Checksummen-Rechner</strong> unter Optionen → Werkzeuge rechnet mit beliebigen Bytes, ohne etwas zu senden.</p>
+</details>
+<details><summary>Warum werden empfangene Daten auf mehrere Zeilen verteilt (oder in einer zusammengefasst)?</summary>
+<p>LinkJig fasst empfangene Bytes zu Paketen zusammen. Standardmäßig endet ein Paket, wenn 20 ms lang keine Daten kommen (<strong>Zeitlücke</strong>). Unter Optionen → Paketaufteilung lässt sich stattdessen an Trennbytes (z. B. <code>0D 0A</code>) teilen oder jeder Lesevorgang so anzeigen, wie er ankommt (<strong>Roh</strong>).</p>
+</details>
+<details><summary>Wie sehe ich die Daten als Hex?</summary>
+<p>Im Terminal die <strong>Ansicht</strong> wechseln: ASCII, HEX, DEC, BIN oder Dump (Offset + Hex + Text). Unter Windows wechselt Strg+E zwischen den Ansichten und Strg+T zwischen den Zeitstempeln. Die Ansicht ändert nur die Darstellung; die Bytes bleiben so gespeichert, wie sie ankamen.</p>
+</details>
+<details><summary>Kann ich denselben Befehl wiederholt oder eine Datei senden?</summary>
+<p>Ja. Die Timer-Taste in der Sendeleiste sendet die aktuelle Eingabe in festem Abstand, bis du stoppst. Die Büroklammer-Taste sendet eine Datei – als Binärblöcke oder zeilenweise, mit Pause zwischen den Teilen.</p>
+</details>
+<details><summary>Was bedeuten die RX- und TX-Farben und die Randleisten?</summary>
+<p>RX sind Daten vom Gerät, TX die von dir gesendeten. Die schmalen Leisten an den Terminalrändern markieren, wo RX (links) und TX (rechts) stattfand; ein Klick auf eine Markierung springt dorthin.</p>
+</details>
+<h2>Makros, Trigger und Szenarien</h2>
+<details><summary>Was ist ein Makro?</summary>
+<p>Ein gespeicherter Befehl auf einer Taste. In der Makroleiste unter dem Terminal antippen oder unter Windows F1–F12 drücken. Umschalt+F1–F12 bearbeitet das Makro.</p>
+</details>
+<details><summary>Was ist ein Trigger?</summary>
+<p>Eine Regel, die jedes empfangene Paket auf ein Text-, Hex- (mit <code>??</code>-Platzhaltern) oder Regex-Muster prüft. Bei einem Treffer kann LinkJig eine Antwort senden, die Zeile im Log markieren, piepen, einen Snapshot speichern oder ein laufendes Szenario stoppen. Damit lässt sich einem Gerät automatisch antworten oder ein Gerät simulieren.</p>
+</details>
+<details><summary>Was ist ein Szenario?</summary>
+<p>Ein wiederholbarer Test. Jeder Schritt sendet eine Nachricht, wartet innerhalb eines Timeouts auf die erwartete Antwort und markiert den Schritt als PASS oder FAIL. Du legst fest, was bei einem Fehler passiert (weiter, wiederholen oder stoppen) und wie viele Durchläufe laufen. Das Ergebnis lässt sich als Textbericht oder CSV-Tabelle speichern.</p>
+</details>
+<details><summary>Kann ich Szenarien auf dem Handy ausführen?</summary>
+<p>Ja. Am Desktop erstellen, als Projektpaket teilen und auf dem Handy importieren. Das Handy führt sie aus und zeigt das Ergebnis jedes Schritts.</p>
+</details>
+<details><summary>Was ist der Unterschied zwischen Profil und Projektpaket?</summary>
+<p>Ein Profil speichert Verbindungs- und Sendeeinstellungen (optional mit Makros) für ein Gerät. Ein Projektpaket bündelt Profile, Makros, Trigger, Szenarien und optional ein Beispiel-Log in einer <code>.ljpack</code>-Datei – zum Teilen mit Kollegen oder zum Übertragen aufs Handy.</p>
+</details>
+<details><summary>Sendet das Importieren eines Projektpakets etwas an mein Gerät?</summary>
+<p>Nein. Der Import fügt nur Szenarien, Makros, Trigger und Profile hinzu. Gesendet wird erst, wenn du Start oder Senden drückst.</p>
+</details>
+<h2>Logs und Dateien</h2>
+<details><summary>Wo sind meine Logs?</summary>
+<p>Die automatische Sitzungsaufzeichnung ist standardmäßig aus; unter Optionen → Terminal <strong>Jede Sitzung als Datei speichern</strong> einschalten. Unter Windows landen die Logs in <code>Documents\LinkJig\logs</code> (Trigger-Snapshots in <code>snapshots</code>). Unter Android bleiben sie in der App; auf dem Bildschirm Logs kannst du mit <strong>Kopie speichern…</strong> ein Log versenden oder woanders ablegen. Das aktuelle Terminal lässt sich jederzeit über sein Menü speichern (unter Windows Strg+Umschalt+S).</p>
+</details>
+<details><summary>Ich habe die App versehentlich geschlossen. Ist die Sitzung weg?</summary>
+<p>Nein. Ist <strong>Letzte Sitzung wiederherstellen</strong> an (Standard), kommen die letzten 2.000 Zeilen beim nächsten Start zurück. LinkJig verbindet sich nie von selbst neu, sondern fragt zuerst.</p>
+</details>
+<details><summary>Bleibt die Verbindung offen, wenn die App im Hintergrund ist?</summary>
+<p>Unter Android ja, solange eine Verbindung aktiv ist: LinkJig zeigt die Benachrichtigung „Aktive Verbindung“, damit das System sie weiterlaufen lässt. Sind Benachrichtigungen aus, läuft die Verbindung weiter, nur die Benachrichtigung ist ausgeblendet. Manche Hersteller beenden Hintergrund-Apps sehr aggressiv; bricht die Verbindung ab, LinkJig ohne Akku-Einschränkungen laufen lassen.</p>
+</details>
+<h2>Datenschutz und Support</h2>
+<details><summary>Sendet LinkJig meine Daten irgendwohin?</summary>
+<p>Nein. Kein Konto, keine Analyse, kein Server. Alles, was du eingibst, empfängst und speicherst, bleibt auf deinem Gerät. Die Datenschutzerklärung steht unter Optionen → Über.</p>
+</details>
+<details><summary>Wie ändere ich die Sprache?</summary>
+<p>Optionen → Darstellung → Sprache. <strong>Systemsprache</strong> folgt der Sprache deines Geräts.</p>
+</details>
+<details><summary>Wie melde ich ein Problem?</summary>
+<p>Optionen → Hilfe → <strong>Diagnosebericht kopieren</strong> und in die Nachricht an <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> einfügen. Der Bericht enthält App-, System- und Verbindungsdetails – nie Terminaldaten, Seriennummern oder Adressen.</p>
+</details>
+</main></body>
+</html>

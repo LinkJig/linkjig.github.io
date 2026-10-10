@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinkJig Privacy Policy</title>
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><span>English</span><a href="privacy-tr.html" hreflang="tr">Türkçe</a><a href="privacy-es.html" hreflang="es">Español</a><a href="privacy-de.html" hreflang="de">Deutsch</a><a href="privacy-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<h1>LinkJig Privacy Policy</h1>
+<p><em>Last updated: 8 October 2026</em></p>
+<p>LinkJig is a tool for talking to your own hardware over USB serial, USB HID, Bluetooth Low Energy and TCP, and for turning that into repeatable tests. This policy explains what the app does with data on Android and Windows.</p>
+<p><strong>Short version:</strong> LinkJig has no account, no analytics, no ads and no server. Everything it stores stays on your device. Nothing is sent anywhere unless you send it yourself.</p>
+<h2>What the app stores on your device</h2>
+<ul><li><strong>Settings</strong> — theme, terminal options, macros, triggers, scenarios and send history.</li><li><strong>Recent devices</strong> — names and identifiers of devices you connected to (for example a COM port name, a Bluetooth address or a host and port), so they can be reopened from the Devices screen, and the connection profiles you save.</li><li><strong>Wi-Fi passwords</strong> — only for networks you tell LinkJig to remember. On Android they are encrypted with a key kept in the Android Keystore and are left out of backups; on Windows they are kept in the system's Wi-Fi profile, like any network you join. They are never put in project packs, shortcuts or diagnostic reports.</li><li><strong>Logs and snapshots</strong> — only when you save a log, turn on automatic session logs, or a trigger takes a snapshot. On Windows they are in <code>Documents\LinkJig</code>; on Android they are in the app's private storage.</li></ul>
+<p>This data never leaves your device through LinkJig. Uninstalling the app (or clearing its storage on Android) deletes it, except files you saved elsewhere.</p>
+<h2>What the app sends</h2>
+<ul><li><strong>Data to your devices.</strong> Bytes you type, macros, files you choose to send, scenario steps and trigger replies go to the device or network address you connected to — nowhere else.</li><li><strong>Network.</strong> LinkJig opens a network connection only to the host and port you enter or pick. It does not contact any server of its own.</li><li><strong>Finding devices on your network.</strong> Only when you tap "Find" on the Network screen, LinkJig sends standard mDNS queries (the same kind printers and smart speakers use) to your local network and lists the devices that answer. These queries do not leave your local network and nothing is stored except the connections you then open.</li><li><strong>Wi-Fi.</strong> LinkJig lists nearby Wi-Fi networks only when you tap "Scan" on the Network screen, and joins only the network you pick, so a TCP connection can reach a device's own access point. On Android 10 and newer only LinkJig uses that network and the rest of the phone stays online; on Windows and older Android versions the device switches networks until you leave it.</li><li><strong>Sharing.</strong> When you share a log, a scenario result or a project pack, the file goes to the app you pick in the share sheet. LinkJig does not see what happens after that.</li><li><strong>Diagnostic report.</strong> "Copy diagnostic report" puts a text on your clipboard so you can paste it into a support request. It contains the app version, the operating system, the phone model (Android), the permission states and the connection settings. It contains no terminal data, serial numbers, Bluetooth addresses or IP addresses. It is not sent anywhere by the app.</li></ul>
+<h2>Android permissions</h2>
+<table><thead><tr><th>Permission</th><th>Why</th></tr></thead><tbody><tr><td>Nearby devices (Bluetooth scan / connect)</td><td>Find and connect to Bluetooth devices you choose. Scanning is not used to determine your location.</td></tr><tr><td>Location</td><td>Android requires it to list Wi-Fi networks (every version) and for any Bluetooth scan (up to Android 11). LinkJig does not read your location.</td></tr><tr><td>USB devices</td><td>Talk to USB-serial adapters and USB HID devices. Android asks you for each device.</td></tr><tr><td>Internet / network state</td><td>TCP connections to the address you enter.</td></tr><tr><td>Wi-Fi multicast</td><td>Receive answers to "Find" on the Network screen (mDNS); held only while the search runs.</td></tr><tr><td>Notifications and foreground service</td><td>Keep an open connection running while the app is in the background, with a visible notification.</td></tr><tr><td>Nearby Wi-Fi devices (Android 13 and newer)</td><td>List Wi-Fi networks when you tap "Scan". Not used to determine your location.</td></tr><tr><td>Wi-Fi state / change Wi-Fi</td><td>Join the device access point you pick.</td></tr></tbody></table>
+<p>On Windows 11, Windows shows Wi-Fi networks to apps only while location access is allowed for apps. LinkJig asks for it only so the Wi-Fi list works; it never reads your location.</p>
+<h2>Children</h2>
+<p>LinkJig is a developer tool and is not directed at children.</p>
+<h2>Purchases</h2>
+<p>If LinkJig offers a Pro upgrade on Android, payment is handled by Google Play. LinkJig only learns whether Pro is unlocked; it never sees your payment details.</p>
+<h2>Changes</h2>
+<p>If this policy changes, the new version will be published at the same address with a new date. If LinkJig ever adds crash reporting, it will be off by default, ask for your consent first and never include terminal data.</p>
+<h2>Contact</h2>
+<p>Questions: <strong><a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a></strong></p>
+</main></body>
+</html>
