@@ -110,6 +110,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>Hex bayt nasıl gönderirim?</summary>
 <p>Gönderme çubuğunda giriş biçimini HEX yapın ve <code>01 03 00 00 00 0A</code> gibi baytlar yazın. DEC ve BIN de aynı şekilde çalışır. Metin (ASCII) kipinde kaçış dizileri yazabilirsiniz: <code>\r</code>, <code>\n</code>, <code>\t</code> ve herhangi bir bayt için <code>\xNN</code>.</p>
 </details>
+<details><summary>Ctrl+C, Ctrl+D veya Ctrl+Z nasıl gönderirim?</summary>
+<p>Kontrol tuşları tek birer bayttır: Ctrl+C <code>\x03</code>, Ctrl+D <code>\x04</code>, Ctrl+Z <code>\x1A</code> (Esc <code>\e</code>). Metin (ASCII) kipinde <code>\x03</code> yazın ya da HEX'e geçip <code>03</code> yazın; cihaz baytı tek başına bekliyorsa satır sonunu <strong>EOL yok</strong> yapın. Tek dokunuşla göndermek için makro olarak kaydedin. Windows'ta terminaldeki Ctrl+C seçimi kopyalar; hiçbir şey göndermez.</p>
+</details>
 <details><summary>LinkJig checksum veya CRC'yi kendisi ekleyebilir mi?</summary>
 <p>Evet. Gönderme çubuğunda bir checksum seçin (SUM8, XOR8, CRC-8, CRC-16/MODBUS, CRC-16/CCITT-FALSE veya CRC-32); verinizin arkasına, satır sonundan önce eklenir ve önizleme sonucu gösterir. Ayarlar → Araçlar'daki <strong>Checksum hesaplayıcı</strong> göndermeden herhangi bir bayt dizisi üzerinde çalışır.</p>
 </details>

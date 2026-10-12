@@ -110,6 +110,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>Como envio bytes em hex?</summary>
 <p>Mude o formato de entrada da barra de envio para HEX e digite bytes como <code>01 03 00 00 00 0A</code>. DEC e BIN funcionam do mesmo jeito. No modo texto (ASCII) você pode usar sequências de escape: <code>\r</code>, <code>\n</code>, <code>\t</code> e <code>\xNN</code> para qualquer byte.</p>
 </details>
+<details><summary>Como envio Ctrl+C, Ctrl+D ou Ctrl+Z?</summary>
+<p>As teclas de controle são bytes únicos: Ctrl+C é <code>\x03</code>, Ctrl+D é <code>\x04</code> e Ctrl+Z é <code>\x1A</code> (Esc é <code>\e</code>). No modo texto (ASCII), digite <code>\x03</code> ou mude para HEX e digite <code>03</code>; deixe o fim de linha em <strong>Sem EOL</strong> se o dispositivo espera o byte sozinho. Salve como macro para enviar com um toque. No Windows, Ctrl+C no terminal copia a seleção; não envia nada.</p>
+</details>
 <details><summary>O LinkJig pode adicionar o checksum ou CRC para mim?</summary>
 <p>Sim. Escolha um checksum na barra de envio (SUM8, XOR8, CRC-8, CRC-16/MODBUS, CRC-16/CCITT-FALSE ou CRC-32); ele é adicionado depois dos seus dados e antes do fim de linha, e a prévia mostra o resultado. A <strong>Calculadora de checksum</strong> em Ajustes → Ferramentas funciona com quaisquer bytes sem enviar nada.</p>
 </details>

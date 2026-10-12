@@ -110,6 +110,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>Wie sende ich Hex-Bytes?</summary>
 <p>In der Sendeleiste das Eingabeformat auf HEX stellen und Bytes wie <code>01 03 00 00 00 0A</code> eingeben. DEC und BIN funktionieren genauso. Im Textmodus (ASCII) sind Escape-Sequenzen möglich: <code>\r</code>, <code>\n</code>, <code>\t</code> und <code>\xNN</code> für jedes Byte.</p>
 </details>
+<details><summary>Wie sende ich Strg+C, Strg+D oder Strg+Z?</summary>
+<p>Steuertasten sind einzelne Bytes: Strg+C ist <code>\x03</code>, Strg+D <code>\x04</code>, Strg+Z <code>\x1A</code> (Esc ist <code>\e</code>). Im Textmodus (ASCII) <code>\x03</code> eingeben oder auf HEX umschalten und <code>03</code> eingeben; das Zeilenende auf <strong>Kein EOL</strong> stellen, wenn das Gerät das Byte allein erwartet. Als Makro gespeichert, geht es mit einem Tippen. Unter Windows kopiert Strg+C im Terminal die Auswahl; gesendet wird nichts.</p>
+</details>
 <details><summary>Kann LinkJig die Prüfsumme oder CRC selbst anhängen?</summary>
 <p>Ja. In der Sendeleiste eine Prüfsumme wählen (SUM8, XOR8, CRC-8, CRC-16/MODBUS, CRC-16/CCITT-FALSE oder CRC-32); sie wird nach den Daten und vor dem Zeilenende angehängt, die Vorschau zeigt das Ergebnis. Der <strong>Checksummen-Rechner</strong> unter Optionen → Werkzeuge rechnet mit beliebigen Bytes, ohne etwas zu senden.</p>
 </details>

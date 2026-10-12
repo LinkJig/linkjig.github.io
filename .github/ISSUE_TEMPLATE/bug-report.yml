@@ -13,12 +13,13 @@ body:
     id: diagnostic
     attributes:
       label: Diagnostic report
-      description: Options → Help → Copy diagnostic report, then paste it here. It holds no terminal data, serial numbers or addresses.
+      description: Settings → Help → Copy diagnostic report, then paste it here. It includes the app version, operating system and phone model, and holds no terminal data, serial numbers or addresses.
       render: text
     validations:
       required: true
   - type: input
     id: device
     attributes:
-      label: Device or adapter
-      placeholder: e.g. ESP32 DevKit via CP2102N, HM-10 module
+      label: Device, chip and adapter
+      description: The board or module you talk to and the USB chip or adapter in between. VID:PID only if you want to share it.
+      placeholder: e.g. ESP32 DevKit via CP2102N (10C4:EA60), HM-10 module, USB-C OTG adapter
