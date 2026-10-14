@@ -2,9 +2,9 @@
 
 Serial, BLE and TCP terminal with repeatable pass/fail device tests — for Android and Windows.
 
-- Website: https://linkjig.github.io/linkjig/
-- FAQ: https://linkjig.github.io/linkjig/faq.html
-- Privacy policy: https://linkjig.github.io/linkjig/privacy.html
+- Website: https://linkjig.github.io/
+- FAQ: https://linkjig.github.io/faq.html
+- Privacy policy: https://linkjig.github.io/privacy.html
 - Bugs and pack suggestions: [Issues](../../issues/new/choose)
 - Contact: linkjig.app@gmail.com
 
