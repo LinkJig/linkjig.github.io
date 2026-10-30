@@ -1,0 +1,20 @@
+name: Request a module
+description: Ask for a ready command set for a module (ESP8266 AT, HC-05, HM-10, ...)
+labels: [module-request]
+body:
+  - type: input
+    id: module
+    attributes:
+      label: Module and firmware
+      placeholder: "e.g. ESP-01S, AT firmware 2.2.0"
+    validations:
+      required: true
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands you use most
+      description: A few commands and the replies you expect.
+  - type: input
+    id: link
+    attributes:
+      label: Link to the official command reference
