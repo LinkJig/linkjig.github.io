@@ -74,6 +74,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>Adaptör Android'de görünmüyor.</summary>
 <p>Bir USB-OTG adaptörü veya kablosu kullanın, sonra adaptörü takın. Android, LinkJig'in cihazı kullanıp kullanamayacağını sorar — izin verin. Bazı telefonlarda OTG'nin ayarlardan açılması gerekir. CP210x, CH34x, FTDI ve PL2303 çipli adaptörler ile CDC-ACM kartlar desteklenir.</p>
 </details>
+<details><summary>PL2303 adaptörüm Windows'ta çalışmıyor.</summary>
+<p>Eski ve klon PL2303 çipler Prolific'in güncel Windows sürücüsüyle çalışmayabilir: Aygıt Yöneticisi aygıtın başlatılamadığını söyler ya da "PL2303HXA phased out" uyarısı gösterir. CH340, CP2102 veya FTDI adaptör bu sorunu yaşatmaz. Hiç COM port görünmüyorsa seri listesinin altındaki <strong>COM portunuz görünmüyor mu?</strong> bağlantısına bakın.</p>
+</details>
 <details><summary>Telefonun şarjı azalınca bağlantı kopuyor.</summary>
 <p>Bazı telefonlar düşük şarjda USB-OTG beslemesini keser. LinkJig bu ihtimal doğduğunda uyarır. Telefonu şarj edin ya da beslemeli bir OTG hub kullanın.</p>
 </details>
@@ -89,7 +92,7 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Ağ</h2>
 <details><summary>Ağımdaki bir cihaza (TCP) nasıl bağlanırım?</summary>
-<p><strong>Ağ</strong>'ı seçin, ana bilgisayar adını veya IP adresini ve portu girip bağlanın. LinkJig TCP istemcisi olarak bağlanır — ör. bir ESP32'ye ya da seri↔Wi-Fi köprüsüne. Kendini mDNS ile duyuran cihazlar (ör. <code>esp32.local</code>) <strong>Bul</strong>'a bastıktan sonra <strong>Bu ağda</strong> altında görünür.</p>
+<p><strong>Ağ</strong>'ı seçin, ana bilgisayar adını veya IP adresini ve portu girip bağlanın. LinkJig TCP istemcisi olarak bağlanır — ör. bir ESP32'ye ya da seri↔Wi-Fi köprüsüne. Kendini mDNS ile duyuran cihazlar (ör. <code>esp32.local</code>) <strong>Bul</strong>'a bastıktan sonra <strong>Bu ağda</strong> altında görünür. Ham TCP şifresizdir: aynı ağdaki herkes okuyabilir.</p>
 </details>
 <details><summary>Bir modülün kendi Wi-Fi'sine (ESP32, AI-Thinker) nasıl bağlanırım?</summary>
 <p><strong>Ağ</strong> ekranında Wi-Fi bölümündeki <strong>Tara</strong>'ya, sonra modülün ağına dokunun. Şifresini bir kez girin; <strong>Şifreyi hatırla</strong> açıksa bir dahaki sefere dokunmak yeter. Katıldıktan sonra LinkJig modülün adresini (genellikle <code>192.168.4.1</code>) doldurur: <strong>Bağlan</strong>'a basın. Kayıtlı bağlantı Wi-Fi'yi hatırlar; sonra tek dokunuş ağa katılır ve bağlanır. Android'de ilk tarama Konum izni ister: Android Wi-Fi ağlarını yalnızca bu izne sahip uygulamalara gösterir. LinkJig konumunuzu asla okumaz.</p>
@@ -151,6 +154,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>Loglarım nerede?</summary>
 <p>Otomatik oturum kaydı varsayılan olarak kapalıdır; Ayarlar → Terminal'de <strong>Her oturumu diske kaydet</strong>'i açın. Windows'ta loglar <code>Documents\LinkJig\logs</code> klasörüne gider (tetikleyici anlık görüntüleri <code>snapshots</code> içinde). Android'de uygulamanın içinde kalır; Loglar ekranındaki <strong>Kopyasını kaydet…</strong> ile bir logu gönderebilir ya da başka yere kaydedebilirsiniz. Mevcut terminali istediğiniz an menüsünden de kaydedebilirsiniz (Windows'ta Ctrl+Shift+S).</p>
 </details>
+<details><summary>TXT, CSV veya RAW: hangisi neyi saklar?</summary>
+<p>TXT terminali gördüğünüz gibi, zaman ve RX/TX etiketleriyle saklar. CSV her paketi bir satırda zaman, yön, uzunluk, hex ve metinle tablo programı için saklar. RAW yalnız alınan baytları geldiği gibi saklar: <code>0x00</code> dahil her bayt, paketler arasına hiçbir şey eklenmez.</p>
+</details>
 <details><summary>Uygulamayı yanlışlıkla kapattım. Oturum kayboldu mu?</summary>
 <p>Hayır. <strong>Son oturumu geri yükle</strong> açıkken (varsayılan) son 2.000 satır bir sonraki açılışta geri gelir. LinkJig kendiliğinden yeniden bağlanmaz; önce sorar.</p>
 </details>
@@ -159,7 +165,7 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Pro ve mini oyun</h2>
 <details><summary>LinkJig ücretsiz mi? Reklam var mı?</summary>
-<p>Araç ücretsizdir ve asla reklam göstermez: terminalde, cihazlarda, senaryolarda, makrolarda, tetikleyicilerde, loglarda, kütüphanede, ayarlarda ve yardımda reklam yoktur. Android'de isteğe bağlı bir mini oyun var: <strong>Start Bit</strong> (Ayarlar → Yardım); reklamlar yalnızca onun içinde görünür. Oyunu açmanız hiç gerekmez. Masaüstü uygulamasında oyun da reklam da yoktur.</p>
+<p>Araç ücretsizdir ve asla reklam göstermez: terminalde, cihazlarda, senaryolarda, makrolarda, tetikleyicilerde, loglarda, kütüphanede, ayarlarda ve yardımda reklam yoktur. Android'de isteğe bağlı bir mini oyun var: <strong>Start Bit</strong> (Ayarlar'ın en üstünde); reklamlar yalnızca onun içinde görünür. Oyunu açmanız hiç gerekmez. Masaüstü uygulamasında oyun da reklam da yoktur.</p>
 </details>
 <details><summary>Pro'yu nasıl alırım?</summary>
 <p>Pro ücretsizdir. Android'de ya Start Bit'te 15. seviyeyi kazanın ya da 10 kısa reklam izleyin (günde en fazla 5); hangisi önce biterse. Pro bundan sonra hep açık kalır; mini oyundaki reklamlar sürer, araç asla reklam göstermez. O zamana kadar senaryolar ve tetikleyiciler <strong>Demo</strong> cihazında eksiksiz denenebilir.</p>

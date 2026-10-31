@@ -74,6 +74,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>Der Adapter erscheint unter Android nicht.</summary>
 <p>Einen USB-OTG-Adapter oder ein OTG-Kabel verwenden und dann den Adapter anstecken. Android fragt, ob LinkJig das Gerät nutzen darf – erlauben. Bei manchen Handys muss OTG in den Einstellungen eingeschaltet werden. Unterstützt werden Adapter mit CP210x-, CH34x-, FTDI- und PL2303-Chips sowie CDC-ACM-Platinen.</p>
 </details>
+<details><summary>Mein PL2303-Adapter funktioniert unter Windows nicht.</summary>
+<p>Ältere und geklonte PL2303-Chips laufen oft nicht mit dem aktuellen Windows-Treiber von Prolific: Der Geräte-Manager meldet, dass das Gerät nicht starten kann, oder zeigt "PL2303HXA phased out". Ein CH340-, CP2102- oder FTDI-Adapter vermeidet das. Erscheint gar kein COM-Port, siehe <strong>COM-Port fehlt?</strong> unter der Seriell-Liste.</p>
+</details>
 <details><summary>Bei schwachem Handy-Akku bricht die Verbindung ab.</summary>
 <p>Manche Handys schalten bei niedrigem Akkustand die USB-OTG-Versorgung ab. LinkJig warnt, wenn das passieren kann. Handy laden oder einen OTG-Hub mit eigener Stromversorgung verwenden.</p>
 </details>
@@ -89,7 +92,7 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Netzwerk</h2>
 <details><summary>Wie verbinde ich mich mit einem Gerät in meinem Netzwerk (TCP)?</summary>
-<p><strong>Netzwerk</strong> wählen, Hostnamen oder IP-Adresse und Port eingeben und verbinden. LinkJig verbindet sich als TCP-Client – etwa mit einem ESP32 oder einer Seriell-WLAN-Brücke. Geräte, die sich per mDNS ankündigen (z. B. <code>esp32.local</code>), erscheinen nach <strong>Suchen</strong> unter <strong>In diesem Netzwerk</strong>.</p>
+<p><strong>Netzwerk</strong> wählen, Hostnamen oder IP-Adresse und Port eingeben und verbinden. LinkJig verbindet sich als TCP-Client – etwa mit einem ESP32 oder einer Seriell-WLAN-Brücke. Geräte, die sich per mDNS ankündigen (z. B. <code>esp32.local</code>), erscheinen nach <strong>Suchen</strong> unter <strong>In diesem Netzwerk</strong>. Reines TCP ist unverschlüsselt: Jeder im selben Netz kann mitlesen.</p>
 </details>
 <details><summary>Wie verbinde ich mich mit dem eigenen WLAN eines Moduls (ESP32, AI-Thinker)?</summary>
 <p>Unter <strong>Netzwerk</strong> im WLAN-Bereich auf <strong>Scannen</strong> tippen, dann auf das Netz des Moduls. Das Passwort einmal eingeben; mit <strong>Passwort merken</strong> reicht beim nächsten Mal ein Tippen. Danach trägt LinkJig die Adresse des Moduls ein (meist <code>192.168.4.1</code>): <strong>Verbinden</strong> drücken. Die gespeicherte Verbindung merkt sich das WLAN, später verbindet ein Tippen erst das WLAN und dann TCP. Unter Android fragt die erste Suche nach der Standortberechtigung: Android zeigt WLAN-Netze nur Apps mit dieser Berechtigung. LinkJig liest den Standort nie.</p>
@@ -151,6 +154,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>Wo sind meine Logs?</summary>
 <p>Die automatische Sitzungsaufzeichnung ist standardmäßig aus; unter Optionen → Terminal <strong>Jede Sitzung als Datei speichern</strong> einschalten. Unter Windows landen die Logs in <code>Documents\LinkJig\logs</code> (Trigger-Snapshots in <code>snapshots</code>). Unter Android bleiben sie in der App; auf dem Bildschirm Logs kannst du mit <strong>Kopie speichern…</strong> ein Log versenden oder woanders ablegen. Das aktuelle Terminal lässt sich jederzeit über sein Menü speichern (unter Windows Strg+Umschalt+S).</p>
 </details>
+<details><summary>TXT, CSV oder RAW: Was enthält welches Format?</summary>
+<p>TXT speichert das Terminal so, wie du es siehst, mit Zeiten und RX/TX-Kennung. CSV speichert ein Paket pro Zeile mit Zeit, Richtung, Länge, Hex und Text, für eine Tabellenkalkulation. RAW speichert nur die empfangenen Bytes, genau wie sie ankamen: jedes Byte einschließlich <code>0x00</code>, nichts zwischen den Paketen.</p>
+</details>
 <details><summary>Ich habe die App versehentlich geschlossen. Ist die Sitzung weg?</summary>
 <p>Nein. Ist <strong>Letzte Sitzung wiederherstellen</strong> an (Standard), kommen die letzten 2.000 Zeilen beim nächsten Start zurück. LinkJig verbindet sich nie von selbst neu, sondern fragt zuerst.</p>
 </details>
@@ -159,7 +165,7 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Pro und das Minispiel</h2>
 <details><summary>Ist LinkJig kostenlos? Gibt es Werbung?</summary>
-<p>Das Werkzeug ist kostenlos und zeigt nie Werbung: nicht im Terminal, bei Geräten, Szenarien, Makros, Triggern, Logs, in der Bibliothek, den Optionen oder der Hilfe. Unter Android gibt es ein optionales Minispiel, <strong>Start Bit</strong> (Optionen → Hilfe); nur dort erscheint Werbung. Du musst es nie öffnen. Die Desktop-App hat weder Spiel noch Werbung.</p>
+<p>Das Werkzeug ist kostenlos und zeigt nie Werbung: nicht im Terminal, bei Geräten, Szenarien, Makros, Triggern, Logs, in der Bibliothek, den Optionen oder der Hilfe. Unter Android gibt es ein optionales Minispiel, <strong>Start Bit</strong> (ganz oben in den Optionen); nur dort erscheint Werbung. Du musst es nie öffnen. Die Desktop-App hat weder Spiel noch Werbung.</p>
 </details>
 <details><summary>Wie bekomme ich Pro?</summary>
 <p>Pro ist kostenlos. Unter Android entweder Level 15 in Start Bit gewinnen oder 10 kurze Werbungen ansehen (höchstens 5 pro Tag) – was zuerst erreicht ist. Danach bleibt Pro dauerhaft freigeschaltet; das Minispiel behält seine Werbung, das Werkzeug zeigt nie welche. Bis dahin lassen sich Szenarien und Trigger mit dem Gerät <strong>Demo</strong> vollständig ausprobieren.</p>

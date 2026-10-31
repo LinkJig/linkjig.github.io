@@ -74,6 +74,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>O adaptador não aparece no Android.</summary>
 <p>Use um adaptador ou cabo USB-OTG e depois conecte o adaptador. O Android pergunta se o LinkJig pode usar o dispositivo — permita. Alguns celulares precisam ativar o OTG nas configurações. Adaptadores com chips CP210x, CH34x, FTDI e PL2303, e placas CDC-ACM, são suportados.</p>
 </details>
+<details><summary>Meu adaptador PL2303 não funciona no Windows.</summary>
+<p>Chips PL2303 antigos ou clonados podem não funcionar com o driver atual da Prolific para Windows: o Gerenciador de Dispositivos diz que o dispositivo não pode ser iniciado ou mostra "PL2303HXA phased out". Um adaptador CH340, CP2102 ou FTDI evita isso. Se nenhuma porta COM aparecer, veja <strong>Não vê sua porta COM?</strong> abaixo da lista serial.</p>
+</details>
 <details><summary>A conexão cai quando a bateria do celular está baixa.</summary>
 <p>Alguns celulares cortam a alimentação USB-OTG com bateria baixa. O LinkJig avisa quando isso pode acontecer. Carregue o celular ou use um hub OTG com alimentação própria.</p>
 </details>
@@ -89,7 +92,7 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Rede</h2>
 <details><summary>Como me conecto a um aparelho na minha rede (TCP)?</summary>
-<p>Escolha <strong>Rede</strong>, digite o nome do host ou o endereço IP e a porta, e conecte. O LinkJig conecta como cliente TCP — por exemplo a um ESP32 ou a uma ponte serial↔Wi-Fi. Aparelhos que se anunciam por mDNS (como <code>esp32.local</code>) aparecem em <strong>Nesta rede</strong> depois de tocar em <strong>Procurar</strong>.</p>
+<p>Escolha <strong>Rede</strong>, digite o nome do host ou o endereço IP e a porta, e conecte. O LinkJig conecta como cliente TCP — por exemplo a um ESP32 ou a uma ponte serial↔Wi-Fi. Aparelhos que se anunciam por mDNS (como <code>esp32.local</code>) aparecem em <strong>Nesta rede</strong> depois de tocar em <strong>Procurar</strong>. TCP puro não é criptografado: qualquer pessoa na mesma rede pode ler.</p>
 </details>
 <details><summary>Como me conecto ao Wi-Fi próprio de um módulo (ESP32, AI-Thinker)?</summary>
 <p>Em <strong>Rede</strong>, toque em <strong>Buscar</strong> na seção Wi-Fi e depois na rede do módulo. Digite a senha uma vez; com <strong>Lembrar senha</strong> ligado, da próxima vez basta um toque. Depois de entrar, o LinkJig preenche o endereço do módulo (geralmente <code>192.168.4.1</code>): toque em <strong>Conectar</strong>. A conexão salva lembra o Wi-Fi, então depois um toque entra na rede e conecta. No Android, a primeira busca pede a permissão de Localização: o Android só mostra redes Wi-Fi para apps que a têm. O LinkJig nunca lê a sua localização.</p>
@@ -151,6 +154,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>Onde ficam meus logs?</summary>
 <p>O registro automático de sessões vem desligado; ative <strong>Salvar cada sessão no disco</strong> em Ajustes → Terminal. No Windows os logs vão para <code>Documents\LinkJig\logs</code> (snapshots de gatilhos em <code>snapshots</code>). No Android eles ficam dentro do app; na tela Logs, <strong>Salvar uma cópia…</strong> permite enviar um log ou guardá-lo em outro lugar. Você também pode salvar o terminal atual pelo menu dele a qualquer momento (Ctrl+Shift+S no Windows).</p>
 </details>
+<details><summary>TXT, CSV ou RAW: o que cada um guarda?</summary>
+<p>TXT guarda o terminal como você o vê, com horários e rótulos RX/TX. CSV guarda um pacote por linha com hora, direção, tamanho, hex e texto, para planilha. RAW guarda só os bytes recebidos, exatamente como chegaram: todo byte, <code>0x00</code> incluído, sem nada entre os pacotes.</p>
+</details>
 <details><summary>Fechei o app sem querer. Perdi a sessão?</summary>
 <p>Não. Com <strong>Restaurar última sessão</strong> ligado (padrão), as últimas 2.000 linhas voltam na próxima abertura. O LinkJig nunca reconecta sozinho; ele pergunta antes.</p>
 </details>
@@ -159,7 +165,7 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Pro e o minijogo</h2>
 <details><summary>O LinkJig é grátis? Tem anúncios?</summary>
-<p>A ferramenta é grátis e nunca mostra anúncios: nem no terminal, nos aparelhos, cenários, macros, gatilhos, logs, biblioteca, ajustes ou ajuda. No Android há um minijogo opcional, <strong>Start Bit</strong> (Ajustes → Ajuda); os anúncios aparecem só dentro dele. Você nunca precisa abri-lo. O app para desktop não tem jogo nem anúncios.</p>
+<p>A ferramenta é grátis e nunca mostra anúncios: nem no terminal, nos aparelhos, cenários, macros, gatilhos, logs, biblioteca, ajustes ou ajuda. No Android há um minijogo opcional, <strong>Start Bit</strong> (no topo dos Ajustes); os anúncios aparecem só dentro dele. Você nunca precisa abri-lo. O app para desktop não tem jogo nem anúncios.</p>
 </details>
 <details><summary>Como consigo o Pro?</summary>
 <p>O Pro é grátis. No Android, vença a fase 15 do Start Bit ou assista a 10 anúncios curtos (no máximo 5 por dia), o que vier primeiro. Depois o Pro fica desbloqueado para sempre; o minijogo continua com anúncios e a ferramenta nunca mostra nenhum. Até lá, cenários e gatilhos podem ser testados por completo no aparelho <strong>Demo</strong>.</p>

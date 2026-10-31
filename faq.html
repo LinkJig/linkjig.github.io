@@ -74,6 +74,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>The adapter does not show up on Android.</summary>
 <p>Use a USB-OTG adapter or cable, then plug the adapter in. Android asks whether LinkJig may use the device — allow it. Some phones need OTG switched on in their settings. Adapters with CP210x, CH34x, FTDI and PL2303 chips, and CDC-ACM boards, are supported.</p>
 </details>
+<details><summary>My PL2303 adapter does not work on Windows.</summary>
+<p>Older and cloned PL2303 chips may not work with Prolific's current Windows driver: Device Manager says the device cannot start, or shows a "PL2303HXA phased out" notice. A CH340, CP2102 or FTDI adapter avoids this. If no COM port appears at all, see <strong>Don't see your COM port?</strong> under the serial list.</p>
+</details>
 <details><summary>The connection drops when my phone's battery is low.</summary>
 <p>Some phones cut USB-OTG power at low battery. LinkJig warns you when this may happen. Charge the phone or use a powered OTG hub.</p>
 </details>
@@ -89,7 +92,7 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Network</h2>
 <details><summary>How do I connect to a device on my network (TCP)?</summary>
-<p>Choose <strong>Network</strong>, enter the host name or IP address and the port, and connect. LinkJig connects as a TCP client — for example to an ESP32 or a serial-to-Wi-Fi bridge. Devices that announce themselves with mDNS (such as <code>esp32.local</code>) appear under <strong>On this network</strong> after you press <strong>Find</strong>.</p>
+<p>Choose <strong>Network</strong>, enter the host name or IP address and the port, and connect. LinkJig connects as a TCP client — for example to an ESP32 or a serial-to-Wi-Fi bridge. Devices that announce themselves with mDNS (such as <code>esp32.local</code>) appear under <strong>On this network</strong> after you press <strong>Find</strong>. Plain TCP is not encrypted: anyone on the same network can read it.</p>
 </details>
 <details><summary>How do I connect to a module's own Wi-Fi (ESP32, AI-Thinker)?</summary>
 <p>In <strong>Network</strong>, tap <strong>Scan</strong> in the Wi-Fi section and tap the module's network. Enter its password once; with <strong>Remember password</strong> on, a tap is enough next time. After joining, LinkJig fills in the module's address (usually <code>192.168.4.1</code>): press <strong>Connect</strong>. The saved connection remembers the Wi-Fi, so later one tap joins the network and connects. On Android, the first scan asks for the Location permission: Android lists Wi-Fi networks only to apps that have it. LinkJig never reads where you are.</p>
@@ -151,6 +154,9 @@ details[open] summary { color:var(--accent); }
 <details><summary>Where are my logs?</summary>
 <p>Automatic session logging is off by default; turn on <strong>Save every session to disk</strong> in Settings → Terminal. On Windows the logs go to <code>Documents\LinkJig\logs</code> (trigger snapshots in <code>snapshots</code>). On Android they stay inside the app; on the Logs screen, <strong>Save a copy…</strong> lets you send a log or store it elsewhere. You can also save the current terminal from its menu at any time (Ctrl+Shift+S on Windows).</p>
 </details>
+<details><summary>TXT, CSV or RAW: what does each keep?</summary>
+<p>TXT keeps the terminal as you see it, with times and RX/TX labels. CSV keeps one row per packet with time, direction, length, hex and text, for a spreadsheet. RAW keeps only the received bytes, exactly as they arrived: every byte including <code>0x00</code>, nothing added between packets.</p>
+</details>
 <details><summary>I closed the app by mistake. Is the session lost?</summary>
 <p>No. With <strong>Restore last session</strong> on (the default), the last 2,000 lines come back on the next start. LinkJig never reconnects by itself; it asks first.</p>
 </details>
@@ -159,7 +165,7 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Pro and the mini game</h2>
 <details><summary>Is LinkJig free? Does it have ads?</summary>
-<p>The tool is free and never shows ads: not in the terminal, devices, scenarios, macros, triggers, logs, library, settings or help. On Android there is an optional mini game, <strong>Start Bit</strong> (Settings → Help); ads appear only inside it. You never need to open it. The desktop app has no game and no ads.</p>
+<p>The tool is free and never shows ads: not in the terminal, devices, scenarios, macros, triggers, logs, library, settings or help. On Android there is an optional mini game, <strong>Start Bit</strong> (at the top of Settings); ads appear only inside it. You never need to open it. The desktop app has no game and no ads.</p>
 </details>
 <details><summary>How do I get Pro?</summary>
 <p>Pro is free. On Android, either win level 15 in Start Bit or watch 10 short ads (at most 5 a day), whichever comes first. Pro then stays unlocked for good; the mini game keeps its ads, the tool never shows any. Before that, scenarios and triggers can be tried in full on the <strong>Demo</strong> device.</p>
