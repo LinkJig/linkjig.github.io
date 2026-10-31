@@ -74,15 +74,24 @@ details[open] summary { color:var(--accent); }
 <details><summary>Der Adapter erscheint unter Android nicht.</summary>
 <p>Einen USB-OTG-Adapter oder ein OTG-Kabel verwenden und dann den Adapter anstecken. Android fragt, ob LinkJig das Gerät nutzen darf – erlauben. Bei manchen Handys muss OTG in den Einstellungen eingeschaltet werden. Unterstützt werden Adapter mit CP210x-, CH34x-, FTDI- und PL2303-Chips sowie CDC-ACM-Platinen.</p>
 </details>
+<details><summary>Windows zeigt meinen COM-Port nicht an.</summary>
+<p>Öffnen Sie den Geräte-Manager → Anschlüsse (COM &amp; LPT). Steht der Adapter mit gelbem Zeichen oder unter „Andere Geräte“, fehlt der Treiber: Installieren Sie den CH340-, CP210x- oder FTDI-Treiber des Chipherstellers (<strong>COM-Port fehlt?</strong> unter der seriellen Liste öffnet die richtige Seite). Probieren Sie auch ein anderes USB-Kabel: Viele reine Ladekabel haben keine Datenleitungen.</p>
+</details>
 <details><summary>Mein PL2303-Adapter funktioniert unter Windows nicht.</summary>
 <p>Ältere und geklonte PL2303-Chips laufen oft nicht mit dem aktuellen Windows-Treiber von Prolific: Der Geräte-Manager meldet, dass das Gerät nicht starten kann, oder zeigt "PL2303HXA phased out". Ein CH340-, CP2102- oder FTDI-Adapter vermeidet das. Erscheint gar kein COM-Port, siehe <strong>COM-Port fehlt?</strong> unter der Seriell-Liste.</p>
 </details>
 <details><summary>Bei schwachem Handy-Akku bricht die Verbindung ab.</summary>
 <p>Manche Handys schalten bei niedrigem Akkustand die USB-OTG-Versorgung ab. LinkJig warnt, wenn das passieren kann. Handy laden oder einen OTG-Hub mit eigener Stromversorgung verwenden.</p>
 </details>
+<details><summary>Mein Board startet neu oder trennt sich, wenn das Handy es versorgt.</summary>
+<p>Der OTG-Anschluss eines Handys liefert wenig Strom. Boards, die WLAN oder Bluetooth einschalten (zum Beispiel ein ESP32), können mehr ziehen und in diesem Moment neu starten. Versorgen Sie das Board aus einem eigenen Netzteil oder über einen aktiven OTG-Hub und verbinden Sie mit dem Adapter nur Daten und Masse.</p>
+</details>
 <h2>Bluetooth LE</h2>
 <details><summary>LinkJig findet keine Bluetooth-Geräte.</summary>
 <p>Prüfen, ob Bluetooth eingeschaltet ist und LinkJig die Berechtigung „Geräte in der Nähe“ (Android 12 und neuer) bzw. Standort (Android 11 und älter) hat. LinkJig sagt klar, wenn eine Berechtigung fehlt oder Bluetooth aus ist; „Keine Geräte gefunden“ heißt, der Scan lief und niemand hat geantwortet. Viele BLE-Module senden keine Advertising-Pakete mehr, solange schon etwas mit ihnen verbunden ist.</p>
+</details>
+<details><summary>Eine andere App ist mit meinem BLE-Modul verbunden.</summary>
+<p>Die meisten BLE-Module nehmen nur eine Verbindung gleichzeitig an und senden während der Verbindung keine Werbung (Advertising) mehr. Trennen oder schließen Sie die andere App; erscheint das Modul dann immer noch nicht, schalten Sie Bluetooth aus und wieder ein.</p>
 </details>
 <details><summary>Warum fragt Android 11 nach meinem Standort?</summary>
 <p>Unter Android 11 und älter zeigt das System Bluetooth-Geräte in der Nähe nur Apps mit Standortberechtigung. LinkJig liest oder speichert nie, wo du bist.</p>

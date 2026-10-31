@@ -74,15 +74,24 @@ details[open] summary { color:var(--accent); }
 <details><summary>El adaptador no aparece en Android.</summary>
 <p>Usa un adaptador o cable USB-OTG y luego conecta el adaptador. Android pregunta si LinkJig puede usar el dispositivo: permítelo. Algunos teléfonos necesitan activar OTG en sus ajustes. Son compatibles los adaptadores con chips CP210x, CH34x, FTDI y PL2303, y las placas CDC-ACM.</p>
 </details>
+<details><summary>Windows no muestra mi puerto COM.</summary>
+<p>Abre el Administrador de dispositivos → Puertos (COM y LPT). Si el adaptador aparece con un signo amarillo o en "Otros dispositivos", le falta el controlador: instala el de CH340, CP210x o FTDI del fabricante del chip (<strong>¿No ves tu puerto COM?</strong>, bajo la lista serie, abre la página correcta). Prueba también otro cable USB: muchos cables solo de carga no tienen hilos de datos.</p>
+</details>
 <details><summary>Mi adaptador PL2303 no funciona en Windows.</summary>
 <p>Los chips PL2303 antiguos o clonados pueden no funcionar con el controlador actual de Prolific para Windows: el Administrador de dispositivos dice que no puede iniciarse o muestra "PL2303HXA phased out". Un adaptador CH340, CP2102 o FTDI evita el problema. Si no aparece ningún puerto COM, mira <strong>¿No ves tu puerto COM?</strong> bajo la lista serie.</p>
 </details>
 <details><summary>La conexión se corta cuando la batería del teléfono está baja.</summary>
 <p>Algunos teléfonos cortan la alimentación USB-OTG con batería baja. LinkJig avisa cuando puede ocurrir. Carga el teléfono o usa un hub OTG con alimentación.</p>
 </details>
+<details><summary>Mi placa se reinicia o se desconecta cuando la alimenta el teléfono.</summary>
+<p>El puerto OTG de un teléfono da poca corriente. Las placas que encienden Wi-Fi o Bluetooth (un ESP32, por ejemplo) pueden pedir más y reiniciarse en ese momento. Alimenta la placa con su propia fuente o un hub OTG alimentado, y conecta al adaptador solo los datos y la masa.</p>
+</details>
 <h2>Bluetooth LE</h2>
 <details><summary>LinkJig no encuentra ningún equipo Bluetooth.</summary>
 <p>Comprueba que el Bluetooth esté activado y que LinkJig tenga el permiso "Dispositivos cercanos" (Android 12 o posterior) o Ubicación (Android 11 o anterior). LinkJig indica claramente si falta un permiso o el Bluetooth está apagado; "No se encontraron dispositivos" significa que el escaneo funcionó y nadie respondió. Muchos módulos BLE dejan de anunciarse mientras otro dispositivo está conectado a ellos.</p>
+</details>
+<details><summary>Otra aplicación está conectada a mi módulo BLE.</summary>
+<p>La mayoría de los módulos BLE aceptan una sola conexión a la vez y dejan de anunciarse mientras están conectados. Desconecta o cierra la otra aplicación; si el módulo sigue sin aparecer, apaga y enciende el Bluetooth.</p>
 </details>
 <details><summary>¿Por qué Android 11 pide mi ubicación?</summary>
 <p>En Android 11 y anteriores, el sistema solo muestra los equipos Bluetooth cercanos a las apps con permiso de Ubicación. LinkJig nunca lee ni guarda dónde estás.</p>
