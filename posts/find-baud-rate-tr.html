@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seri port çıktısı bozuk mu? Baud rate&#x27;i telefonundan bul</title>
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="find-baud-rate.html" hreflang="en">English</a><span>Türkçe</span></nav>
+<p class="back"><a href="../index-tr.html">← Ana sayfa</a></p>
+<h1>Seri port çıktısı bozuk mu? Baud rate'i telefonundan bul</h1>
+<p>Okunabilir metnin çöpe dönmesi genellikle iki tarafın baud rate'te anlaşamadığını gösterir. Hızları tek tek deneyebilir ya da bu işi terminale bırakabilirsin.</p>
+<p>Bu gerçek bir oturum: 38400 baud'a ayarlı bir ESP-01S, USB OTG ve USB-UART adaptörüyle Android telefona bağlı.</p>
+<h2>Yanlış hız nasıl görünür</h2>
+<p>115200 baud'da modülün <code>AT</code> komutuna cevabı okunamayan üç bayttı:</p>
+<pre><code>23:42:31.865 TX AT
+23:42:31.890 RX &lt;0xE0&gt;&lt;0xFC&gt;&lt;0xFC&gt;</code></pre>
+<h2>Aramayı LinkJig'e bırak</h2>
+<ol><li>Adaptörü bağla ve seri cihazın bağlantı penceresini aç.</li><li><strong>Baud rate</strong> alanının yanındaki arama simgesine dokun.</li><li><code>AT\r\n</code> komutunu ve <code>OK</code> beklenen yanıtını olduğu gibi bırak, <strong>Ara</strong> düğmesine dokun.</li><li>Bir hız yanıt verince <strong>38400 kullan</strong> düğmesine dokun.</li></ol>
+<p><img src="assets/find-baud-38400.png" alt="38400 hızının yanıt verdiğini gösteren baud rate bulma penceresi"></p>
+<p>Arama, yanıt veren hızda durdu (görüntüdeki uygulama İngilizce):</p>
+<pre><code>115200  6 B, unreadable
+9600    4 B, unreadable
+57600   6 B, unreadable
+38400   Answered</code></pre>
+<p>Sonucu o hızda komut göndererek doğrula:</p>
+<pre><code>23:43:16.233 TX AT
+23:43:16.354 RX AT
+OK</code></pre>
+<h2>Nasıl çalışıyor</h2>
+<ul><li>En yaygın olanlardan başlayarak 18 standart hızı dener.</li><li>Bazı modüller ilk komutun cevabını yuttuğu için komutu her hızda en fazla iki kez gönderir ve 300 ms dinler.</li><li>Cihazın AT konuşmuyor olabilir. Okunabilir her metni kabul etmek için yanıtı boş bırak, yalnız dinlemek için komutu boş bırak.</li></ul>
+<h2>Sınırlar</h2>
+<ul><li>Cihazın komuta cevap vermesi ya da okunabilir metin basması gerekir.</li><li>Standart liste dışındaki hızlar denenmez.</li><li>Android 9'da CH340 adaptörle canlı denendi. FTDI, CP210x ve PL2303 sürücü tarafından destekleniyor, henüz kamera önünde denenmedi.</li></ul>
+<h2>Dene</h2>
+<p>Gösterim videosu <a href="https://youtube.com/shorts/VMpsSFUgMRc">YouTube</a>'da. LinkJig <a href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a> ve <a href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a>'da.</p>
+</main></body>
+</html>
