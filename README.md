@@ -38,7 +38,7 @@ send, automatic logging, rich export, more profiles and, on Android, more macros
 ## Download
 
 - **Windows:** [Microsoft Store](https://apps.microsoft.com/detail/9P1LHTD4C96V)
-- **Android:** in closed testing on Google Play; public release coming soon.
+- **Android:** [Google Play](https://play.google.com/store/apps/details?id=io.github.linkjig)
 
 ## Quick start
 
@@ -57,8 +57,8 @@ send, automatic logging, rich export, more profiles and, on Android, more macros
 
 - No iOS, macOS or Linux version.
 - Android: no classic Bluetooth (SPP) and no USB HID yet.
-- Tested on real hardware so far: CP2102 USB-UART (Windows, Android OTG), ESP32 (serial and BLE),
-  Ai-Thinker BL602 (BLE, TCP), ESP-01S (Wi-Fi TCP). CH340 and FTDI adapters are built in but not yet
+- Tested on real hardware so far: CP2102 and CH340 USB-UART (Windows, Android OTG), ESP32 (serial and BLE),
+  Ai-Thinker BL602 (BLE, TCP), ESP-01S and ESP-12E (Wi-Fi TCP, AT), Nuvoton M467 (USB HID). FTDI adapters are built in but not yet
   tested on hardware.
 
 ## Privacy and support

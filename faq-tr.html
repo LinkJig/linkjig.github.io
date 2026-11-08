@@ -20,6 +20,9 @@ nav span { color:var(--accent); }
 a { color:var(--accent); }
 h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
 h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
 p, li { color:var(--text); }
 em { color:var(--muted); font-style:normal; font-size:14px; }
 code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
@@ -43,7 +46,7 @@ details[open] summary { color:var(--accent); }
 <nav><a href="faq.html" hreflang="en">English</a><span>Türkçe</span><a href="faq-es.html" hreflang="es">Español</a><a href="faq-de.html" hreflang="de">Deutsch</a><a href="faq-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
 <p class="back"><a href="index-tr.html">← Ana sayfa</a></p>
 <h1>Sık sorulan sorular</h1>
-<p>En çok sorulan soruların kısa cevapları. Sorunuzu bulamadıysanız tanılama raporunu kopyalayın (Ayarlar → Yardım) ve <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> adresine yazın.</p>
+<p>En çok sorulan soruların kısa cevapları. Sorunuzu bulamadıysanız Ayarlar → Yardım → <strong>Geri bildirim gönder</strong>.</p>
 <h2>Başlarken</h2>
 <details><summary>Nelere bağlanabilirim?</summary>
 <p>Windows: seri portlar ve USB-seri adaptörler, Bluetooth LE, USB HID cihazlar ve TCP. Android: USB-OTG üzerinden USB-seri adaptörler, Bluetooth LE ve TCP. Yerleşik <strong>Demo</strong> cihazı gerçek bir kart gibi cevap verir; her şeyi donanım olmadan deneyebilirsiniz.</p>
@@ -88,7 +91,9 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Bluetooth LE</h2>
 <details><summary>LinkJig hiç Bluetooth cihazı bulamıyor.</summary>
-<p>Bluetooth'un açık olduğunu ve LinkJig'in "Yakındaki cihazlar" (Android 12 ve üstü) ya da Konum (Android 11 ve altı) iznine sahip olduğunu kontrol edin. İzin eksikse veya Bluetooth kapalıysa LinkJig bunu açıkça söyler; "Cihaz bulunamadı" tarama çalıştı ama kimse cevap vermedi demektir. Birçok BLE modülü başka bir şeye bağlıyken yayın yapmayı bırakır.</p>
+<p>Bluetooth'u açın, sonra izni kontrol edin (menü adları telefona göre değişebilir):</p>
+<ul><li><strong>Android 12 ve üstü:</strong> Ayarlar → Uygulamalar → LinkJig → İzinler → <strong>Yakındaki cihazlar</strong> → İzin ver.</li><li><strong>Android 11 ve altı:</strong> aynı yerde <strong>Konum</strong> → Yalnızca uygulamayı kullanırken izin ver. Telefonun Konum hizmeti de açık olmalıdır.</li><li><strong>Windows:</strong> Ayarlar → Bluetooth ve cihazlar → <strong>Bluetooth</strong> açık. Bilgisayarda Bluetooth LE destekli bir adaptör olmalıdır.</li></ul>
+<p>İzin eksikse veya Bluetooth kapalıysa LinkJig bunu açıkça söyler; "Cihaz bulunamadı" tarama çalıştı ama kimse cevap vermedi demektir. Birçok BLE modülü başka bir şeye bağlıyken yayın yapmayı bırakır.</p>
 </details>
 <details><summary>BLE modülüme başka bir uygulama bağlı.</summary>
 <p>Çoğu BLE modülü aynı anda tek bağlantı kabul eder ve bağlıyken yayın yapmayı bırakır. Diğer uygulamanın bağlantısını kesin ya da onu kapatın; modül yine görünmezse Bluetooth'u kapatıp açın.</p>
@@ -135,7 +140,8 @@ details[open] summary { color:var(--accent); }
 <p>Terminalde <strong>Görünüm</strong>'ü değiştirin: ASCII, HEX, DEC, BIN veya Dump (ofset + hex + metin). Windows'ta Ctrl+E görünümler, Ctrl+T zaman damgaları arasında geçiş yapar. Görünüm yalnız gösterimi değiştirir; baytlar geldiği gibi saklanır.</p>
 </details>
 <details><summary>Aynı komutu tekrar tekrar ya da bir dosya gönderebilir miyim?</summary>
-<p>Evet. Gönderme çubuğundaki zamanlayıcı düğmesi, siz durdurana kadar mevcut girdiyi sabit aralıkla gönderir. Ataş düğmesi bir dosyayı ikili parçalar hâlinde ya da satır satır, parçalar arasında bekleyerek gönderir.</p>
+<p>Evet, ikisi de gönderme çubuğunda:</p>
+<ul><li><strong>Tekrar:</strong> tekrar düğmesi mevcut girdiyi, siz durdurana kadar sabit aralıkla gönderir.</li><li><strong>Dosya:</strong> ataş düğmesi seçtiğiniz dosyayı ikili parçalar hâlinde ya da satır satır gönderir. Parça boyutunu ve parçalar arasındaki bekleme süresini siz belirlersiniz, istediğiniz an iptal edebilirsiniz.</li></ul>
 </details>
 <details><summary>RX ve TX renkleri ve kenar şeritleri ne anlama geliyor?</summary>
 <p>RX cihazdan gelen, TX sizin gönderdiğiniz veridir. Terminal kenarlarındaki ince şeritler RX'in (solda) ve TX'in (sağda) nerede olduğunu işaretler; oraya gitmek için bir işarete tıklayın.</p>
@@ -186,7 +192,7 @@ details[open] summary { color:var(--accent); }
 <p>Hayır; Google hesabınızda Android yedeklemesi açık olduğu sürece. Pro, temalar ve oyun ilerlemesi tek, şifreli bir dosyada tutulur; LinkJig'in yedeğe koyduğu tek şey bu dosyadır.</p>
 </details>
 <details><summary>Temaları nasıl açarım?</summary>
-<p>Start Bit'te bitirdiğiniz her bölüm bir tema açar; bir temayı 3 kısa reklamla da açabilirsiniz. Temalar yalnızca renkleri değiştirir. Masaüstü uygulamasında standart açık ve koyu görünüm vardır.</p>
+<p>Start Bit'te bitirdiğiniz her bölüm bir tema açar; bir temayı 3 kısa reklamla da açabilirsiniz. Temalar yalnızca renkleri değiştirir. Masaüstü uygulamasında, Android uygulamasından alınan ücretsiz Pro kodu temaları da açar.</p>
 </details>
 <h2>Gizlilik ve destek</h2>
 <details><summary>LinkJig verilerimi bir yere gönderiyor mu?</summary>
@@ -196,7 +202,7 @@ details[open] summary { color:var(--accent); }
 <p>Ayarlar → Görünüm → Dil. <strong>Sistem</strong> cihazınızın dilini izler.</p>
 </details>
 <details><summary>Bir sorunu nasıl bildiririm?</summary>
-<p>Ayarlar → Yardım → <strong>Tanılama raporunu kopyala</strong>, sonra <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> adresine yazdığınız mesaja yapıştırın. Rapor uygulama, sistem ve bağlantı bilgilerini içerir — asla terminal verisi, seri numarası veya adres içermez.</p>
+<p>Ayarlar → Yardım → <strong>Geri bildirim gönder</strong> e-posta uygulamanızı raporla birlikte açar; raporu önce siz okursunuz. E-posta uygulamanız yoksa <strong>Sorun raporu oluştur</strong> ile raporu kopyalayıp <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> adresine yazın. Uygulama kendiliğinden kapandıysa aynı menüdeki <strong>Çökme raporları</strong>'ndan raporu da ekleyin. Rapor uygulama, sistem, bağlantı ve takılı cihaz bilgilerini içerir; terminal verisi, seri numarası veya adres asla içermez.</p>
 </details>
 </main></body>
 </html>

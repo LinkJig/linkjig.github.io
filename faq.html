@@ -20,6 +20,9 @@ nav span { color:var(--accent); }
 a { color:var(--accent); }
 h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
 h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
 p, li { color:var(--text); }
 em { color:var(--muted); font-style:normal; font-size:14px; }
 code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
@@ -43,7 +46,7 @@ details[open] summary { color:var(--accent); }
 <nav><span>English</span><a href="faq-tr.html" hreflang="tr">Türkçe</a><a href="faq-es.html" hreflang="es">Español</a><a href="faq-de.html" hreflang="de">Deutsch</a><a href="faq-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
 <p class="back"><a href="index.html">← Home</a></p>
 <h1>Frequently asked questions</h1>
-<p>Short answers to the questions people ask most. Can't find yours? Copy a diagnostic report (Settings → Help) and write to <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a></p>
+<p>Short answers to the questions people ask most. Can't find yours? Settings → Help → <strong>Send feedback</strong>.</p>
 <h2>Getting started</h2>
 <details><summary>What can I connect to?</summary>
 <p>Windows: serial ports and USB-serial adapters, Bluetooth LE, USB HID devices and TCP. Android: USB-serial adapters over USB-OTG, Bluetooth LE and TCP. The built-in <strong>Demo</strong> device answers like a real board, so you can try everything without hardware.</p>
@@ -88,7 +91,9 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Bluetooth LE</h2>
 <details><summary>LinkJig finds no Bluetooth devices.</summary>
-<p>Check that Bluetooth is on and that LinkJig has the "Nearby devices" permission (Android 12 and newer) or Location (Android 11 and older). LinkJig says plainly when a permission is missing or Bluetooth is off; "No devices found" means the scan worked and nothing answered. Many BLE modules stop advertising while something else is connected to them.</p>
+<p>Turn Bluetooth on, then check the permission (menu names vary by phone):</p>
+<ul><li><strong>Android 12 and newer:</strong> Settings → Apps → LinkJig → Permissions → <strong>Nearby devices</strong> → Allow.</li><li><strong>Android 11 and older:</strong> same place, <strong>Location</strong> → Allow only while using the app. The phone's Location service must also be on.</li><li><strong>Windows:</strong> Settings → Bluetooth &amp; devices → <strong>Bluetooth</strong> on. The PC needs an adapter with Bluetooth LE.</li></ul>
+<p>LinkJig says plainly when a permission is missing or Bluetooth is off; "No devices found" means the scan worked and nothing answered. Many BLE modules stop advertising while something else is connected to them.</p>
 </details>
 <details><summary>Another app is connected to my BLE module.</summary>
 <p>Most BLE modules accept one connection at a time and stop advertising while connected. Disconnect or close the other app; if the module still does not appear, turn Bluetooth off and on.</p>
@@ -135,7 +140,8 @@ details[open] summary { color:var(--accent); }
 <p>Change the <strong>View</strong> in the terminal: ASCII, HEX, DEC, BIN or Dump (offset + hex + text). On Windows, Ctrl+E switches between them and Ctrl+T switches timestamps. The view changes only the display; the bytes are kept as received.</p>
 </details>
 <details><summary>Can I send the same command repeatedly, or send a file?</summary>
-<p>Yes. The timer button in the send bar sends the current input at a fixed interval until you stop it. The paperclip button sends a file, either as binary chunks or line by line, with a delay between parts.</p>
+<p>Yes, both are in the send bar:</p>
+<ul><li><strong>Repeat:</strong> the repeat button sends the current input at a fixed interval until you stop it.</li><li><strong>File:</strong> the paperclip button sends a file you pick, either as binary chunks or line by line. You set the part size and the delay between parts, and you can cancel at any time.</li></ul>
 </details>
 <details><summary>What do the RX and TX colors and rails mean?</summary>
 <p>RX is data received from the device, TX is data you sent. The thin rails at the terminal edges mark where RX (left) and TX (right) happened; click a mark to jump there.</p>
@@ -186,7 +192,7 @@ details[open] summary { color:var(--accent); }
 <p>No, as long as Android backup is on for your Google account. Pro, themes and game progress are kept in one encrypted file, and that file is the only thing LinkJig puts in the backup.</p>
 </details>
 <details><summary>How do I unlock themes?</summary>
-<p>Each Start Bit chapter you finish unlocks one theme; you can also unlock a theme with 3 short ads. Themes change colors only. The desktop app has the standard light and dark looks.</p>
+<p>Each Start Bit chapter you finish unlocks one theme; you can also unlock a theme with 3 short ads. Themes change colors only. On the desktop app, the free Pro code from the Android app opens the themes too.</p>
 </details>
 <h2>Privacy and support</h2>
 <details><summary>Does LinkJig send my data anywhere?</summary>
@@ -196,7 +202,7 @@ details[open] summary { color:var(--accent); }
 <p>Settings → Appearance → Language. <strong>System</strong> follows your device's language.</p>
 </details>
 <details><summary>How do I report a problem?</summary>
-<p>Settings → Help → <strong>Copy diagnostic report</strong>, then paste it into your message to <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a> The report contains app, system and link details — never terminal data, serial numbers or addresses.</p>
+<p>Settings → Help → <strong>Send feedback</strong> opens your mail app with a report attached to the message; you read the report first. Without a mail app, use <strong>Create a problem report</strong> to copy it and write to <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a> If the app closed by itself, also add the report from <strong>Crash reports</strong> in the same menu. The report contains app, system, link and connected-device details: never terminal data, serial numbers or addresses.</p>
 </details>
 </main></body>
 </html>

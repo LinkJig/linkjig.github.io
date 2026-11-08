@@ -20,6 +20,9 @@ nav span { color:var(--accent); }
 a { color:var(--accent); }
 h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
 h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
 p, li { color:var(--text); }
 em { color:var(--muted); font-style:normal; font-size:14px; }
 code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
@@ -43,7 +46,7 @@ details[open] summary { color:var(--accent); }
 <nav><a href="faq.html" hreflang="en">English</a><a href="faq-tr.html" hreflang="tr">Türkçe</a><span>Español</span><a href="faq-de.html" hreflang="de">Deutsch</a><a href="faq-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
 <p class="back"><a href="index-es.html">← Inicio</a></p>
 <h1>Preguntas frecuentes</h1>
-<p>Respuestas cortas a las preguntas más habituales. ¿No encuentras la tuya? Copia un informe de diagnóstico (Ajustes → Ayuda) y escribe a <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a></p>
+<p>Respuestas cortas a las preguntas más habituales. ¿No encuentras la tuya? Ajustes → Ayuda → <strong>Enviar comentarios</strong>.</p>
 <h2>Primeros pasos</h2>
 <details><summary>¿A qué me puedo conectar?</summary>
 <p>Windows: puertos serie y adaptadores USB-serie, Bluetooth LE, dispositivos USB HID y TCP. Android: adaptadores USB-serie mediante USB-OTG, Bluetooth LE y TCP. El equipo <strong>Demo</strong> integrado responde como una placa real, así que puedes probarlo todo sin hardware.</p>
@@ -88,7 +91,9 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Bluetooth LE</h2>
 <details><summary>LinkJig no encuentra ningún equipo Bluetooth.</summary>
-<p>Comprueba que el Bluetooth esté activado y que LinkJig tenga el permiso "Dispositivos cercanos" (Android 12 o posterior) o Ubicación (Android 11 o anterior). LinkJig indica claramente si falta un permiso o el Bluetooth está apagado; "No se encontraron dispositivos" significa que el escaneo funcionó y nadie respondió. Muchos módulos BLE dejan de anunciarse mientras otro dispositivo está conectado a ellos.</p>
+<p>Activa el Bluetooth y comprueba el permiso (los nombres de los menús varían según el teléfono):</p>
+<ul><li><strong>Android 12 y posteriores:</strong> Ajustes → Aplicaciones → LinkJig → Permisos → <strong>Dispositivos cercanos</strong> → Permitir.</li><li><strong>Android 11 y anteriores:</strong> en el mismo lugar, <strong>Ubicación</strong> → Permitir solo mientras se usa la app. El servicio de ubicación del teléfono también debe estar activado.</li><li><strong>Windows:</strong> Configuración → Bluetooth y dispositivos → <strong>Bluetooth</strong> activado. El PC necesita un adaptador con Bluetooth LE.</li></ul>
+<p>LinkJig avisa claramente si falta un permiso o el Bluetooth está apagado; "No se encontraron dispositivos" significa que el escaneo funcionó y nadie respondió. Muchos módulos BLE dejan de anunciarse mientras otro dispositivo está conectado a ellos.</p>
 </details>
 <details><summary>Otra aplicación está conectada a mi módulo BLE.</summary>
 <p>La mayoría de los módulos BLE aceptan una sola conexión a la vez y dejan de anunciarse mientras están conectados. Desconecta o cierra la otra aplicación; si el módulo sigue sin aparecer, apaga y enciende el Bluetooth.</p>
@@ -135,7 +140,8 @@ details[open] summary { color:var(--accent); }
 <p>Cambia la <strong>Vista</strong> del terminal: ASCII, HEX, DEC, BIN o Dump (offset + hex + texto). En Windows, Ctrl+E cambia entre vistas y Ctrl+T entre marcas de tiempo. La vista solo cambia la presentación; los bytes se guardan tal como llegaron.</p>
 </details>
 <details><summary>¿Puedo enviar el mismo comando repetidamente o enviar un archivo?</summary>
-<p>Sí. El botón del temporizador de la barra de envío manda la entrada actual a intervalos fijos hasta que lo detengas. El botón del clip envía un archivo, en bloques binarios o línea por línea, con una pausa entre partes.</p>
+<p>Sí, ambos están en la barra de envío:</p>
+<ul><li><strong>Repetir:</strong> el botón de repetir manda la entrada actual a intervalos fijos hasta que lo detengas.</li><li><strong>Archivo:</strong> el botón del clip envía el archivo que elijas, en bloques binarios o línea por línea. Tú defines el tamaño de cada parte y la pausa entre partes, y puedes cancelar en cualquier momento.</li></ul>
 </details>
 <details><summary>¿Qué significan los colores y las barras laterales de RX y TX?</summary>
 <p>RX son los datos recibidos del equipo y TX los que enviaste. Las barras finas en los bordes del terminal marcan dónde hubo RX (izquierda) y TX (derecha); haz clic en una marca para saltar allí.</p>
@@ -186,7 +192,7 @@ details[open] summary { color:var(--accent); }
 <p>No, mientras la copia de seguridad de Android esté activada en tu cuenta de Google. Pro, los temas y el progreso del juego se guardan en un único archivo cifrado, y es lo único que LinkJig pone en la copia.</p>
 </details>
 <details><summary>¿Cómo desbloqueo los temas?</summary>
-<p>Cada capítulo de Start Bit que terminas desbloquea un tema; también puedes desbloquear un tema con 3 anuncios cortos. Los temas solo cambian los colores. La app de escritorio tiene el aspecto estándar claro y oscuro.</p>
+<p>Cada capítulo de Start Bit que terminas desbloquea un tema; también puedes desbloquear un tema con 3 anuncios cortos. Los temas solo cambian los colores. En la app de escritorio, el código Pro gratuito de la app Android también abre los temas.</p>
 </details>
 <h2>Privacidad y soporte</h2>
 <details><summary>¿LinkJig envía mis datos a algún sitio?</summary>
@@ -196,7 +202,7 @@ details[open] summary { color:var(--accent); }
 <p>Ajustes → Apariencia → Idioma. <strong>Sistema</strong> sigue el idioma de tu equipo.</p>
 </details>
 <details><summary>¿Cómo informo de un problema?</summary>
-<p>Ajustes → Ayuda → <strong>Copiar informe de diagnóstico</strong>, y pégalo en tu mensaje a <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a> El informe contiene datos de la app, del sistema y del enlace; nunca datos del terminal, números de serie ni direcciones.</p>
+<p>Ajustes → Ayuda → <strong>Enviar comentarios</strong> abre tu app de correo con el informe en el mensaje; primero lo lees tú. Sin app de correo, usa <strong>Crear informe de problema</strong> para copiarlo y escribe a <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a> Si la app se cerró sola, añade también el informe de <strong>Informes de fallos</strong>, en el mismo menú. El informe contiene datos de la app, del sistema, de la conexión y de los dispositivos conectados: nunca datos del terminal, números de serie ni direcciones.</p>
 </details>
 </main></body>
 </html>

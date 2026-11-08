@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-10-09",
+  "updated": "2026-11-03",
   "packs": [
     {
       "id": "demo-tour",
@@ -13,8 +13,8 @@
         "demo"
       ],
       "version": "1.0.0",
-      "size": 1386,
-      "sha256": "c1c9b88f1051584aaaa104d3eb2c89bfb40eec10d831cb7cec895e0abdd84185",
+      "size": 1514,
+      "sha256": "4394dac2f07bcde87bf1c1b06a048791758df8a6cf5fbe18edda3d7f661b3f78",
       "file": "packs/demo-tour.ljpack"
     },
     {
@@ -33,6 +33,23 @@
       "size": 1313,
       "sha256": "a40190bd9a95141fff13c74d631399a5f62e96f7114c992af4465b7a29a8d52d",
       "file": "packs/at-basics.ljpack"
+    }
+  ],
+  "modules": [
+    {
+      "id": "esp8266-at",
+      "title": "ESP8266",
+      "description": "Wi-Fi module, AT firmware",
+      "category": "Modules",
+      "author": "LinkJig",
+      "license": "Proprietary",
+      "links": [
+        "serial"
+      ],
+      "version": "1.0.0",
+      "size": 38609,
+      "sha256": "64065849f8f711d7f20cd803e19dd6b6ae3be5168ea18874fe0671ccf620a8b3",
+      "file": "modules/esp8266-at.ljm"
     }
   ]
 }

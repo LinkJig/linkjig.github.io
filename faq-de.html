@@ -20,6 +20,9 @@ nav span { color:var(--accent); }
 a { color:var(--accent); }
 h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
 h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
 p, li { color:var(--text); }
 em { color:var(--muted); font-style:normal; font-size:14px; }
 code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
@@ -43,7 +46,7 @@ details[open] summary { color:var(--accent); }
 <nav><a href="faq.html" hreflang="en">English</a><a href="faq-tr.html" hreflang="tr">Türkçe</a><a href="faq-es.html" hreflang="es">Español</a><span>Deutsch</span><a href="faq-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
 <p class="back"><a href="index-de.html">← Start</a></p>
 <h1>Häufige Fragen</h1>
-<p>Kurze Antworten auf die häufigsten Fragen. Deine Frage ist nicht dabei? Diagnosebericht kopieren (Optionen → Hilfe) und an <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> schreiben.</p>
+<p>Kurze Antworten auf die häufigsten Fragen. Deine Frage ist nicht dabei? Optionen → Hilfe → <strong>Feedback senden</strong>.</p>
 <h2>Erste Schritte</h2>
 <details><summary>Womit kann ich mich verbinden?</summary>
 <p>Windows: serielle Ports und USB-Seriell-Adapter, Bluetooth LE, USB-HID-Geräte und TCP. Android: USB-Seriell-Adapter über USB-OTG, Bluetooth LE und TCP. Das eingebaute <strong>Demo</strong>-Gerät antwortet wie eine echte Platine, so lässt sich alles ohne Hardware ausprobieren.</p>
@@ -88,7 +91,9 @@ details[open] summary { color:var(--accent); }
 </details>
 <h2>Bluetooth LE</h2>
 <details><summary>LinkJig findet keine Bluetooth-Geräte.</summary>
-<p>Prüfen, ob Bluetooth eingeschaltet ist und LinkJig die Berechtigung „Geräte in der Nähe“ (Android 12 und neuer) bzw. Standort (Android 11 und älter) hat. LinkJig sagt klar, wenn eine Berechtigung fehlt oder Bluetooth aus ist; „Keine Geräte gefunden“ heißt, der Scan lief und niemand hat geantwortet. Viele BLE-Module senden keine Advertising-Pakete mehr, solange schon etwas mit ihnen verbunden ist.</p>
+<p>Bluetooth einschalten, dann die Berechtigung prüfen (Menünamen variieren je nach Telefon):</p>
+<ul><li><strong>Android 12 und neuer:</strong> Einstellungen → Apps → LinkJig → Berechtigungen → <strong>Geräte in der Nähe</strong> → Zulassen.</li><li><strong>Android 11 und älter:</strong> an derselben Stelle <strong>Standort</strong> → Nur während der Nutzung der App zulassen. Der Standortdienst des Telefons muss ebenfalls an sein.</li><li><strong>Windows:</strong> Einstellungen → Bluetooth und Geräte → <strong>Bluetooth</strong> ein. Der PC braucht einen Adapter mit Bluetooth LE.</li></ul>
+<p>LinkJig sagt klar, wenn eine Berechtigung fehlt oder Bluetooth aus ist; „Keine Geräte gefunden“ heißt, der Scan lief und niemand hat geantwortet. Viele BLE-Module senden keine Advertising-Pakete mehr, solange schon etwas mit ihnen verbunden ist.</p>
 </details>
 <details><summary>Eine andere App ist mit meinem BLE-Modul verbunden.</summary>
 <p>Die meisten BLE-Module nehmen nur eine Verbindung gleichzeitig an und senden während der Verbindung keine Werbung (Advertising) mehr. Trennen oder schließen Sie die andere App; erscheint das Modul dann immer noch nicht, schalten Sie Bluetooth aus und wieder ein.</p>
@@ -135,7 +140,8 @@ details[open] summary { color:var(--accent); }
 <p>Im Terminal die <strong>Ansicht</strong> wechseln: ASCII, HEX, DEC, BIN oder Dump (Offset + Hex + Text). Unter Windows wechselt Strg+E zwischen den Ansichten und Strg+T zwischen den Zeitstempeln. Die Ansicht ändert nur die Darstellung; die Bytes bleiben so gespeichert, wie sie ankamen.</p>
 </details>
 <details><summary>Kann ich denselben Befehl wiederholt oder eine Datei senden?</summary>
-<p>Ja. Die Timer-Taste in der Sendeleiste sendet die aktuelle Eingabe in festem Abstand, bis du stoppst. Die Büroklammer-Taste sendet eine Datei – als Binärblöcke oder zeilenweise, mit Pause zwischen den Teilen.</p>
+<p>Ja, beides ist in der Sendeleiste:</p>
+<ul><li><strong>Wiederholen:</strong> Die Wiederholen-Taste sendet die aktuelle Eingabe in festem Abstand, bis du stoppst.</li><li><strong>Datei:</strong> Die Büroklammer-Taste sendet eine gewählte Datei, als Binärblöcke oder zeilenweise. Teilgröße und Pause zwischen den Teilen legst du fest, und du kannst jederzeit abbrechen.</li></ul>
 </details>
 <details><summary>Was bedeuten die RX- und TX-Farben und die Randleisten?</summary>
 <p>RX sind Daten vom Gerät, TX die von dir gesendeten. Die schmalen Leisten an den Terminalrändern markieren, wo RX (links) und TX (rechts) stattfand; ein Klick auf eine Markierung springt dorthin.</p>
@@ -186,7 +192,7 @@ details[open] summary { color:var(--accent); }
 <p>Nein, solange die Android-Sicherung für dein Google-Konto aktiv ist. Pro, Designs und Spielfortschritt liegen in einer einzigen verschlüsselten Datei, und nur diese Datei kommt von LinkJig in die Sicherung.</p>
 </details>
 <details><summary>Wie schalte ich Designs frei?</summary>
-<p>Jedes abgeschlossene Kapitel in Start Bit schaltet ein Design frei; ein Design lässt sich auch mit 3 kurzen Werbungen freischalten. Designs ändern nur Farben. Die Desktop-App hat das helle und dunkle Standard-Design.</p>
+<p>Jedes abgeschlossene Kapitel in Start Bit schaltet ein Design frei; ein Design lässt sich auch mit 3 kurzen Werbungen freischalten. Designs ändern nur Farben. In der Desktop-App schaltet der kostenlose Pro-Code aus der Android-App auch die Themes frei.</p>
 </details>
 <h2>Datenschutz und Support</h2>
 <details><summary>Sendet LinkJig meine Daten irgendwohin?</summary>
@@ -196,7 +202,7 @@ details[open] summary { color:var(--accent); }
 <p>Optionen → Darstellung → Sprache. <strong>Systemsprache</strong> folgt der Sprache deines Geräts.</p>
 </details>
 <details><summary>Wie melde ich ein Problem?</summary>
-<p>Optionen → Hilfe → <strong>Diagnosebericht kopieren</strong> und in die Nachricht an <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> einfügen. Der Bericht enthält App-, System- und Verbindungsdetails – nie Terminaldaten, Seriennummern oder Adressen.</p>
+<p>Optionen → Hilfe → <strong>Feedback senden</strong> öffnet deine Mail-App mit dem Bericht in der Nachricht; du liest ihn zuerst. Ohne Mail-App kopierst du ihn mit <strong>Problembericht erstellen</strong> und schreibst an <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a> Hat sich die App selbst beendet, füge auch den Bericht aus <strong>Absturzberichte</strong> im selben Menü hinzu. Der Bericht enthält App-, System-, Verbindungs- und Gerätedaten: nie Terminaldaten, Seriennummern oder Adressen.</p>
 </details>
 </main></body>
 </html>
