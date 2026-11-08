@@ -29,6 +29,7 @@ again and again: turn them into a scenario once, then run it on every board and 
 - Macros, highlight rules, search, timestamps, response time after each send
 - Scenarios: repeatable PASS/FAIL tests with expected replies, checksum checks and run history
 - Triggers: automatic replies to incoming packets
+- Modules: ready-made commands, tasks and a health check for your device, starting with ESP8266
 - Logs and export, session sharing, one project pack that opens on desktop and phone
 - Interface in English, Turkish, German, Spanish and Portuguese
 
@@ -39,6 +40,8 @@ send, automatic logging, rich export, more profiles and, on Android, more macros
 
 - **Windows:** [Microsoft Store](https://apps.microsoft.com/detail/9P1LHTD4C96V)
 - **Android:** [Google Play](https://play.google.com/store/apps/details?id=io.github.linkjig)
+
+See it in action: [find a baud rate from your phone](https://youtube.com/shorts/VMpsSFUgMRc) (43-second video).
 
 ## Quick start
 
@@ -58,8 +61,8 @@ send, automatic logging, rich export, more profiles and, on Android, more macros
 - No iOS, macOS or Linux version.
 - Android: no classic Bluetooth (SPP) and no USB HID yet.
 - Tested on real hardware so far: CP2102 and CH340 USB-UART (Windows, Android OTG), ESP32 (serial and BLE),
-  Ai-Thinker BL602 (BLE, TCP), ESP-01S and ESP-12E (Wi-Fi TCP, AT), Nuvoton M467 (USB HID). FTDI adapters are built in but not yet
-  tested on hardware.
+  Ai-Thinker BL602 (BLE, TCP), ESP-01S and ESP-12E (Wi-Fi TCP, AT), Nuvoton M467 (USB HID).
+- FTDI adapters are built in but not yet tested on hardware.
 
 ## Privacy and support
 
