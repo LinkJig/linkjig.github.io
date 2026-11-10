@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿Salida serie ilegible? Encuentra la velocidad en baudios desde tu teléfono</title>
+<meta name="description" content="¿Salida serie ilegible? Encuentra la velocidad en baudios desde tu teléfono">
+<meta property="og:title" content="¿Salida serie ilegible? Encuentra la velocidad en baudios desde tu teléfono">
+<meta property="og:description" content="¿Salida serie ilegible? Encuentra la velocidad en baudios desde tu teléfono">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://linkjig.github.io/icon-128.png">
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="find-baud-rate.html" hreflang="en">English</a><a href="find-baud-rate-tr.html" hreflang="tr">Türkçe</a><span>Español</span><a href="find-baud-rate-de.html" hreflang="de">Deutsch</a><a href="find-baud-rate-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<p class="back"><a href="../index-es.html">← Inicio</a></p>
+<h1>¿Salida serie ilegible? Encuentra la velocidad en baudios desde tu teléfono</h1>
+<p>Cuando un texto legible se convierte en basura, casi siempre los dos lados no coinciden en la velocidad en baudios. Puedes probar las velocidades una por una o dejar que el terminal lo haga por ti.</p>
+<p>Esta es una sesión real: un ESP-01S configurado a 38400 baudios, conectado a un teléfono Android por USB OTG y un adaptador USB-UART.</p>
+<h2>Cómo se ve una velocidad incorrecta</h2>
+<p>A 115200 baudios, la respuesta del módulo a <code>AT</code> fueron tres bytes ilegibles:</p>
+<pre><code>23:42:31.865 TX AT
+23:42:31.890 RX &lt;0xE0&gt;&lt;0xFC&gt;&lt;0xFC&gt;</code></pre>
+<h2>Deja que LinkJig busque</h2>
+<ol><li>Conecta el adaptador y abre el diálogo de conexión de tu dispositivo serie.</li><li>Toca el icono de búsqueda junto a <strong>Baud rate</strong>.</li><li>Deja el comando <code>AT\r\n</code> y la respuesta esperada <code>OK</code>, y toca <strong>Buscar</strong>.</li><li>Cuando una velocidad responda, toca <strong>Usar 38400</strong>.</li></ol>
+<p><img src="assets/find-baud-38400.png" alt="Búsqueda de baudios mostrando que 38400 respondió"></p>
+<p>La búsqueda se detuvo en la velocidad que respondió (la app de la imagen está en inglés):</p>
+<pre><code>115200  6 B, unreadable
+9600    4 B, unreadable
+57600   6 B, unreadable
+38400   Answered</code></pre>
+<p>Comprueba el resultado enviando comandos a esa velocidad:</p>
+<pre><code>23:43:16.233 TX AT
+23:43:16.354 RX AT
+OK</code></pre>
+<h2>Cómo funciona</h2>
+<ul><li>Prueba 18 velocidades estándar, empezando por las más comunes.</li><li>Envía el comando hasta dos veces por velocidad, porque algunos módulos se tragan la respuesta al primero, y escucha durante 300 ms.</li><li>Puede que tu dispositivo no hable AT. Deja la respuesta vacía para aceptar cualquier texto legible, o deja el comando vacío para solo escuchar.</li></ul>
+<h2>Límites</h2>
+<ul><li>El dispositivo debe responder al comando o imprimir texto legible.</li><li>No se prueban velocidades fuera de la lista estándar.</li><li>Probado en vivo con un adaptador CH340 en Android 9. FTDI, CP210x y PL2303 son compatibles con el controlador, pero aún no se han probado en cámara.</li></ul>
+<h2>Pruébalo</h2>
+<p>Mira la demo en <a href="https://youtube.com/shorts/VMpsSFUgMRc">YouTube</a>. LinkJig está en <a href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a> y en <a href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a>.</p>
+</main></body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saída serial ilegível? Descubra o baud rate pelo celular</title>
+<meta name="description" content="Saída serial ilegível? Descubra o baud rate pelo celular">
+<meta property="og:title" content="Saída serial ilegível? Descubra o baud rate pelo celular">
+<meta property="og:description" content="Saída serial ilegível? Descubra o baud rate pelo celular">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://linkjig.github.io/icon-128.png">
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="find-baud-rate.html" hreflang="en">English</a><a href="find-baud-rate-tr.html" hreflang="tr">Türkçe</a><a href="find-baud-rate-es.html" hreflang="es">Español</a><a href="find-baud-rate-de.html" hreflang="de">Deutsch</a><span>Português (Brasil)</span></nav>
+<p class="back"><a href="../index-pt.html">← Início</a></p>
+<h1>Saída serial ilegível? Descubra o baud rate pelo celular</h1>
+<p>Quando um texto legível vira lixo, quase sempre os dois lados não concordam no baud rate. Você pode testar as velocidades uma a uma ou deixar o terminal fazer isso por você.</p>
+<p>Esta é uma sessão real: um ESP-01S configurado em 38400 baud, ligado a um celular Android por USB OTG e um adaptador USB-UART.</p>
+<h2>Como fica uma velocidade errada</h2>
+<p>Em 115200 baud, a resposta do módulo ao <code>AT</code> foram três bytes ilegíveis:</p>
+<pre><code>23:42:31.865 TX AT
+23:42:31.890 RX &lt;0xE0&gt;&lt;0xFC&gt;&lt;0xFC&gt;</code></pre>
+<h2>Deixe o LinkJig procurar</h2>
+<ol><li>Conecte o adaptador e abra a janela de conexão do seu dispositivo serial.</li><li>Toque no ícone de busca ao lado de <strong>Baud rate</strong>.</li><li>Mantenha o comando <code>AT\r\n</code> e a resposta esperada <code>OK</code>, e toque em <strong>Buscar</strong>.</li><li>Quando uma velocidade responder, toque em <strong>Usar 38400</strong>.</li></ol>
+<p><img src="assets/find-baud-38400.png" alt="Busca de baud rate mostrando que 38400 respondeu"></p>
+<p>A busca parou na velocidade que respondeu (o app da imagem está em inglês):</p>
+<pre><code>115200  6 B, unreadable
+9600    4 B, unreadable
+57600   6 B, unreadable
+38400   Answered</code></pre>
+<p>Confirme o resultado enviando comandos nessa velocidade:</p>
+<pre><code>23:43:16.233 TX AT
+23:43:16.354 RX AT
+OK</code></pre>
+<h2>Como funciona</h2>
+<ul><li>Testa 18 velocidades padrão, das mais comuns para as menos comuns.</li><li>Envia o comando até duas vezes por velocidade, porque alguns módulos engolem a resposta ao primeiro, e escuta por 300 ms.</li><li>Seu dispositivo pode não falar AT. Deixe a resposta vazia para aceitar qualquer texto legível, ou deixe o comando vazio para só escutar.</li></ul>
+<h2>Limites</h2>
+<ul><li>O dispositivo precisa responder ao comando ou imprimir texto legível.</li><li>Velocidades fora da lista padrão não são testadas.</li><li>Testado ao vivo com um adaptador CH340 no Android 9. FTDI, CP210x e PL2303 são suportados pelo driver, mas ainda não foram testados em vídeo.</li></ul>
+<h2>Experimente</h2>
+<p>Veja a demonstração no <a href="https://youtube.com/shorts/VMpsSFUgMRc">YouTube</a>. O LinkJig está no <a href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a> e na <a href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a>.</p>
+</main></body>
+</html>

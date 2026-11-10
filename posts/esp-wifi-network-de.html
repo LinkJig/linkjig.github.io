@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lass ein ESP-Modul sein eigenes WLAN senden, vom Handy aus</title>
+<meta name="description" content="Lass ein ESP-Modul sein eigenes WLAN senden, vom Handy aus">
+<meta property="og:title" content="Lass ein ESP-Modul sein eigenes WLAN senden, vom Handy aus">
+<meta property="og:description" content="Lass ein ESP-Modul sein eigenes WLAN senden, vom Handy aus">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://linkjig.github.io/icon-128.png">
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="esp-wifi-network.html" hreflang="en">English</a><a href="esp-wifi-network-tr.html" hreflang="tr">Türkçe</a><a href="esp-wifi-network-es.html" hreflang="es">Español</a><span>Deutsch</span><a href="esp-wifi-network-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<p class="back"><a href="../index-de.html">← Start</a></p>
+<h1>Lass ein ESP-Modul sein eigenes WLAN senden, vom Handy aus</h1>
+<p>Ein ESP8266 mit AT-Firmware kann ein eigenes WLAN aufbauen, dem Handy oder Computer ohne Router beitreten. Dafür braucht es sieben AT-Befehle in der richtigen Reihenfolge. LinkJig sendet sie für dich und prüft jede Antwort.</p>
+<p>Das ist eine echte Sitzung: ein ESP-01S mit AT-Firmware 2.2.0, per USB-OTG und CH340-USB-UART-Adapter an ein Android-Handy angeschlossen.</p>
+<h2>Netz erstellen</h2>
+<ol><li>Schließe den Adapter an und öffne dein serielles Gerät.</li><li>Öffne den Tab <strong>Module</strong>, wähle <strong>ESP8266</strong> und dann <strong>WLAN-Netz erstellen</strong>.</li><li>Gib einen Netznamen und ein Passwort mit mindestens 8 Zeichen ein. Kanal 6 und WPA2 sind voreingestellt.</li><li>Tippe auf <strong>Netz erstellen</strong>.</li></ol>
+<p><img src="assets/esp-wifi-network.png" alt="Netz ist aktiv: ESP-bench unter 192.168.42.1 (die App im Bild ist auf Englisch)"></p>
+<p>Jeder Schritt wird geprüft, bevor der nächste gesendet wird. Das Passwort erscheint nie auf dem Bildschirm, es wird als Sternchen angezeigt.</p>
+<h2>Die sieben Befehle</h2>
+<pre><code>19:54:42.563 TX AT
+19:54:42.616 RX AT
+OK
+19:54:42.627 TX AT+SYSSTORE=0
+19:54:42.648 RX AT+SYSSTORE=0
+OK
+19:54:42.670 TX AT+CWMODE=2
+19:54:42.696 RX AT+CWMODE=2
+OK
+19:54:42.721 TX AT+CWSAP="ESP-bench","***",6,3</code></pre>
+<table><thead><tr><th>Befehl</th><th>Was er tut</th></tr></thead><tbody><tr><td><code>AT</code></td><td>Prüft, ob das Modul antwortet</td></tr><tr><td><code>AT+SYSSTORE=0</code></td><td>Schreibt die folgenden Einstellungen nicht in den Flash</td></tr><tr><td><code>AT+CWMODE=2</code></td><td>Wechselt in den Access-Point-Modus</td></tr><tr><td><code>AT+CWSAP="Name","Passwort",6,3</code></td><td>Startet das Netz: Name, Passwort, Kanal, Sicherheit (3 = WPA2)</td></tr><tr><td><code>AT+CWSAP?</code></td><td>Liest das Netz zurück</td></tr><tr><td><code>AT+CIPAP?</code></td><td>Liest die eigene Adresse des Moduls</td></tr><tr><td><code>AT+SYSSTORE=1</code></td><td>Stellt die Voreinstellung wieder her</td></tr></tbody></table>
+<p>Das Modul antwortete mit seiner Adresse:</p>
+<pre><code>+CIPAP:ip:"192.168.42.1"
++CIPAP:gateway:"192.168.42.1"
++CIPAP:netmask:"255.255.255.0"
+OK</code></pre>
+<p>Jeder Befehl und jede Antwort bleibt auch im Terminal, so siehst du genau, was gesendet wurde.</p>
+<h2>Grenzen</h2>
+<ul><li>In dieser Sitzung war <strong>Nach Neustart behalten</strong> aus: Das Netz verschwindet beim Neustart des Moduls. Schalte es ein, um es im Flash zu speichern.</li><li>Aufgenommen mit AT-Firmware 2.2.0. Andere AT-Versionen antworten eventuell anders.</li><li>Die Werksadresse eines ESP8266-Netzes ist meist 192.168.4.1. Dieses Modul war vor der Aufnahme auf 192.168.42.1 gestellt.</li><li>Live getestet mit einem CH340-Adapter unter Android 9.</li></ul>
+<h2>Probier es aus</h2>
+<p>Sieh dir die Demo auf <a href="https://youtube.com/shorts/93DMU6oUGoM">YouTube</a> an. LinkJig gibt es bei <a href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a> und im <a href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a>.</p>
+</main></body>
+</html>

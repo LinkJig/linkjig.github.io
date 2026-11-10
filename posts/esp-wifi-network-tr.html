@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESP modülüne kendi Wi-Fi ağını telefondan yayınlat</title>
+<meta name="description" content="ESP modülüne kendi Wi-Fi ağını telefondan yayınlat">
+<meta property="og:title" content="ESP modülüne kendi Wi-Fi ağını telefondan yayınlat">
+<meta property="og:description" content="ESP modülüne kendi Wi-Fi ağını telefondan yayınlat">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://linkjig.github.io/icon-128.png">
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="esp-wifi-network.html" hreflang="en">English</a><span>Türkçe</span><a href="esp-wifi-network-es.html" hreflang="es">Español</a><a href="esp-wifi-network-de.html" hreflang="de">Deutsch</a><a href="esp-wifi-network-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<p class="back"><a href="../index-tr.html">← Ana sayfa</a></p>
+<h1>ESP modülüne kendi Wi-Fi ağını telefondan yayınlat</h1>
+<p>AT firmware'li bir ESP8266 kendi Wi-Fi ağını kurabilir; telefon ya da bilgisayar modeme gerek kalmadan bu ağa bağlanır. Bunun için doğru sırayla yedi AT komutu gerekir. LinkJig bunları senin yerine gönderir ve her yanıtı kontrol eder.</p>
+<p>Bu gerçek bir oturum: AT firmware 2.2.0 yüklü bir ESP-01S, USB OTG ve CH340 USB-UART adaptörüyle Android telefona bağlı.</p>
+<h2>Ağı oluştur</h2>
+<ol><li>Adaptörü bağla ve seri cihazını aç.</li><li><strong>Modüller</strong> sekmesini aç, <strong>ESP8266</strong>'yı, sonra <strong>Wi-Fi ağı oluştur</strong>'u seç.</li><li>Bir ağ adı ve en az 8 karakterlik bir şifre gir. Kanal 6 ve WPA2 varsayılandır.</li><li><strong>Ağı oluştur</strong>'a dokun.</li></ol>
+<p><img src="assets/esp-wifi-network.png" alt="Ağ yayında: ESP-bench, 192.168.42.1 (görüntüdeki uygulama İngilizce)"></p>
+<p>Her adım, bir sonraki gönderilmeden önce kontrol edilir. Şifre ekranda hiç görünmez, yıldız olarak gösterilir.</p>
+<h2>Yedi komut</h2>
+<pre><code>19:54:42.563 TX AT
+19:54:42.616 RX AT
+OK
+19:54:42.627 TX AT+SYSSTORE=0
+19:54:42.648 RX AT+SYSSTORE=0
+OK
+19:54:42.670 TX AT+CWMODE=2
+19:54:42.696 RX AT+CWMODE=2
+OK
+19:54:42.721 TX AT+CWSAP="ESP-bench","***",6,3</code></pre>
+<table><thead><tr><th>Komut</th><th>Ne yapar</th></tr></thead><tbody><tr><td><code>AT</code></td><td>Modülün cevap verdiğini kontrol eder</td></tr><tr><td><code>AT+SYSSTORE=0</code></td><td>Sonraki ayarları flash'a yazmaz</td></tr><tr><td><code>AT+CWMODE=2</code></td><td>Erişim noktası moduna geçer</td></tr><tr><td><code>AT+CWSAP="ad","şifre",6,3</code></td><td>Ağı başlatır: ad, şifre, kanal, güvenlik (3 = WPA2)</td></tr><tr><td><code>AT+CWSAP?</code></td><td>Ağı geri okur</td></tr><tr><td><code>AT+CIPAP?</code></td><td>Modülün kendi adresini okur</td></tr><tr><td><code>AT+SYSSTORE=1</code></td><td>Varsayılanı geri yükler</td></tr></tbody></table>
+<p>Modül adresiyle cevap verdi:</p>
+<pre><code>+CIPAP:ip:"192.168.42.1"
++CIPAP:gateway:"192.168.42.1"
++CIPAP:netmask:"255.255.255.0"
+OK</code></pre>
+<p>Her komut ve yanıt terminalde de kalır; tam olarak ne gönderildiğini görürsün.</p>
+<h2>Sınırlar</h2>
+<ul><li>Bu oturumda <strong>Yeniden başlayınca da kalsın</strong> kapalıydı: modül yeniden başlayınca ağ gider. Flash'a kaydetmek için aç.</li><li>AT firmware 2.2.0 ile kaydedildi. Başka AT sürümleri farklı cevap verebilir.</li><li>ESP8266 ağının fabrika adresi genellikle 192.168.4.1'dir. Bu modül kayıttan önce 192.168.42.1'e ayarlanmıştı.</li><li>Android 9'da CH340 adaptörle canlı denendi.</li></ul>
+<h2>Dene</h2>
+<p>Gösterim videosu <a href="https://youtube.com/shorts/93DMU6oUGoM">YouTube</a>'da. LinkJig <a href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a> ve <a href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a>'da.</p>
+</main></body>
+</html>
