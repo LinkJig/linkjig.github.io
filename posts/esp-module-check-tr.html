@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESP8266 çalışıyor mu? Telefonundan kontrol et</title>
+<meta name="description" content="ESP8266 çalışıyor mu? Telefonundan kontrol et">
+<meta property="og:title" content="ESP8266 çalışıyor mu? Telefonundan kontrol et">
+<meta property="og:description" content="ESP8266 çalışıyor mu? Telefonundan kontrol et">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://linkjig.github.io/icon-128.png">
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+.stores { display:flex; flex-wrap:wrap; gap:12px; margin:20px 0 8px; }
+.stores a { padding:10px 18px; border:1px solid var(--accent); border-radius:8px; text-decoration:none; font-weight:600; }
+.posts { list-style:none; padding:0; margin:0; }
+.posts li { border-bottom:1px solid var(--border); }
+.posts a { display:block; padding:12px 0; color:var(--text); text-decoration:none; }
+.posts a:hover { color:var(--accent); }
+footer { margin-top:40px; padding-top:16px; border-top:1px solid var(--border); font-size:14px;
+  display:flex; flex-wrap:wrap; gap:6px 20px; }
+footer a { color:var(--muted); }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="esp-module-check.html" hreflang="en">English</a><span>Türkçe</span><a href="esp-module-check-es.html" hreflang="es">Español</a><a href="esp-module-check-de.html" hreflang="de">Deutsch</a><a href="esp-module-check-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<p class="back"><a href="../index-tr.html">← Ana sayfa</a></p>
+<h1>ESP8266 çalışıyor mu? Telefonundan kontrol et</h1>
+<p>Kabloyla, firmware'le ya da kendi kodunla uğraşmadan önce modülün cevap verip vermediğini bilmek işe yarar. LinkJig yalnız okuyan dört AT komutu gönderir; firmware'i, Wi-Fi modunu ve adresi tek kartta gösterir.</p>
+<p>Bu gerçek bir oturum: AT firmware 2.2.0 yüklü bir ESP-01S, USB OTG ve CH340 USB-UART adaptörüyle Android telefona bağlı.</p>
+<h2>Modülü kontrol et</h2>
+<ol><li>Adaptörü bağla ve seri cihazını aç.</li><li><strong>Modüller</strong> sekmesini aç, <strong>ESP8266</strong>'yı, sonra <strong>Modülü kontrol et</strong>'i seç.</li><li><strong>Kontrol et</strong>'e dokun.</li></ol>
+<p><img src="assets/esp-module-check.png" alt="Modül sağlıklı: AT sürümü 2.2.0.0, Wi-Fi modu 1 (görüntüdeki uygulama İngilizce)"></p>
+<p>Dört adımın hepsi bir saniyenin çok altında cevap verdi.</p>
+<h2>Dört komut</h2>
+<table><thead><tr><th>Komut</th><th>Ne okur</th></tr></thead><tbody><tr><td><code>AT</code></td><td>Cevap veriyor mu?</td></tr><tr><td><code>AT+GMR</code></td><td>Firmware sürümü</td></tr><tr><td><code>AT+CWMODE?</code></td><td>Wi-Fi modu (1 = istemci, 2 = erişim noktası, 3 = ikisi)</td></tr><tr><td><code>AT+CIFSR</code></td><td>IP ve MAC adresleri</td></tr></tbody></table>
+<p>Terminaldeki oturumdan bir bölüm:</p>
+<pre><code>20:39:34.514 TX AT+CWMODE?
+20:39:34.541 RX AT+CWMODE?
++CWMODE:1
+OK
+20:39:34.556 TX AT+CIFSR
+20:39:34.588 RX AT+CIFSR
++CIFSR:STAIP,"0.0.0.0"</code></pre>
+<p>Modül bir ağa bağlı olmadığı için istemci adresi 0.0.0.0.</p>
+<h2>Yalnız okur</h2>
+<p>Dört komutun hiçbiri modülde bir ayarı değiştirmez. Kontrolü istediğin kadar çalıştırabilirsin.</p>
+<h2>Sınırlar</h2>
+<ul><li>AT firmware 2.2.0 ile kaydedildi. Başka AT sürümleri farklı cevap verebilir.</li><li>Kontrol cevap alamıyorsa baud rate yanlış olabilir: [Baud rate'i telefonundan bul](find-baud-rate-tr.html).</li><li>Android 9'da CH340 adaptörle canlı denendi.</li></ul>
+<h2>Dene</h2>
+<p>Gösterim videosu <a href="https://youtube.com/shorts/bIBlMQhaFw8">YouTube</a>'da. LinkJig <a href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a> ve <a href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a>'da.</p>
+</main></body>
+</html>

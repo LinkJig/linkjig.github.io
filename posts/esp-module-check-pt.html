@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seu ESP8266 está respondendo? Confira pelo celular</title>
+<meta name="description" content="Seu ESP8266 está respondendo? Confira pelo celular">
+<meta property="og:title" content="Seu ESP8266 está respondendo? Confira pelo celular">
+<meta property="og:description" content="Seu ESP8266 está respondendo? Confira pelo celular">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://linkjig.github.io/icon-128.png">
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
+  border-bottom:1px solid var(--border); margin-bottom:24px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+.mark { display:inline-block; width:10px; height:10px; border-radius:2px; background:var(--accent); margin-right:8px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+.stores { display:flex; flex-wrap:wrap; gap:12px; margin:20px 0 8px; }
+.stores a { padding:10px 18px; border:1px solid var(--accent); border-radius:8px; text-decoration:none; font-weight:600; }
+.posts { list-style:none; padding:0; margin:0; }
+.posts li { border-bottom:1px solid var(--border); }
+.posts a { display:block; padding:12px 0; color:var(--text); text-decoration:none; }
+.posts a:hover { color:var(--accent); }
+footer { margin-top:40px; padding-top:16px; border-top:1px solid var(--border); font-size:14px;
+  display:flex; flex-wrap:wrap; gap:6px 20px; }
+footer a { color:var(--muted); }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<nav><a href="esp-module-check.html" hreflang="en">English</a><a href="esp-module-check-tr.html" hreflang="tr">Türkçe</a><a href="esp-module-check-es.html" hreflang="es">Español</a><a href="esp-module-check-de.html" hreflang="de">Deutsch</a><span>Português (Brasil)</span></nav>
+<p class="back"><a href="../index-pt.html">← Início</a></p>
+<h1>Seu ESP8266 está respondendo? Confira pelo celular</h1>
+<p>Antes de investigar a fiação, o firmware ou o seu próprio código, vale saber se o módulo responde. O LinkJig envia quatro comandos AT só de leitura e mostra o firmware, o modo Wi-Fi e o endereço em um único cartão.</p>
+<p>Esta é uma sessão real: um ESP-01S com firmware AT 2.2.0, ligado a um celular Android por USB OTG e um adaptador USB-UART CH340.</p>
+<h2>Verifique o módulo</h2>
+<ol><li>Conecte o adaptador e abra o seu dispositivo serial.</li><li>Abra a aba <strong>Módulos</strong>, escolha <strong>ESP8266</strong> e depois <strong>Verificar o módulo</strong>.</li><li>Toque em <strong>Verificar</strong>.</li></ol>
+<p><img src="assets/esp-module-check.png" alt="O módulo está bem: versão do AT 2.2.0.0, modo Wi-Fi 1 (o app da imagem está em inglês)"></p>
+<p>Os quatro passos responderam em bem menos de um segundo.</p>
+<h2>Os quatro comandos</h2>
+<table><thead><tr><th>Comando</th><th>O que lê</th></tr></thead><tbody><tr><td><code>AT</code></td><td>Está respondendo?</td></tr><tr><td><code>AT+GMR</code></td><td>Versão do firmware</td></tr><tr><td><code>AT+CWMODE?</code></td><td>Modo Wi-Fi (1 = estação, 2 = ponto de acesso, 3 = ambos)</td></tr><tr><td><code>AT+CIFSR</code></td><td>Endereços IP e MAC</td></tr></tbody></table>
+<p>Parte da sessão no terminal:</p>
+<pre><code>20:39:34.514 TX AT+CWMODE?
+20:39:34.541 RX AT+CWMODE?
++CWMODE:1
+OK
+20:39:34.556 TX AT+CIFSR
+20:39:34.588 RX AT+CIFSR
++CIFSR:STAIP,"0.0.0.0"</code></pre>
+<p>O endereço de estação é 0.0.0.0 porque o módulo não tinha entrado em nenhuma rede.</p>
+<h2>Só lê</h2>
+<p>Nenhum dos quatro comandos muda uma configuração do módulo. Você pode rodar a verificação quantas vezes quiser.</p>
+<h2>Limites</h2>
+<ul><li>Gravado com firmware AT 2.2.0. Outras versões de AT podem responder de outro jeito.</li><li>Se a verificação não receber resposta, o baud rate pode estar errado: veja [Descubra o baud rate pelo celular](find-baud-rate-pt.html).</li><li>Testado ao vivo com um adaptador CH340 no Android 9.</li></ul>
+<h2>Experimente</h2>
+<p>Veja a demonstração no <a href="https://youtube.com/shorts/bIBlMQhaFw8">YouTube</a>. O LinkJig está no <a href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a> e na <a href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a>.</p>
+</main></body>
+</html>
