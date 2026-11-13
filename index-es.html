@@ -7,15 +7,17 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
 <link rel="icon" type="image/png" sizes="128x128" href="/icon-128.png">
 <link rel="apple-touch-icon" href="/icon-128.png">
-<meta name="description" content="Terminal serie, BLE y TCP con pruebas de dispositivo repetibles pasa/falla.">
+<meta name="description" content="Habla con cualquier dispositivo por serie USB, Bluetooth LE o TCP y conviértelo en una prueba PASS/FAIL repetible. Android y Windows.">
 <meta property="og:title" content="LinkJig">
-<meta property="og:description" content="Terminal serie, BLE y TCP con pruebas de dispositivo repetibles pasa/falla.">
+<meta property="og:description" content="Habla con cualquier dispositivo por serie USB, Bluetooth LE o TCP y conviértelo en una prueba PASS/FAIL repetible. Android y Windows.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://linkjig.github.io/icon-128.png">
 <style>
-:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF; }
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF;
+  --on-accent:#06201C; --accent-soft:#12302C; --tx:#FFB454; }
 @media (prefers-color-scheme: light) {
-  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F; }
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F;
+    --on-accent:#FFFFFF; --accent-soft:#DDF3EF; --tx:#B4610E; }
 }
 * { box-sizing: border-box; }
 body { margin:0; background:var(--bg); color:var(--text);
@@ -55,17 +57,55 @@ summary { cursor:pointer; padding:12px 0; font-weight:600; }
 details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
 details[open] summary { color:var(--accent); }
 .back { font-size:14px; margin:0 0 16px; }
+main.home { max-width:1080px; }
+.home .hero { text-align:center; padding:40px 0 8px; }
+.home .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:20px; }
+.home .brand .logo { width:40px; height:40px; border-radius:9px; }
+.home .eyebrow { margin:28px 0 10px; font:600 13px "JetBrains Mono", ui-monospace, Consolas, monospace;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--accent); }
+.home h1 { font-size:clamp(32px, 5.4vw, 54px); line-height:1.08; letter-spacing:-.02em; margin:0 auto; max-width:16ch; text-wrap:balance; }
+.home .sub { font-size:clamp(17px, 2vw, 20px); color:var(--muted); max-width:60ch; margin:20px auto 0; }
+.home .cta { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:28px; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:10px; font-weight:600;
+  text-decoration:none; border:1px solid var(--border); color:var(--text); background:var(--surface); }
+.btn:hover { border-color:var(--accent); }
+.btn.primary { background:var(--accent); border-color:var(--accent); color:var(--on-accent); }
+.btn .play { width:0; height:0; border-left:9px solid var(--tx); border-top:6px solid transparent; border-bottom:6px solid transparent; }
+.home .note { font-size:14px; color:var(--muted); margin-top:14px; }
+.home .shot { position:relative; margin:48px auto 0; max-width:1000px; }
+.home .shot .desk { max-width:100%; width:100%; border-radius:12px; border:1px solid var(--border); box-shadow:0 24px 60px rgba(0,0,0,.35); }
+.home .shot .phone { position:absolute; right:-24px; bottom:-40px; width:24%; max-width:230px; border-radius:18px;
+  border:1px solid var(--border); box-shadow:0 18px 40px rgba(0,0,0,.45); }
+.home .trust { list-style:none; padding:0; margin:88px 0 0; display:grid; grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:12px; text-align:center; }
+.home .trust li { padding:14px 8px; border-top:2px solid var(--accent); color:var(--muted); font-weight:600; font-size:15px; }
+.home .features { display:grid; gap:72px; margin-top:88px; }
+.home .feature { display:grid; grid-template-columns:1fr 300px; gap:48px; align-items:center; }
+.home .feature:nth-child(even) { grid-template-columns:300px 1fr; }
+.home .feature:nth-child(even) .text { order:2; }
+.home .feature h2 { font-size:clamp(24px, 3vw, 32px); line-height:1.15; margin:0 0 12px; letter-spacing:-.01em; }
+.home .feature p { font-size:18px; color:var(--muted); margin:0; max-width:46ch; }
+.home .feature img { max-width:100%; width:100%; border-radius:16px; border:1px solid var(--border); }
+.home .connects { margin-top:88px; padding:28px; border:1px solid var(--border); border-radius:14px; background:var(--surface); }
+.home .connects h2 { margin:0 0 8px; }
+.home .connects p { margin:0; color:var(--muted); }
+.home .guides { margin-top:72px; }
+.home .guides .muted { color:var(--muted); margin:0 0 8px; }
+.home .final { margin-top:88px; padding:56px 24px; text-align:center; border-radius:16px; background:var(--accent-soft); }
+.home .final h2 { font-size:clamp(26px, 3.6vw, 38px); margin:0; letter-spacing:-.01em; }
+@media (max-width:760px) {
+  .home .trust { grid-template-columns:1fr 1fr; }
+  .home .feature, .home .feature:nth-child(even) { grid-template-columns:1fr; gap:20px; }
+  .home .feature:nth-child(even) .text { order:0; }
+  .home .feature img { max-width:300px; margin:0 auto; }
+  .home .shot .phone { right:-8px; bottom:-24px; width:30%; }
+}
 @media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
   tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
 </style>
 </head>
-<body><main>
+<body><main class="home">
 <nav><a href="index.html" hreflang="en">English</a><a href="index-tr.html" hreflang="tr">Türkçe</a><span>Español</span><a href="index-de.html" hreflang="de">Deutsch</a><a href="index-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
-<h1><img class="logo" src="icon-128.png" alt="" width="40" height="40">LinkJig</h1>
-<p class="lead">Terminal serie, BLE y TCP con pruebas de dispositivo repetibles pasa/falla.</p>
-<p class="stores"><a href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a><a href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a><a href="https://www.youtube.com/@linkjig-app">YouTube</a></p>
-<h2>Guías</h2>
-<ul class="posts"><li><a href="posts/esp-module-check-es.html">¿Tu ESP8266 responde? Compruébalo desde tu teléfono</a></li><li><a href="posts/esp-wifi-network-es.html">Haz que un módulo ESP emita su propia red Wi-Fi, desde tu teléfono</a></li><li><a href="posts/find-baud-rate-es.html">¿Salida serie ilegible? Encuentra la velocidad en baudios desde tu teléfono</a></li></ul>
-<footer><a href="faq-es.html">Preguntas frecuentes</a><a href="privacy-es.html">Política de privacidad</a><a href="mailto:linkjig.app@gmail.com">Contacto: linkjig.app@gmail.com</a></footer>
+<section class="hero"><div class="brand"><img class="logo" src="icon-128.png" alt="" width="40" height="40">LinkJig</div><p class="eyebrow">Android y Windows</p><h1>Habla con tu dispositivo. Luego conviértelo en una prueba.</h1><p class="sub">LinkJig se conecta por serie USB, Bluetooth LE y TCP, muestra cada byte que envías y recibes, y repite el intercambio como una prueba PASS/FAIL, en tu mesa o en campo.</p><div class="cta"><a class="btn primary" href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a><a class="btn" href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a><a class="btn" href="https://www.youtube.com/@linkjig-app"><span class="play" aria-hidden="true"></span>Ver en YouTube</a></div><p class="note">Gratis. La herramienta nunca muestra anuncios. Sin cuenta, sin nube, sin analíticas.</p><figure class="shot"><img class="desk" src="img/es/desktop.webp" alt="LinkJig en Windows ejecutando un escenario de prueba" width="1600" height="900"><img class="phone" src="img/es/phone-1.webp" alt="" width="540" height="1018"></figure></section><ul class="trust"><li>Funciona sin conexión</li><li>Sin cuenta ni rastreo</li><li>Probado en hardware real</li><li>En 5 idiomas</li></ul><section class="features"><div class="feature"><div class="text"><h2>Deja de escribir los mismos comandos</h2><p>Escribe los pasos una vez: enviar, esperar la respuesta, comprobarla. Ejecútalos con un toque y obtén PASS o FAIL, con el tiempo de cada respuesta.</p></div><img src="img/es/phone-1.webp" alt="Deja de escribir los mismos comandos" width="540" height="1018" loading="lazy"></div><div class="feature"><div class="text"><h2>Mira cada byte antes de que salga</h2><p>ASCII y HEX lado a lado, fines de línea visibles, CRC-16/Modbus añadido por ti. Lo que va por el cable nunca es una suposición.</p></div><img src="img/es/phone-2.webp" alt="Mira cada byte antes de que salga" width="540" height="1018" loading="lazy"></div><div class="feature"><div class="text"><h2>Módulos listos</h2><p>Comprueba un ESP8266, busca redes Wi-Fi, inicia un servidor TCP: tareas guiadas con cada paso verificado, probadas en placas reales.</p></div><img src="img/es/phone-7.webp" alt="Módulos listos" width="540" height="1018" loading="lazy"></div><div class="feature"><div class="text"><h2>Prepara en la mesa, ejecuta en campo</h2><p>Perfiles, macros, disparadores y escenarios viajan en un solo archivo de proyecto. Prepáralo en Windows y ejecútalo desde tu teléfono por USB-OTG.</p></div><img src="img/es/phone-4.webp" alt="Prepara en la mesa, ejecuta en campo" width="540" height="1018" loading="lazy"></div></section><section class="connects"><h2>Se conecta a</h2><p>Windows: puertos serie y adaptadores USB-serie, Bluetooth LE, USB HID y TCP. Android: adaptadores USB-serie por USB-OTG (CP210x, CH34x, FTDI, PL2303), Bluetooth LE y TCP. Un dispositivo de demostración integrado te deja probarlo todo sin hardware.</p></section><section class="guides"><h2>Guías</h2><p class="muted">Guías paso a paso, probadas en hardware real, cada una con un video corto.</p><ul class="posts"><li><a href="posts/esp-module-check-es.html">¿Tu ESP8266 responde? Compruébalo desde tu teléfono</a></li><li><a href="posts/esp-wifi-network-es.html">Haz que un módulo ESP emita su propia red Wi-Fi, desde tu teléfono</a></li><li><a href="posts/find-baud-rate-es.html">¿Salida serie ilegible? Encuentra la velocidad en baudios desde tu teléfono</a></li></ul></section><section class="final"><h2>Tu kit de pruebas de hardware, en el bolsillo.</h2><div class="cta"><a class="btn primary" href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a><a class="btn" href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a><a class="btn" href="https://www.youtube.com/@linkjig-app"><span class="play" aria-hidden="true"></span>Ver en YouTube</a></div></section><footer><a href="faq-es.html">Preguntas frecuentes</a><a href="privacy-es.html">Política de privacidad</a><a href="https://www.youtube.com/@linkjig-app">YouTube</a><a href="mailto:linkjig.app@gmail.com">Contacto: linkjig.app@gmail.com</a></footer>
 </main></body>
 </html>
