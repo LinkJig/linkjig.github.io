@@ -11,7 +11,10 @@
 <meta property="og:title" content="Unlesbare serielle Ausgabe? Finde die Baudrate mit dem Handy">
 <meta property="og:description" content="Unlesbare serielle Ausgabe? Finde die Baudrate mit dem Handy">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://linkjig.github.io/icon-128.png">
+<meta property="og:image" content="https://linkjig.github.io/img/de/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 :root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF;
   --on-accent:#06201C; --accent-soft:#12302C; --tx:#FFB454; }
@@ -23,8 +26,11 @@
 body { margin:0; background:var(--bg); color:var(--text);
   font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
 main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
-nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; padding-bottom:16px;
-  border-bottom:1px solid var(--border); margin-bottom:24px; }
+header.top { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px 20px;
+  padding-bottom:16px; border-bottom:1px solid var(--border); margin-bottom:24px; }
+.top .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:18px; color:var(--text); text-decoration:none; }
+.top .logo { width:32px; height:32px; border-radius:7px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; }
 nav a, nav span { color:var(--muted); text-decoration:none; }
 nav span { color:var(--accent); }
 a { color:var(--accent); }
@@ -59,10 +65,8 @@ details[open] summary { color:var(--accent); }
 .back { font-size:14px; margin:0 0 16px; }
 main.home { max-width:1080px; }
 .home .hero { text-align:center; padding:40px 0 8px; }
-.home .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:20px; }
-.home .brand .logo { width:40px; height:40px; border-radius:9px; }
-.home .eyebrow { margin:28px 0 10px; font:600 13px "JetBrains Mono", ui-monospace, Consolas, monospace;
-  letter-spacing:.08em; text-transform:uppercase; color:var(--accent); }
+.home .eyebrow { margin:8px 0 12px; font:600 13px "JetBrains Mono", ui-monospace, Consolas, monospace;
+  letter-spacing:.06em; color:var(--accent); }
 .home h1 { font-size:clamp(32px, 5.4vw, 54px); line-height:1.08; letter-spacing:-.02em; margin:0 auto; max-width:16ch; text-wrap:balance; }
 .home .sub { font-size:clamp(17px, 2vw, 20px); color:var(--muted); max-width:60ch; margin:20px auto 0; }
 .home .cta { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:28px; }
@@ -70,7 +74,8 @@ main.home { max-width:1080px; }
   text-decoration:none; border:1px solid var(--border); color:var(--text); background:var(--surface); }
 .btn:hover { border-color:var(--accent); }
 .btn.primary { background:var(--accent); border-color:var(--accent); color:var(--on-accent); }
-.btn .play { width:0; height:0; border-left:9px solid var(--tx); border-top:6px solid transparent; border-bottom:6px solid transparent; }
+.btn .ic { width:20px; height:20px; flex:none; }
+.btn.primary .ic { background:#FFFFFF; border-radius:5px; padding:2px; width:22px; height:22px; }
 .home .note { font-size:14px; color:var(--muted); margin-top:14px; }
 .home .shot { position:relative; margin:48px auto 0; max-width:1000px; }
 .home .shot .desk { max-width:100%; width:100%; border-radius:12px; border:1px solid var(--border); box-shadow:0 24px 60px rgba(0,0,0,.35); }
@@ -105,7 +110,7 @@ main.home { max-width:1080px; }
 </style>
 </head>
 <body><main>
-<nav><a href="find-baud-rate.html" hreflang="en">English</a><a href="find-baud-rate-tr.html" hreflang="tr">Türkçe</a><a href="find-baud-rate-es.html" hreflang="es">Español</a><span>Deutsch</span><a href="find-baud-rate-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav>
+<header class="top"><a class="brand" href="../index-de.html"><img class="logo" src="/icon-128.png" alt="" width="32" height="32">LinkJig</a><nav><a href="find-baud-rate.html" hreflang="en">English</a><a href="find-baud-rate-tr.html" hreflang="tr">Türkçe</a><a href="find-baud-rate-es.html" hreflang="es">Español</a><span>Deutsch</span><a href="find-baud-rate-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav></header>
 <p class="back"><a href="../index-de.html">← Start</a></p>
 <h1>Unlesbare serielle Ausgabe? Finde die Baudrate mit dem Handy</h1>
 <p>Wenn lesbarer Text zu Zeichensalat wird, sind sich meist beide Seiten über die Baudrate uneinig. Du kannst die Geschwindigkeiten einzeln ausprobieren oder das dem Terminal überlassen.</p>
