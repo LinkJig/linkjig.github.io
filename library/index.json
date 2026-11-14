@@ -46,9 +46,9 @@
       "links": [
         "serial"
       ],
-      "version": "1.0.2",
-      "size": 40044,
-      "sha256": "26173992f88cd0e56675005ce6fa5237160bd328ea76cc83e27d7104bf80214b",
+      "version": "1.0.3",
+      "size": 41123,
+      "sha256": "829984c155d64f3f2bea931d51e811d7af973befb7447f77f3720d8bd920e16f",
       "file": "modules/esp8266-at.ljm"
     }
   ]

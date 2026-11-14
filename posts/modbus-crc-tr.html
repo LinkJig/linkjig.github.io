@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modbus CRC&#x27;si senin yerine eklensin, telefonunda</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="icon" type="image/png" sizes="128x128" href="/icon-128.png">
+<link rel="apple-touch-icon" href="/icon-128.png">
+<meta name="description" content="Modbus CRC&#x27;si senin yerine eklensin, telefonunda">
+<meta property="og:title" content="Modbus CRC&#x27;si senin yerine eklensin, telefonunda">
+<meta property="og:description" content="Modbus CRC&#x27;si senin yerine eklensin, telefonunda">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://linkjig.github.io/img/tr/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root { --bg:#0C0F13; --surface:#12161C; --border:#242B35; --text:#E6EAF0; --muted:#9AA6B4; --accent:#2DD4BF;
+  --on-accent:#06201C; --accent-soft:#12302C; --tx:#FFB454; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#F6F8FA; --surface:#FFFFFF; --border:#D5DCE4; --text:#11161D; --muted:#4A5563; --accent:#08705F;
+    --on-accent:#FFFFFF; --accent-soft:#DDF3EF; --tx:#B4610E; }
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+header.top { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px 20px;
+  padding-bottom:16px; border-bottom:1px solid var(--border); margin-bottom:24px; }
+.top .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:18px; color:var(--text); text-decoration:none; }
+.top .logo { width:32px; height:32px; border-radius:7px; }
+nav { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:14px; }
+nav a, nav span { color:var(--muted); text-decoration:none; }
+nav span { color:var(--accent); }
+a { color:var(--accent); }
+h1 { font-size:28px; line-height:1.25; margin:0 0 4px; }
+h2 { font-size:19px; margin:32px 0 8px; }
+pre { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+img { max-width:360px; width:100%; height:auto; border-radius:8px; }
+p, li { color:var(--text); }
+em { color:var(--muted); font-style:normal; font-size:14px; }
+code { font:14px "JetBrains Mono", ui-monospace, Consolas, monospace; background:var(--surface);
+  border:1px solid var(--border); border-radius:4px; padding:1px 4px; }
+table { width:100%; border-collapse:collapse; font-size:15px; }
+th, td { text-align:left; vertical-align:top; padding:8px; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; }
+h1 .logo { width:40px; height:40px; border-radius:9px; vertical-align:-8px; margin-right:12px; }
+.lead { font-size:18px; color:var(--muted); }
+.links a { display:inline-block; margin:4px 16px 4px 0; }
+.stores { display:flex; flex-wrap:wrap; gap:12px; margin:20px 0 8px; }
+.stores a { padding:10px 18px; border:1px solid var(--accent); border-radius:8px; text-decoration:none; font-weight:600; }
+.posts { list-style:none; padding:0; margin:0; }
+.posts li { border-bottom:1px solid var(--border); }
+.posts a { display:block; padding:12px 0; color:var(--text); text-decoration:none; }
+.posts a:hover { color:var(--accent); }
+footer { margin-top:40px; padding-top:16px; border-top:1px solid var(--border); font-size:14px;
+  display:flex; flex-wrap:wrap; gap:6px 20px; }
+footer a { color:var(--muted); }
+details { border-bottom:1px solid var(--border); }
+summary { cursor:pointer; padding:12px 0; font-weight:600; }
+details > p:first-of-type, details > ul:first-of-type { margin-top:0; }
+details[open] summary { color:var(--accent); }
+.back { font-size:14px; margin:0 0 16px; }
+main.home { max-width:1080px; }
+.home .hero { text-align:center; padding:40px 0 8px; }
+.home .eyebrow { margin:8px 0 12px; font:600 13px "JetBrains Mono", ui-monospace, Consolas, monospace;
+  letter-spacing:.06em; color:var(--accent); }
+.home h1 { font-size:clamp(32px, 5.4vw, 54px); line-height:1.08; letter-spacing:-.02em; margin:0 auto; max-width:16ch; text-wrap:balance; }
+.home .sub { font-size:clamp(17px, 2vw, 20px); color:var(--muted); max-width:60ch; margin:20px auto 0; }
+.home .cta { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:28px; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:10px; font-weight:600;
+  text-decoration:none; border:1px solid var(--border); color:var(--text); background:var(--surface); }
+.btn:hover { border-color:var(--accent); }
+.btn .ic { width:20px; height:20px; flex:none; }
+.home .note { font-size:14px; color:var(--muted); margin-top:14px; }
+.home .shot { position:relative; margin:48px auto 0; max-width:1000px; }
+.home .shot .desk { max-width:100%; width:100%; border-radius:12px; border:1px solid var(--border); box-shadow:0 24px 60px rgba(0,0,0,.35); }
+.home .shot .phone { position:absolute; right:-24px; bottom:-40px; width:24%; max-width:230px; border-radius:18px;
+  border:1px solid var(--border); box-shadow:0 18px 40px rgba(0,0,0,.45); }
+.home .trust { list-style:none; padding:0; margin:88px 0 0; display:grid; grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:12px; text-align:center; }
+.home .trust li { padding:14px 8px; border-top:2px solid var(--accent); color:var(--muted); font-weight:600; font-size:15px; }
+.home .features { display:grid; gap:72px; margin-top:88px; }
+.home .feature { display:grid; grid-template-columns:1fr 300px; gap:48px; align-items:center; }
+.home .feature:nth-child(even) { grid-template-columns:300px 1fr; }
+.home .feature:nth-child(even) .text { order:2; }
+.home .feature h2 { font-size:clamp(24px, 3vw, 32px); line-height:1.15; margin:0 0 12px; letter-spacing:-.01em; }
+.home .feature p { font-size:18px; color:var(--muted); margin:0; max-width:46ch; }
+.home .feature img { max-width:100%; width:100%; border-radius:16px; border:1px solid var(--border); }
+.home .connects { margin-top:88px; padding:28px; border:1px solid var(--border); border-radius:14px; background:var(--surface); }
+.home .connects h2 { margin:0 0 8px; }
+.home .connects p { margin:0; color:var(--muted); }
+.home .guides { margin-top:72px; }
+.home .guides .muted { color:var(--muted); margin:0 0 16px; }
+.home .guides .group { border:1px solid var(--border); border-radius:12px; background:var(--surface); margin:0 0 12px; }
+.home .guides summary { display:flex; justify-content:space-between; gap:12px; padding:16px 20px; cursor:pointer; font-weight:600; list-style:none; }
+.home .guides summary::-webkit-details-marker { display:none; }
+.home .guides summary::after { content:'+'; color:var(--accent); font-weight:700; }
+.home .guides .group[open] summary::after { content:'−'; }
+.home .guides summary .count { margin-left:auto; color:var(--muted); font-weight:400; }
+.home .guides .group .posts { padding:0 20px 8px; }
+.home .guides .group .posts li:last-child { border-bottom:0; }
+.home .final { margin-top:88px; padding:56px 24px; text-align:center; border-radius:16px; background:var(--accent-soft); }
+.home .final h2 { font-size:clamp(26px, 3.6vw, 38px); margin:0; letter-spacing:-.01em; }
+@media (max-width:760px) {
+  .home .trust { grid-template-columns:1fr 1fr; }
+  .home .feature, .home .feature:nth-child(even) { grid-template-columns:1fr; gap:20px; }
+  .home .feature:nth-child(even) .text { order:0; }
+  .home .feature img { max-width:300px; margin:0 auto; }
+  .home .shot .phone { right:-8px; bottom:-24px; width:30%; }
+}
+@media (max-width:560px) { table, tbody, tr, td { display:block; } thead { display:none; }
+  tr { border-bottom:1px solid var(--border); padding:6px 0; } td { border:0; padding:2px 0; } }
+</style>
+</head>
+<body><main>
+<header class="top"><a class="brand" href="../index-tr.html"><img class="logo" src="/icon-128.png" alt="" width="32" height="32">LinkJig</a><nav><a href="modbus-crc.html" hreflang="en">English</a><span>Türkçe</span><a href="modbus-crc-es.html" hreflang="es">Español</a><a href="modbus-crc-de.html" hreflang="de">Deutsch</a><a href="modbus-crc-pt.html" hreflang="pt-BR">Português (Brasil)</a></nav></header>
+<p class="back"><a href="../index-tr.html">← Ana sayfa</a></p>
+<h1>Modbus CRC'si senin yerine eklensin, telefonunda</h1>
+<p>Bir Modbus RTU çerçevesi iki baytlık bir CRC ile biter. Bunu elle ya da ayrı bir hesap makinesiyle bulmak yavaştır ve hataya açıktır. LinkJig CRC'yi sen yazarken ekler ve göndermeden önce baytları gösterir.</p>
+<p>Bu, LinkJig'in gönderdiğini geri yansıtan yerleşik loopback cihazında gerçek bir oturum. Her seri, Bluetooth ya da TCP bağlantısında aynı çalışır.</p>
+<h2>Checksum'ı ekle</h2>
+<ol><li>Terminalde gönderme çubuğunu <strong>HEX</strong> yap.</li><li>Yanındaki checksum menüsünü aç (<strong>Checksum yok</strong> yazar) ve <strong>CRC-16/MODBUS</strong>'u seç.</li><li>Çerçeveni yaz. "1 numaralı cihazın 0 adresinden iki holding register oku" için bu <code>01 03 00 00 00 02</code>.</li><li>Alanın altında tam çerçeve, iki kontrol baytı vurgulanmış olarak görünür: <code>C4 0B</code>. <strong>Gönder</strong>'e dokun.</li></ol>
+<p><img src="assets/modbus-crc.png" alt="CRC-16/MODBUS seçili gönderme çubuğu, önizlemede C4 0B eklenmiş (görüntüdeki uygulama İngilizce)"></p>
+<p>Giden ve dönen:</p>
+<pre><code>20:48:34.264 TX 01 03 00 00 00 02 C4 0B
+20:48:34.295 RX 01 03 00 00 00 02 C4 0B</code></pre>
+<h2>Diğer checksum'lar</h2>
+<p>Aynı menüde SUM8, XOR8, CRC-8, CRC-16/MODBUS, CRC-16/CCITT-FALSE ve CRC-32 var. Checksum yalnız veriye eklenir; satır sonu seçtiysen ondan sonra gelir.</p>
+<h2>Sınırlar</h2>
+<ul><li>Gerçek bir Modbus cihazında değil, yerleşik loopback cihazında gösterildi.</li><li>CRC-16/MODBUS, Modbus RTU'nun beklediği gibi önce düşük bayt gönderilir.</li></ul>
+<h2>Dene</h2>
+<p>Gösterim videosu <a href="https://youtube.com/shorts/fxyovKvoYF0">YouTube</a>'da. LinkJig <a href="https://play.google.com/store/apps/details?id=io.github.linkjig">Google Play</a> ve <a href="https://apps.microsoft.com/detail/9P1LHTD4C96V">Microsoft Store</a>'da.</p>
+</main></body>
+</html>
