@@ -73,9 +73,7 @@ main.home { max-width:1080px; }
 .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:10px; font-weight:600;
   text-decoration:none; border:1px solid var(--border); color:var(--text); background:var(--surface); }
 .btn:hover { border-color:var(--accent); }
-.btn.primary { background:var(--accent); border-color:var(--accent); color:var(--on-accent); }
 .btn .ic { width:20px; height:20px; flex:none; }
-.btn.primary .ic { background:#FFFFFF; border-radius:5px; padding:2px; width:22px; height:22px; }
 .home .note { font-size:14px; color:var(--muted); margin-top:14px; }
 .home .shot { position:relative; margin:48px auto 0; max-width:1000px; }
 .home .shot .desk { max-width:100%; width:100%; border-radius:12px; border:1px solid var(--border); box-shadow:0 24px 60px rgba(0,0,0,.35); }
@@ -95,7 +93,15 @@ main.home { max-width:1080px; }
 .home .connects h2 { margin:0 0 8px; }
 .home .connects p { margin:0; color:var(--muted); }
 .home .guides { margin-top:72px; }
-.home .guides .muted { color:var(--muted); margin:0 0 8px; }
+.home .guides .muted { color:var(--muted); margin:0 0 16px; }
+.home .guides .group { border:1px solid var(--border); border-radius:12px; background:var(--surface); margin:0 0 12px; }
+.home .guides summary { display:flex; justify-content:space-between; gap:12px; padding:16px 20px; cursor:pointer; font-weight:600; list-style:none; }
+.home .guides summary::-webkit-details-marker { display:none; }
+.home .guides summary::after { content:'+'; color:var(--accent); font-weight:700; }
+.home .guides .group[open] summary::after { content:'−'; }
+.home .guides summary .count { margin-left:auto; color:var(--muted); font-weight:400; }
+.home .guides .group .posts { padding:0 20px 8px; }
+.home .guides .group .posts li:last-child { border-bottom:0; }
 .home .final { margin-top:88px; padding:56px 24px; text-align:center; border-radius:16px; background:var(--accent-soft); }
 .home .final h2 { font-size:clamp(26px, 3.6vw, 38px); margin:0; letter-spacing:-.01em; }
 @media (max-width:760px) {

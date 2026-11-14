@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "updated": "2026-11-03",
+  "updated": "2026-11-14",
   "packs": [
     {
       "id": "demo-tour",
@@ -46,9 +46,9 @@
       "links": [
         "serial"
       ],
-      "version": "1.0.0",
-      "size": 38609,
-      "sha256": "64065849f8f711d7f20cd803e19dd6b6ae3be5168ea18874fe0671ccf620a8b3",
+      "version": "1.0.1",
+      "size": 40056,
+      "sha256": "ec2c046c0eeacf8ce2e439e43639e08b5ae8b56a3db3d32124c1f545a4139c47",
       "file": "modules/esp8266-at.ljm"
     }
   ]
