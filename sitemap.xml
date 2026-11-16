@@ -231,6 +231,56 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-wifi-network.html"/>
   </url>
   <url>
+    <loc>https://linkjig.github.io/posts/esp-wifi-scan.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-wifi-scan-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-wifi-scan-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-wifi-scan-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-wifi-scan-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+  </url>
+  <url>
+    <loc>https://linkjig.github.io/posts/esp-wifi-scan-tr.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-wifi-scan-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-wifi-scan-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-wifi-scan-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-wifi-scan-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+  </url>
+  <url>
+    <loc>https://linkjig.github.io/posts/esp-wifi-scan-es.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-wifi-scan-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-wifi-scan-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-wifi-scan-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-wifi-scan-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+  </url>
+  <url>
+    <loc>https://linkjig.github.io/posts/esp-wifi-scan-de.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-wifi-scan-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-wifi-scan-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-wifi-scan-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-wifi-scan-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+  </url>
+  <url>
+    <loc>https://linkjig.github.io/posts/esp-wifi-scan-pt.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-wifi-scan-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-wifi-scan-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-wifi-scan-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-wifi-scan-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-wifi-scan.html"/>
+  </url>
+  <url>
     <loc>https://linkjig.github.io/posts/find-baud-rate.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/find-baud-rate.html"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/find-baud-rate-tr.html"/>
