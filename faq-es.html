@@ -219,6 +219,22 @@ main.home { max-width:1080px; }
 <details><summary>¿Qué significan los colores y las barras laterales de RX y TX?</summary>
 <p>RX son los datos recibidos del equipo y TX los que enviaste. Las barras finas en los bordes del terminal marcan dónde hubo RX (izquierda) y TX (derecha); haz clic en una marca para saltar allí.</p>
 </details>
+<details><summary>¿Cómo busco en el terminal?</summary>
+<p>Pulsa <strong>Ctrl+F</strong> en Windows o elige <strong>Buscar</strong> en el menú del terminal en el teléfono. Busca texto, o cambia a hex y escribe bytes como <code>0D 0A</code>. <strong>Enter</strong> va a la siguiente coincidencia y <strong>Shift+Enter</strong> a la anterior; <strong>Distinguir mayúsculas</strong> es opcional.</p>
+</details>
+<details><summary>Borré el terminal o eliminé líneas por error.</summary>
+<p>Toca <strong>Deshacer</strong> en los 8 segundos siguientes y las líneas vuelven. Funciona con <strong>Borrar</strong> (Ctrl+L en Windows) y con <strong>Eliminar líneas seleccionadas</strong> en el menú de selección.</p>
+</details>
+<details><summary>¿Cuánto historial guarda el terminal?</summary>
+<p>Se ajusta en Ajustes → Terminal → <strong>Líneas en memoria</strong>, de 1.000 a 1.000.000 líneas (100.000 por defecto en Windows, 20.000 en teléfonos). Cuando se llena, se van primero las líneas más antiguas. Para sesiones más largas, activa <strong>Guardar cada sesión en disco</strong>: el log no tiene ese límite y se divide en archivos de 5 MB.</p>
+</details>
+<h2>Módulos</h2>
+<details><summary>¿Qué es un módulo?</summary>
+<p>Un paquete listo para un tipo de equipo: comandos de uso diario con explicaciones breves y tareas como una revisión de estado de solo lectura. Los primeros cubren módulos AT, placas ESP8266 con el firmware AT de Espressif (ESP-01, NodeMCU) y el equipo Demo integrado. Abre <strong>Módulos</strong>, elige el tuyo y conéctate. Los comandos difíciles de deshacer preguntan antes de enviarse. ¿No está tu equipo? <strong>Solicitar un módulo</strong> abre un correo para nosotros.</p>
+</details>
+<details><summary>¿Los módulos son gratis?</summary>
+<p>Sí. En Android, un módulo bloqueado se abre tras unos anuncios cortos en vídeo que tú eliges ver; después queda abierto para siempre y sus actualizaciones son gratis. La app de Windows no tiene anuncios: abre el módulo en tu teléfono e introduce el código que te da.</p>
+</details>
 <h2>Macros, disparadores y escenarios</h2>
 <details><summary>¿Qué es una macro?</summary>
 <p>Un comando guardado en un botón. Tócalo en la barra de macros bajo el terminal o pulsa F1–F12 en Windows. Mayús+F1–F12 edita la macro.</p>
@@ -253,7 +269,7 @@ main.home { max-width:1080px; }
 </details>
 <h2>Pro y el minijuego</h2>
 <details><summary>¿LinkJig es gratis? ¿Tiene anuncios?</summary>
-<p>La herramienta es gratis y nunca muestra anuncios: ni en el terminal, los equipos, los escenarios, las macros, los disparadores, los logs, la biblioteca, los ajustes ni la ayuda. En Android hay un minijuego opcional, <strong>Start Bit</strong> (arriba del todo en Ajustes); los anuncios solo aparecen dentro de él. Nunca necesitas abrirlo. La app de escritorio no tiene juego ni anuncios.</p>
+<p>La herramienta es gratis y nunca muestra anuncios por sí sola: ni en el terminal, los equipos, los escenarios, las macros, los disparadores, los logs, la biblioteca, los ajustes ni la ayuda. En Android, los anuncios solo aparecen en el minijuego opcional <strong>Start Bit</strong> (arriba del todo en Ajustes) y en vídeos cortos que eliges ver para desbloquear Pro, un tema o un módulo. Ninguna de las dos cosas es necesaria. La app de escritorio no tiene juego ni anuncios.</p>
 </details>
 <details><summary>¿Cómo consigo Pro?</summary>
 <p>Pro es gratis. En Android, gana el nivel 15 de Start Bit o mira 10 anuncios cortos (como máximo 5 al día), lo que llegue antes. Después Pro queda desbloqueado para siempre; el minijuego mantiene sus anuncios y la herramienta nunca muestra ninguno. Mientras tanto, los escenarios y disparadores se pueden probar completos con el equipo <strong>Demo</strong>.</p>
@@ -269,7 +285,7 @@ main.home { max-width:1080px; }
 </details>
 <h2>Privacidad y soporte</h2>
 <details><summary>¿LinkJig envía mis datos a algún sitio?</summary>
-<p>No. No hay cuenta, ni analítica, ni servidor. Todo lo que escribes, recibes y guardas se queda en tu equipo. El minijuego opcional Start Bit de Android recibe sus anuncios de Google AdMob, que nunca ve los datos del terminal. Consulta la política de privacidad en Ajustes → Acerca de.</p>
+<p>No. No hay cuenta, ni analítica, ni servidor. Todo lo que escribes, recibes y guardas se queda en tu equipo. En Android, los anuncios (Start Bit y los vídeos que eliges ver) vienen de Google AdMob, que nunca ve los datos del terminal. Buscar módulos nuevos descarga la lista de módulos desde GitHub. Consulta la política de privacidad en Ajustes → Acerca de.</p>
 </details>
 <details><summary>¿Cómo cambio el idioma?</summary>
 <p>Ajustes → Apariencia → Idioma. <strong>Sistema</strong> sigue el idioma de tu equipo.</p>

@@ -219,6 +219,22 @@ main.home { max-width:1080px; }
 <details><summary>What do the RX and TX colors and rails mean?</summary>
 <p>RX is data received from the device, TX is data you sent. The thin rails at the terminal edges mark where RX (left) and TX (right) happened; click a mark to jump there.</p>
 </details>
+<details><summary>How do I search the terminal?</summary>
+<p>Press <strong>Ctrl+F</strong> on Windows, or choose <strong>Search</strong> in the terminal menu on the phone. Search for text, or switch to hex and type bytes such as <code>0D 0A</code>. <strong>Enter</strong> goes to the next match, <strong>Shift+Enter</strong> to the previous one; <strong>Match case</strong> is optional.</p>
+</details>
+<details><summary>I cleared the terminal or deleted lines by mistake.</summary>
+<p>Tap <strong>Undo</strong> within 8 seconds and the lines come back. This works for <strong>Clear</strong> (Ctrl+L on Windows) and for <strong>Delete selected lines</strong> in the selection menu.</p>
+</details>
+<details><summary>How much history does the terminal keep?</summary>
+<p>Set it in Settings → Terminal → <strong>Lines kept in memory</strong>, from 1,000 to 1,000,000 lines (default 100,000 on Windows, 20,000 on phones). When it is full, the oldest lines go first. For longer sessions, turn on <strong>Save every session to disk</strong>: the log has no such limit and is split into 5 MB files.</p>
+</details>
+<h2>Modules</h2>
+<details><summary>What is a module?</summary>
+<p>A ready-made pack for one kind of device: everyday commands with short explanations, plus tasks such as a read-only health check. The first ones cover AT modules and ESP8266 boards running Espressif AT firmware (ESP-01, NodeMCU), and a pack for the built-in Demo device. Open <strong>Modules</strong>, pick yours and connect. Commands that are hard to undo ask before they are sent. Is your device missing? <strong>Request a module</strong> opens an email to us.</p>
+</details>
+<details><summary>Are modules free?</summary>
+<p>Yes. On Android, a locked module opens after a few short video ads that you choose to watch; it then stays open for good and its updates are free. The Windows app has no ads: open the module on your phone and enter the code it gives you.</p>
+</details>
 <h2>Macros, triggers and scenarios</h2>
 <details><summary>What is a macro?</summary>
 <p>A saved command on a button. Tap it in the macro bar under the terminal, or press F1–F12 on Windows. Shift+F1–F12 edits the macro.</p>
@@ -253,7 +269,7 @@ main.home { max-width:1080px; }
 </details>
 <h2>Pro and the mini game</h2>
 <details><summary>Is LinkJig free? Does it have ads?</summary>
-<p>The tool is free and never shows ads: not in the terminal, devices, scenarios, macros, triggers, logs, library, settings or help. On Android there is an optional mini game, <strong>Start Bit</strong> (at the top of Settings); ads appear only inside it. You never need to open it. The desktop app has no game and no ads.</p>
+<p>The tool is free and never shows an ad on its own: not in the terminal, devices, scenarios, macros, triggers, logs, library, settings or help. On Android, ads appear only in the optional mini game <strong>Start Bit</strong> (at the top of Settings) and in short videos you choose to watch to unlock Pro, a theme or a module. Neither is ever required. The desktop app has no game and no ads.</p>
 </details>
 <details><summary>How do I get Pro?</summary>
 <p>Pro is free. On Android, either win level 15 in Start Bit or watch 10 short ads (at most 5 a day), whichever comes first. Pro then stays unlocked for good; the mini game keeps its ads, the tool never shows any. Before that, scenarios and triggers can be tried in full on the <strong>Demo</strong> device.</p>
@@ -269,7 +285,7 @@ main.home { max-width:1080px; }
 </details>
 <h2>Privacy and support</h2>
 <details><summary>Does LinkJig send my data anywhere?</summary>
-<p>No. There is no account, no analytics and no server. Everything you type, receive and save stays on your device. The optional Start Bit mini game on Android gets its ads from Google AdMob, which never sees your terminal data. See the privacy policy in Settings → About.</p>
+<p>No. There is no account, no analytics and no server. Everything you type, receive and save stays on your device. On Android, ads (Start Bit and the videos you choose to watch) come from Google AdMob, which never sees your terminal data. Checking for new modules downloads the module list from GitHub. See the privacy policy in Settings → About.</p>
 </details>
 <details><summary>How do I change the language?</summary>
 <p>Settings → Appearance → Language. <strong>System</strong> follows your device's language.</p>

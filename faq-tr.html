@@ -219,6 +219,22 @@ main.home { max-width:1080px; }
 <details><summary>RX ve TX renkleri ve kenar şeritleri ne anlama geliyor?</summary>
 <p>RX cihazdan gelen, TX sizin gönderdiğiniz veridir. Terminal kenarlarındaki ince şeritler RX'in (solda) ve TX'in (sağda) nerede olduğunu işaretler; oraya gitmek için bir işarete tıklayın.</p>
 </details>
+<details><summary>Terminalde nasıl arama yaparım?</summary>
+<p>Windows'ta <strong>Ctrl+F</strong>'ye basın, telefonda terminal menüsünden <strong>Ara</strong>'yı seçin. Metin arayın ya da hex'e geçip <code>0D 0A</code> gibi baytlar yazın. <strong>Enter</strong> sonraki eşleşmeye, <strong>Shift+Enter</strong> öncekine gider; <strong>Büyük/küçük harf duyarlı</strong> isteğe bağlıdır.</p>
+</details>
+<details><summary>Terminali yanlışlıkla temizledim ya da satır sildim.</summary>
+<p>8 saniye içinde <strong>Geri al</strong>'a dokunun, satırlar geri gelir. Bu, <strong>Temizle</strong> (Windows'ta Ctrl+L) ve seçim menüsündeki <strong>Seçili satırları sil</strong> için geçerlidir.</p>
+</details>
+<details><summary>Terminal ne kadar geçmiş tutar?</summary>
+<p>Ayarlar → Terminal → <strong>Bellekte tutulan satır</strong> ile 1.000 ile 1.000.000 satır arasında ayarlanır (Windows'ta varsayılan 100.000, telefonda 20.000). Dolunca en eski satırlar önce gider. Daha uzun oturumlar için <strong>Her oturumu diske kaydet</strong>'i açın: kayıtta böyle bir sınır yoktur, 5 MB'lık dosyalara bölünür.</p>
+</details>
+<h2>Modüller</h2>
+<details><summary>Modül nedir?</summary>
+<p>Belirli bir cihaz türü için hazır paket: kısa açıklamalı günlük komutlar ve salt okunur sağlık kontrolü gibi hazır görevler. İlkleri AT modülleri, Espressif AT yazılımı çalıştıran ESP8266 kartları (ESP-01, NodeMCU) ve yerleşik Demo cihazı için. <strong>Modüller</strong>'i açın, cihazınızınkini seçin ve bağlanın. Geri alınması zor komutlar gönderilmeden önce sorar. Cihazınız listede yok mu? <strong>Modül iste</strong> bize bir e-posta açar.</p>
+</details>
+<details><summary>Modüller ücretsiz mi?</summary>
+<p>Evet. Android'de kilitli bir modül, izlemeyi sizin seçtiğiniz birkaç kısa video reklamla açılır; sonra kalıcı olarak açık kalır, güncellemeleri de ücretsizdir. Windows uygulamasında reklam yoktur: modülü telefonunuzda açın, verdiği kodu girin.</p>
+</details>
 <h2>Makrolar, tetikleyiciler ve senaryolar</h2>
 <details><summary>Makro nedir?</summary>
 <p>Bir düğmeye kaydedilmiş komut. Terminalin altındaki makro şeridinde dokunun ya da Windows'ta F1–F12'ye basın. Shift+F1–F12 makroyu düzenler.</p>
@@ -253,7 +269,7 @@ main.home { max-width:1080px; }
 </details>
 <h2>Pro ve mini oyun</h2>
 <details><summary>LinkJig ücretsiz mi? Reklam var mı?</summary>
-<p>Araç ücretsizdir ve asla reklam göstermez: terminalde, cihazlarda, senaryolarda, makrolarda, tetikleyicilerde, loglarda, kütüphanede, ayarlarda ve yardımda reklam yoktur. Android'de isteğe bağlı bir mini oyun var: <strong>Start Bit</strong> (Ayarlar'ın en üstünde); reklamlar yalnızca onun içinde görünür. Oyunu açmanız hiç gerekmez. Masaüstü uygulamasında oyun da reklam da yoktur.</p>
+<p>Araç ücretsizdir ve kendiliğinden asla reklam göstermez: terminalde, cihazlarda, senaryolarda, makrolarda, tetikleyicilerde, loglarda, kütüphanede, ayarlarda ve yardımda reklam yoktur. Android'de reklamlar yalnızca isteğe bağlı mini oyun <strong>Start Bit</strong>'te (Ayarlar'ın en üstünde) ve Pro, bir tema ya da bir modül açmak için izlemeyi sizin seçtiğiniz kısa videolarda görünür. İkisi de hiç gerekmez. Masaüstü uygulamasında oyun da reklam da yoktur.</p>
 </details>
 <details><summary>Pro'yu nasıl alırım?</summary>
 <p>Pro ücretsizdir. Android'de ya Start Bit'te 15. seviyeyi kazanın ya da 10 kısa reklam izleyin (günde en fazla 5); hangisi önce biterse. Pro bundan sonra hep açık kalır; mini oyundaki reklamlar sürer, araç asla reklam göstermez. O zamana kadar senaryolar ve tetikleyiciler <strong>Demo</strong> cihazında eksiksiz denenebilir.</p>
@@ -269,7 +285,7 @@ main.home { max-width:1080px; }
 </details>
 <h2>Gizlilik ve destek</h2>
 <details><summary>LinkJig verilerimi bir yere gönderiyor mu?</summary>
-<p>Hayır. Hesap yok, analiz yok, sunucu yok. Yazdığınız, aldığınız ve kaydettiğiniz her şey cihazınızda kalır. Android'deki isteğe bağlı Start Bit mini oyunu reklamlarını Google AdMob'dan alır; AdMob terminal verinizi asla görmez. Gizlilik politikası: Ayarlar → Hakkında.</p>
+<p>Hayır. Hesap yok, analiz yok, sunucu yok. Yazdığınız, aldığınız ve kaydettiğiniz her şey cihazınızda kalır. Android'de reklamlar (Start Bit ve izlemeyi seçtiğiniz videolar) Google AdMob'dan gelir; AdMob terminal verinizi asla görmez. Yeni modülleri denetlemek modül listesini GitHub'dan indirir. Gizlilik politikası: Ayarlar → Hakkında.</p>
 </details>
 <details><summary>Dili nasıl değiştiririm?</summary>
 <p>Ayarlar → Görünüm → Dil. <strong>Sistem</strong> cihazınızın dilini izler.</p>
