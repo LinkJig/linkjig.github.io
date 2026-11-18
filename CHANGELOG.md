@@ -18,7 +18,7 @@ versions follow [Semantic Versioning](https://semver.org/).
 - Very long logs save, wrap and recover without freezing the app.
 - Bluetooth LE: a line split over several notifications stays in one row.
 - Faster with long logs on Windows when no screen reader is running.
-- Android devices without Wi-Fi can install the app again.
+- Android devices without Wi-Fi can now install the app.
 
 ## [1.0.3] - 2026-11-08
 
