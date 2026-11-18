@@ -3,6 +3,23 @@
 All notable changes to LinkJig. The format follows [Keep a Changelog](https://keepachangelog.com/),
 versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.0.4] - 2026-11-19
+
+### Added
+- Undo: deleted rows, Clear and Ctrl+L can be undone for 8 seconds.
+- Module pages open the serial dialog at the module's speed.
+
+### Changed
+- Phones: search has its own row, the keyboard no longer opens on its own, hex rows fit narrow
+  screens, and the log can be saved from the phone menu.
+- Search keeps the match in view, also sideways when lines are not wrapped.
+
+### Fixed
+- Very long logs save, wrap and recover without freezing the app.
+- Bluetooth LE: a line split over several notifications stays in one row.
+- Faster with long logs on Windows when no screen reader is running.
+- Android devices without Wi-Fi can install the app again.
+
 ## [1.0.3] - 2026-11-08
 
 ### Added
