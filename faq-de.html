@@ -228,6 +228,28 @@ main.home { max-width:1080px; }
 <details><summary>Wie viel Verlauf behält das Terminal?</summary>
 <p>Einstellbar unter Optionen → Terminal → <strong>Zeilen im Speicher</strong>, von 1.000 bis 1.000.000 Zeilen (Standard 100.000 unter Windows, 20.000 auf Handys). Ist der Speicher voll, gehen die ältesten Zeilen zuerst. Für längere Sitzungen schalte <strong>Jede Sitzung als Datei speichern</strong> ein: Das Log hat diese Grenze nicht und wird in 5-MB-Dateien aufgeteilt.</p>
 </details>
+<h2>Werkzeuge</h2>
+<details><summary>Kann LinkJig Modbus sprechen?</summary>
+<p>Ja. Öffne <strong>Modbus</strong> über das ⋯-Menü des Terminals oder die Befehlspalette. Es ist ein Modbus-Master über die bestehende Verbindung: RTU bei seriellen Verbindungen, TCP bei einer TCP-Verbindung (der Rahmen wird automatisch gewählt und lässt sich ändern). Du kannst Spulen, diskrete Eingänge, Halte- und Eingangsregister lesen und schreiben (Funktionen 01-06, 15, 16), Werte als UINT16, INT16, HEX, BIN, 32-Bit-Ganzzahl oder Float in jeder Wortreihenfolge anzeigen und ein Lesen alle 0,5-5 s wiederholen. <strong>An Plotter senden</strong> zeichnet jeden gelesenen Wert. Das Demo-Gerät hat einen Modbus-Simulator zum Ausprobieren ohne Hardware.</p>
+</details>
+<details><summary>Kann LinkJig mit einem MQTT-Broker sprechen?</summary>
+<p>Ja. Öffne <strong>MQTT</strong> im ⋯-Menü des Terminals oder in der Befehlspalette. Gib Host und Port des Brokers ein (TLS optional), abonniere einen Themenfilter wie <code>#</code> und veröffentliche mit QoS 0-2 und Retain. Nachrichten erscheinen wie Terminalzeilen und lassen sich filtern; Zahlen in der Nutzlast (auch in JSON) werden im Diagramm gezeichnet, eine Linie pro Thema. Das Passwort wird nie gespeichert. Der Demo-Broker auf diesem Gerät veröffentlicht <code>demo/temperature</code> und <code>demo/humidity</code>, damit du es ohne Netzwerk ausprobieren kannst.</p>
+</details>
+<details><summary>Kann LinkJig einen ESP8266 oder ESP32 flashen?</summary>
+<p>Ja. Verbinde einen seriellen Port mit der UART der Platine (USB-Seriell-Adapter oder ein Telefon mit OTG-Kabel), öffne <strong>ESP-Flasher</strong>, wähle eine <code>.bin</code>-Datei und den Flash-Offset und schreibe. LinkJig kann per DTR/RTS in den Download-Modus wechseln, erkennt den Chip, prüft das Ergebnis mit MD5 und startet die Platine neu. Es nutzt nur den eingebauten Loader des Chips und kann den alten Inhalt daher nicht zurücklesen: Es wird keine Sicherung erstellt, und LinkJig fragt vor dem Überschreiben nach. Andere Chips (ESP32-S2, S3, C3 …) werden als nicht unterstützt gemeldet. LinkJig ist unabhängige Software und nicht mit Espressif verbunden.</p>
+</details>
+<details><summary>Kann ich I2C-Sensoren lesen oder SPI-Flash programmieren?</summary>
+<p>Ja, mit einem CH341A-USB-Adapter, unter Windows und unter Android mit OTG-Kabel. <strong>Bus scannen</strong> listet die antwortenden I2C-Adressen; bekannte Chips bekommen eine Karte: BMP280 (Temperatur, Druck), Uhren DS1307/DS3231 (lesen, mit PC- oder Handyzeit stellen) und AT24C-EEPROMs (lesen, schreiben, sichern, wiederherstellen). Beim SPI-Flash kannst du den ganzen Chip in eine Datei sichern, löschen, eine Datei schreiben und prüfen. Vor jedem Löschen oder Schreiben lässt LinkJig dich zuerst eine Sicherung speichern und fragt nach Bestätigung. Außerdem: MPU-6050 (Beschleunigung, Drehrate, Temperatur), ADS1115 (vier Analogeingänge) und ein SSD1306-OLED, auf das du Text oder ein Testmuster schreiben kannst.</p>
+</details>
+<details><summary>Wie zeichne ich meine Daten auf?</summary>
+<p>Gib Messwerte als <code>name=wert</code> aus (zum Beispiel <code>temp=23.5 feuchte=48</code>) und öffne <strong>Plotter</strong>. Jeder Name wird zu einer Reihe. Nutze Pause, Zoom und Cursor und exportiere dann CSV oder PNG. Modbus- und I2C-Werte lassen sich an dasselbe Diagramm senden. <strong>Trigger</strong> zeichnet eine Pegellinie und hält den Plotter beim ersten Durchgang an; <strong>Messen</strong> zeigt Minimum, Maximum, Mittel und Spitze-Spitze des sichtbaren Bereichs.</p>
+</details>
+<details><summary>Kann ich Zeilen ausblenden, die ich nicht brauche?</summary>
+<p>Ja. Der <strong>Filter</strong> zeigt oder verbirgt Zeilen, die mit einem Muster beginnen, es enthalten oder ihm entsprechen (regulärer Ausdruck oder HEX-Präfix), nach Länge oder nur die ersten N Zeichen. Gesendete Zeilen und Statuszeilen bleiben immer sichtbar. Der Filter wird im Profil gespeichert, auch das Diagramm nutzt ihn.</p>
+</details>
+<details><summary>Kann ich zwei Verbindungen gleichzeitig nutzen?</summary>
+<p>Ja. Öffne <strong>Doppelterminal</strong> im ⋯-Menü des Terminals. Jedes Terminal verbindet sich eigenständig: zum Beispiel ein ESP-Modul an einem seriellen Port im einen und sein TCP-Server über WLAN im anderen, oder zwei serielle Ports am PC. Auf einem breiten Bildschirm stehen sie nebeneinander, auf dem Smartphone als Tabs. <strong>Gemeinsame Zeitleiste</strong> zeigt beide auf einer Zeitachse und ordnet zu, was eine Seite sendet und wo die andere es empfängt, samt Verzögerung. Unter Android kann jeweils nur eine USB-Seriell-, USB-HID- oder Bluetooth-Classic-Verbindung offen sein; nutze für die zweite Netzwerk oder BLE.</p>
+</details>
 <h2>Module</h2>
 <details><summary>Was ist ein Modul?</summary>
 <p>Ein fertiges Paket für eine Geräteart: alltägliche Befehle mit kurzen Erklärungen und Aufgaben wie ein rein lesender Gesundheitscheck. Die ersten decken AT-Module, ESP8266-Boards mit Espressifs AT-Firmware (ESP-01, NodeMCU) und das eingebaute Demo-Gerät ab. Öffne <strong>Module</strong>, wähle deines und verbinde dich. Schwer rückgängig zu machende Befehle fragen vor dem Senden nach. Dein Gerät fehlt? <strong>Modul anfragen</strong> öffnet eine E-Mail an uns.</p>

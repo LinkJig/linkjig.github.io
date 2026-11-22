@@ -228,6 +228,28 @@ main.home { max-width:1080px; }
 <details><summary>¿Cuánto historial guarda el terminal?</summary>
 <p>Se ajusta en Ajustes → Terminal → <strong>Líneas en memoria</strong>, de 1.000 a 1.000.000 líneas (100.000 por defecto en Windows, 20.000 en teléfonos). Cuando se llena, se van primero las líneas más antiguas. Para sesiones más largas, activa <strong>Guardar cada sesión en disco</strong>: el log no tiene ese límite y se divide en archivos de 5 MB.</p>
 </details>
+<h2>Herramientas</h2>
+<details><summary>¿Puede LinkJig hablar Modbus?</summary>
+<p>Sí. Abre <strong>Modbus</strong> desde el menú ⋯ del terminal o la paleta de comandos. Es un maestro Modbus sobre la conexión que ya tienes: RTU en conexiones serie, TCP en una conexión TCP (la trama se elige sola y se puede cambiar). Puedes leer y escribir bobinas, entradas discretas, registros de retención y de entrada (funciones 01-06, 15, 16), mostrar los valores como UINT16, INT16, HEX, BIN, entero de 32 bits o float con cualquier orden de palabras, y repetir una lectura cada 0,5-5 s. <strong>Enviar al gráfico</strong> dibuja cada valor leído. El dispositivo de demostración incluye un simulador Modbus para probar sin hardware.</p>
+</details>
+<details><summary>¿Puede LinkJig hablar con un broker MQTT?</summary>
+<p>Sí. Abre <strong>MQTT</strong> desde el menú ⋯ del terminal o la paleta de comandos. Indica host y puerto del broker (TLS opcional), suscríbete a un filtro como <code>#</code> y publica con QoS 0-2 y retain. Los mensajes llegan como líneas de terminal, se pueden filtrar, y los números del contenido (también dentro de JSON) se dibujan en la gráfica, una línea por tema. La contraseña nunca se guarda. El broker de demostración de este dispositivo publica <code>demo/temperature</code> y <code>demo/humidity</code> para probar sin red.</p>
+</details>
+<details><summary>¿Puede LinkJig grabar un ESP8266 o ESP32?</summary>
+<p>Sí. Conecta un puerto serie cableado a la UART de la placa (adaptador USB-serie o un teléfono con cable OTG), abre <strong>Grabador ESP</strong>, elige un archivo <code>.bin</code> y el offset de flash, y escribe. LinkJig puede entrar en modo de descarga con DTR/RTS, detecta el chip, comprueba el resultado con MD5 y reinicia la placa. Usa solo el cargador integrado del chip, así que no puede leer el contenido anterior: no se hace copia de seguridad y LinkJig pide confirmación antes de sobrescribir. Otros chips (ESP32-S2, S3, C3…) se indican como no compatibles. LinkJig es software independiente y no está afiliado a Espressif.</p>
+</details>
+<details><summary>¿Puedo leer sensores I2C o programar flash SPI?</summary>
+<p>Sí, con un adaptador USB CH341A, en Windows y en Android con cable OTG. <strong>Escanear bus</strong> lista las direcciones I2C que responden; los chips conocidos reciben una tarjeta: BMP280 (temperatura, presión), relojes DS1307/DS3231 (leer, ajustar con la hora del PC o del teléfono) y EEPROM AT24C (leer, escribir, copiar, restaurar). En la flash SPI puedes copiar todo el chip a un archivo, borrar, escribir un archivo y verificar. Antes de cualquier borrado o escritura LinkJig te hace guardar primero una copia y te pide confirmación. Además: MPU-6050 (aceleración, giro, temperatura), ADS1115 (cuatro entradas analógicas) y una pantalla OLED SSD1306 donde puedes escribir texto o un patrón de prueba.</p>
+</details>
+<details><summary>¿Cómo grafico mis datos?</summary>
+<p>Imprime las lecturas como <code>nombre=valor</code> (por ejemplo <code>temp=23.5 hum=48</code>) y abre <strong>Gráfico</strong>. Cada nombre es una serie. Usa pausa, zoom y cursor, y luego exporta CSV o PNG. Las lecturas de Modbus e I2C se pueden enviar a la misma gráfica. <strong>Disparo</strong> dibuja una línea de nivel y pausa el gráfico en el primer cruce; <strong>Medir</strong> muestra mínimo, máximo, media y pico a pico del rango visible.</p>
+</details>
+<details><summary>¿Puedo ocultar las líneas que no necesito?</summary>
+<p>Sí. El <strong>Filtro</strong> muestra u oculta líneas que empiezan por un patrón, lo contienen o coinciden con él (expresión regular o prefijo HEX), por longitud o solo los primeros N caracteres. Las líneas que envías y las de estado siempre se ven. El filtro se guarda en el perfil y la gráfica también lo usa.</p>
+</details>
+<details><summary>¿Puedo usar dos conexiones a la vez?</summary>
+<p>Sí. Abre <strong>Terminal doble</strong> desde el menú ⋯ del terminal. Cada terminal se conecta por su cuenta: por ejemplo, un módulo ESP en un puerto serie en uno y su servidor TCP por Wi-Fi en el otro, o dos puertos serie en un PC. En una pantalla ancha aparecen lado a lado; en el teléfono, como pestañas. <strong>Línea de tiempo combinada</strong> muestra ambos en una sola línea de tiempo y empareja lo que un lado envía con donde el otro lo recibe, con el retardo. En Android solo puede haber una conexión USB serie, USB HID o Bluetooth clásico abierta a la vez; usa red o BLE para la segunda.</p>
+</details>
 <h2>Módulos</h2>
 <details><summary>¿Qué es un módulo?</summary>
 <p>Un paquete listo para un tipo de equipo: comandos de uso diario con explicaciones breves y tareas como una revisión de estado de solo lectura. Los primeros cubren módulos AT, placas ESP8266 con el firmware AT de Espressif (ESP-01, NodeMCU) y el equipo Demo integrado. Abre <strong>Módulos</strong>, elige el tuyo y conéctate. Los comandos difíciles de deshacer preguntan antes de enviarse. ¿No está tu equipo? <strong>Solicitar un módulo</strong> abre un correo para nosotros.</p>

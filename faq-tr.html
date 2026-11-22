@@ -228,6 +228,28 @@ main.home { max-width:1080px; }
 <details><summary>Terminal ne kadar geçmiş tutar?</summary>
 <p>Ayarlar → Terminal → <strong>Bellekte tutulan satır</strong> ile 1.000 ile 1.000.000 satır arasında ayarlanır (Windows'ta varsayılan 100.000, telefonda 20.000). Dolunca en eski satırlar önce gider. Daha uzun oturumlar için <strong>Her oturumu diske kaydet</strong>'i açın: kayıtta böyle bir sınır yoktur, 5 MB'lık dosyalara bölünür.</p>
 </details>
+<h2>Araçlar</h2>
+<details><summary>LinkJig Modbus konuşabilir mi?</summary>
+<p>Evet. Terminalin ⋯ menüsünden ya da komut paletinden <strong>Modbus</strong>'ı açın. Mevcut bağlantınızın üzerinde çalışan bir Modbus master'dır: seri bağlantıda RTU, TCP bağlantıda TCP (çerçeve kendiliğinden seçilir, elle değiştirilebilir). Bobin, ayrık giriş, tutma ve giriş yazmaçlarını okuyup yazabilir (fonksiyon 01-06, 15, 16), değerleri UINT16, INT16, HEX, BIN, 32 bit tamsayı ya da kayan noktalı olarak, her sözcük sırasıyla gösterebilir ve okumayı 0,5-5 sn'de bir tekrarlayabilirsiniz. <strong>Grafiğe gönder</strong> okunan her değeri çizer. Demo cihazda donanımsız denemek için bir Modbus benzetimi vardır.</p>
+</details>
+<details><summary>LinkJig bir MQTT broker'ıyla konuşabilir mi?</summary>
+<p>Evet. Terminalin ⋯ menüsünden ya da komut paletinden <strong>MQTT</strong>'yi aç. Broker adresini ve portu gir (TLS isteğe bağlı), <code>#</code> gibi bir konu filtresine abone ol, QoS 0-2 ve retain ile yayınla. Mesajlar terminal satırı gibi gelir, süzülebilir; yükteki sayılar (JSON içindekiler de) grafiğe çizilir, her konu bir çizgi. Parola hiçbir zaman kaydedilmez. Bu cihazdaki demo broker <code>demo/temperature</code> ve <code>demo/humidity</code> yayınlar; ağ olmadan deneyebilirsin.</p>
+</details>
+<details><summary>LinkJig bir ESP8266 ya da ESP32'ye yazılım yükleyebilir mi?</summary>
+<p>Evet. Kartın UART'ına bağlı bir seri port bağla (USB-seri adaptör ya da OTG kablolu telefon), <strong>ESP flaşlayıcı</strong>'yı aç, bir <code>.bin</code> dosyası ve flaş adresini seç, yaz. LinkJig DTR/RTS ile indirme moduna girebilir, çipi tanır, sonucu MD5 ile doğrular ve kartı yeniden başlatır. Yalnız çipin kendi yükleyicisini kullanır; eski içeriği geri okuyamaz: yedek alınmaz, üzerine yazmadan önce onay ister. Diğer çipler (ESP32-S2, S3, C3…) desteklenmiyor diye bildirilir. LinkJig bağımsız bir yazılımdır, Espressif ile bağlantılı değildir.</p>
+</details>
+<details><summary>I2C sensörlerini okuyabilir ya da SPI flaş programlayabilir miyim?</summary>
+<p>Evet, CH341A USB adaptörüyle; Windows'ta ve OTG kablolu Android'de. <strong>Hattı tara</strong> cevap veren I2C adreslerini listeler; tanınan çiplere kart açılır: BMP280 (sıcaklık, basınç), DS1307/DS3231 saatler (oku, PC ya da telefon saatinden ayarla) ve AT24C EEPROM'lar (oku, yaz, yedekle, geri yükle). SPI flaşta tüm çipi dosyaya yedekleyebilir, silebilir, dosya yazıp doğrulayabilirsiniz. Her silme ya da yazmadan önce LinkJig önce yedek kaydettirir ve onay ister. Ayrıca: MPU-6050 (ivme, dönüş, sıcaklık), ADS1115 (dört analog giriş) ve metin ya da deneme deseni yazabileceğin SSD1306 OLED ekran.</p>
+</details>
+<details><summary>Verimi nasıl çizdiririm?</summary>
+<p>Okumaları <code>ad=değer</code> biçiminde yazdırın (örneğin <code>sicaklik=23.5 nem=48</code>) ve <strong>Grafik</strong>'i açın. Her ad bir seri olur. Duraklat, yakınlaştır ve imleç araçlarını kullanın, sonra CSV ya da PNG olarak dışa aktarın. Modbus ve I2C okumaları da aynı grafiğe gönderilebilir. <strong>Tetik</strong> bir seviye çizgisi çizer ve ilk geçişte grafiği durdurur; <strong>Ölç</strong> ekrandaki aralığın min, maks, ort ve tepe-tepe değerini gösterir.</p>
+</details>
+<details><summary>İhtiyacım olmayan satırları gizleyebilir miyim?</summary>
+<p>Evet. <strong>Filtre</strong>, bir desenle başlayan, içeren ya da eşleşen (düzenli ifade ya da HEX ön ek) satırları uzunluğa göre ya da yalnızca ilk N karakteri gösterir veya gizler. Gönderdiğiniz satırlar ve durum satırları hep görünür kalır. Filtre profile kaydedilir, grafik de onu kullanır.</p>
+</details>
+<details><summary>Aynı anda iki bağlantı kullanabilir miyim?</summary>
+<p>Evet. Terminalin ⋯ menüsünden <strong>Çift terminal</strong>'i açın. Her terminal kendi bağlantısını kurar: örneğin birinde seri porttaki ESP modülü, diğerinde onun Wi-Fi üzerinden açtığı TCP sunucusu ya da PC'de iki seri port. Geniş ekranda yan yana, telefonda sekme olarak durur. <strong>Birleşik zaman çizelgesi</strong> ikisini tek çizelgeye koyar; bir tarafın gönderdiğini diğer tarafta alındığı satırla eşleştirir ve aradaki gecikmeyi gösterir. Android'de aynı anda yalnız bir USB seri, USB HID veya Klasik Bluetooth bağlantısı açılabilir; ikincisi için ağ ya da BLE kullanın.</p>
+</details>
 <h2>Modüller</h2>
 <details><summary>Modül nedir?</summary>
 <p>Belirli bir cihaz türü için hazır paket: kısa açıklamalı günlük komutlar ve salt okunur sağlık kontrolü gibi hazır görevler. İlkleri AT modülleri, Espressif AT yazılımı çalıştıran ESP8266 kartları (ESP-01, NodeMCU) ve yerleşik Demo cihazı için. <strong>Modüller</strong>'i açın, cihazınızınkini seçin ve bağlanın. Geri alınması zor komutlar gönderilmeden önce sorar. Cihazınız listede yok mu? <strong>Modül iste</strong> bize bir e-posta açar.</p>

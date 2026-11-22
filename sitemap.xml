@@ -236,6 +236,56 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-module-check.html"/>
   </url>
   <url>
+    <loc>https://linkjig.github.io/posts/esp-tcp-server.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-tcp-server-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-tcp-server-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-tcp-server-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-tcp-server-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+  </url>
+  <url>
+    <loc>https://linkjig.github.io/posts/esp-tcp-server-tr.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-tcp-server-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-tcp-server-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-tcp-server-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-tcp-server-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+  </url>
+  <url>
+    <loc>https://linkjig.github.io/posts/esp-tcp-server-es.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-tcp-server-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-tcp-server-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-tcp-server-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-tcp-server-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+  </url>
+  <url>
+    <loc>https://linkjig.github.io/posts/esp-tcp-server-de.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-tcp-server-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-tcp-server-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-tcp-server-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-tcp-server-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+  </url>
+  <url>
+    <loc>https://linkjig.github.io/posts/esp-tcp-server-pt.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-tcp-server-tr.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://linkjig.github.io/posts/esp-tcp-server-es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linkjig.github.io/posts/esp-tcp-server-de.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://linkjig.github.io/posts/esp-tcp-server-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linkjig.github.io/posts/esp-tcp-server.html"/>
+  </url>
+  <url>
     <loc>https://linkjig.github.io/posts/esp-wifi-network.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://linkjig.github.io/posts/esp-wifi-network.html"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://linkjig.github.io/posts/esp-wifi-network-tr.html"/>
