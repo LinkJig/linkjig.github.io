@@ -61,7 +61,7 @@ See it in action: [find a baud rate from your phone](https://youtube.com/shorts/
 - No iOS, macOS or Linux version.
 - Android: no classic Bluetooth (SPP) and no USB HID yet.
 - Tested on real hardware so far: CP2102 and CH340 USB-UART (Windows, Android OTG), ESP32 (serial and BLE),
-  Ai-Thinker BL602 (BLE, TCP), ESP-01S and ESP-12E (Wi-Fi TCP, AT), Nuvoton M467 (USB HID).
+  ESP-01S and ESP-12E (Wi-Fi TCP, AT), Nuvoton M467 (USB HID).
 - FTDI adapters are built in but not yet tested on hardware.
 
 ## Privacy and support
