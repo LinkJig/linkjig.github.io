@@ -236,10 +236,13 @@ main.home { max-width:1080px; }
 <p>Evet. Terminalin ⋯ menüsünden ya da komut paletinden <strong>MQTT</strong>'yi aç. Broker adresini ve portu gir (TLS isteğe bağlı), <code>#</code> gibi bir konu filtresine abone ol, QoS 0-2 ve retain ile yayınla. Mesajlar terminal satırı gibi gelir, süzülebilir; yükteki sayılar (JSON içindekiler de) grafiğe çizilir, her konu bir çizgi. Parola hiçbir zaman kaydedilmez. Bu cihazdaki demo broker <code>demo/temperature</code> ve <code>demo/humidity</code> yayınlar; ağ olmadan deneyebilirsin.</p>
 </details>
 <details><summary>LinkJig bir ESP8266 ya da ESP32'ye yazılım yükleyebilir mi?</summary>
-<p>Evet. Kartın UART'ına bağlı bir seri port bağla (USB-seri adaptör ya da OTG kablolu telefon), <strong>ESP flaşlayıcı</strong>'yı aç, bir <code>.bin</code> dosyası ve flaş adresini seç, yaz. LinkJig DTR/RTS ile indirme moduna girebilir, çipi tanır, sonucu MD5 ile doğrular ve kartı yeniden başlatır. Yalnız çipin kendi yükleyicisini kullanır; eski içeriği geri okuyamaz: yedek alınmaz, üzerine yazmadan önce onay ister. Diğer çipler (ESP32-S2, S3, C3…) desteklenmiyor diye bildirilir. LinkJig bağımsız bir yazılımdır, Espressif ile bağlantılı değildir.</p>
+<p>Evet. Kartın UART'ına bağlı bir seri port bağla (USB-seri adaptör ya da OTG kablolu telefon), <strong>ESP flaşlayıcı</strong>'yı aç, bir <code>.bin</code> dosyası ve flaş adresini seç, yaz. LinkJig DTR/RTS ile indirme moduna girebilir, çipi tanır, sonucu MD5 ile doğrular (ESP32'de; ESP8266'nın yerleşik yükleyicisi bunu yapamaz) ve kartı yeniden başlatır. Yalnız çipin kendi yükleyicisini kullanır; eski içeriği geri okuyamaz: yedek alınmaz, üzerine yazmadan önce onay ister. Diğer çipler (ESP32-S2, S3, C3…) desteklenmiyor diye bildirilir. LinkJig bağımsız bir yazılımdır, Espressif ile bağlantılı değildir.</p>
 </details>
 <details><summary>I2C sensörlerini okuyabilir ya da SPI flaş programlayabilir miyim?</summary>
 <p>Evet, CH341A USB adaptörüyle; Windows'ta ve OTG kablolu Android'de. <strong>Hattı tara</strong> cevap veren I2C adreslerini listeler; tanınan çiplere kart açılır: BMP280 (sıcaklık, basınç), DS1307/DS3231 saatler (oku, PC ya da telefon saatinden ayarla) ve AT24C EEPROM'lar (oku, yaz, yedekle, geri yükle). SPI flaşta tüm çipi dosyaya yedekleyebilir, silebilir, dosya yazıp doğrulayabilirsiniz. Her silme ya da yazmadan önce LinkJig önce yedek kaydettirir ve onay ister. Ayrıca: MPU-6050 (ivme, dönüş, sıcaklık), ADS1115 (dört analog giriş) ve metin ya da deneme deseni yazabileceğin SSD1306 OLED ekran.</p>
+</details>
+<details><summary>LinkJig'in tanımadığı çipleri ekleyebilir ya da başkalarının profillerini kullanabilir miyim?</summary>
+<p>Evet. <strong>Ayarlar → Cihaz profilleri</strong>'ni açın. <strong>Benim</strong> sekmesi bir <code>.ljdev</code> dosyası (<strong>Dosya içe aktar</strong>) ya da yapıştırılan metin (<strong>Metin yapıştır</strong>) alır. <strong>Topluluk</strong> imzalı kütüphanedeki profilleri listeler; <strong>Yeni profilleri denetle</strong> ve ardından <strong>İndir</strong>'e basmadan hiçbir şey indirilmez. <strong>Denetle</strong> (ve İndir) önce profilin ne göndereceğini, hangi register'lara yazdığını ve riskini gösterir; siz onaylarsanız kaydeder. Profil yalnızca veridir, kod çalıştırmaz. Hiçbir bakımcının incelemediği profilde turuncu şerit çıkar; ilk yazmadan önce gidecek baytları görür ve onaylarsınız. "Güvenli görünüyor" çipinizde çalıştığı anlamına hiçbir zaman gelmez.</p>
 </details>
 <details><summary>Verimi nasıl çizdiririm?</summary>
 <p>Okumaları <code>ad=değer</code> biçiminde yazdırın (örneğin <code>sicaklik=23.5 nem=48</code>) ve <strong>Grafik</strong>'i açın. Her ad bir seri olur. Duraklat, yakınlaştır ve imleç araçlarını kullanın, sonra CSV ya da PNG olarak dışa aktarın. Modbus ve I2C okumaları da aynı grafiğe gönderilebilir. <strong>Tetik</strong> bir seviye çizgisi çizer ve ilk geçişte grafiği durdurur; <strong>Ölç</strong> ekrandaki aralığın min, maks, ort ve tepe-tepe değerini gösterir.</p>
@@ -314,6 +317,9 @@ main.home { max-width:1080px; }
 </details>
 <details><summary>Bir sorunu nasıl bildiririm?</summary>
 <p>Ayarlar → Yardım → <strong>Geri bildirim gönder</strong> e-posta uygulamanızı raporla birlikte açar; raporu önce siz okursunuz. E-posta uygulamanız yoksa <strong>Sorun raporu oluştur</strong> ile raporu kopyalayıp <a href="mailto:linkjig.app@gmail.com">linkjig.app@gmail.com</a> adresine yazın. Uygulama kendiliğinden kapandıysa aynı menüdeki <strong>Çökme raporları</strong>'ndan raporu da ekleyin. Rapor uygulama, sistem, bağlantı ve takılı cihaz bilgilerini içerir; terminal verisi, seri numarası veya adres asla içermez.</p>
+</details>
+<details><summary>Markalar</summary>
+<p>Espressif, Modbus, MQTT, Bluetooth, Nordic, Microchip ve FTDI gibi adlar ilgili sahiplerinin markasıdır; LinkJig bunlarla bağlantılı değildir.</p>
 </details>
 </main></body>
 </html>

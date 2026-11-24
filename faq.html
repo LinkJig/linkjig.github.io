@@ -236,10 +236,13 @@ main.home { max-width:1080px; }
 <p>Yes. Open <strong>MQTT</strong> from the terminal's ⋯ menu or the command palette. Enter the broker host and port (TLS optional), subscribe to a topic filter such as <code>#</code> and publish with QoS 0-2 and retain. Messages arrive like terminal lines, can be filtered, and numbers in the payload (also inside JSON) are drawn in the graph, one line per topic. The password is never saved. The demo broker on this device publishes <code>demo/temperature</code> and <code>demo/humidity</code> so you can try it without a network.</p>
 </details>
 <details><summary>Can LinkJig flash an ESP8266 or ESP32?</summary>
-<p>Yes. Connect a serial port wired to the board's UART (a USB-serial adapter, or a phone with an OTG cable), open <strong>ESP flasher</strong>, choose a <code>.bin</code> file and the flash offset, and write. LinkJig can enter download mode with DTR/RTS, detects the chip, checks the result with MD5 and restarts the board. It uses the chip's built-in loader only, so it cannot read the old content back: no backup is made, and LinkJig asks you to confirm before overwriting. Other chips (ESP32-S2, S3, C3…) are reported as unsupported. LinkJig is independent software and is not affiliated with Espressif.</p>
+<p>Yes. Connect a serial port wired to the board's UART (a USB-serial adapter, or a phone with an OTG cable), open <strong>ESP flasher</strong>, choose a <code>.bin</code> file and the flash offset, and write. LinkJig can enter download mode with DTR/RTS, detects the chip, checks the result with MD5 (on ESP32; the ESP8266 built-in loader cannot) and restarts the board. It uses the chip's built-in loader only, so it cannot read the old content back: no backup is made, and LinkJig asks you to confirm before overwriting. Other chips (ESP32-S2, S3, C3…) are reported as unsupported. LinkJig is independent software and is not affiliated with Espressif.</p>
 </details>
 <details><summary>Can I read I2C sensors or program SPI flash?</summary>
 <p>Yes, with a CH341A USB adapter, on Windows and on Android with an OTG cable. <strong>Scan bus</strong> lists the I2C addresses that answer; known chips get a card: BMP280 (temperature, pressure), DS1307/DS3231 clocks (read, set from your PC or phone time) and AT24C EEPROMs (read, write, back up, restore). For SPI flash you can back up the whole chip to a file, erase, write a file and verify. Before any erase or write LinkJig makes you save a backup first and asks you to confirm. Also: MPU-6050 (acceleration, rotation, temperature), ADS1115 (four analog inputs) and an SSD1306 OLED you can write text or a test pattern to.</p>
+</details>
+<details><summary>Can I add chips LinkJig does not know, or use profiles from other people?</summary>
+<p>Yes. Open <strong>Settings → Device profiles</strong>. <strong>Yours</strong> takes a <code>.ljdev</code> file (<strong>Import file</strong>) or pasted text (<strong>Paste text</strong>). <strong>Community</strong> lists profiles from the signed library; nothing is downloaded until you press <strong>Check for new profiles</strong> and then <strong>Download</strong>. <strong>Check</strong> (and Download) first shows what the profile would send, which registers it writes and how risky that is, and saves it only if you agree. A profile is data only and never runs code. One that no maintainer has reviewed shows an orange strip, and before its first write you see the exact bytes and confirm. "Looks safe" never means it works on your chip.</p>
 </details>
 <details><summary>How do I plot my data?</summary>
 <p>Print readings as <code>name=value</code> (for example <code>temp=23.5 hum=48</code>) and open <strong>Plot</strong>. Each name becomes a series. Use the pause, zoom and cursor tools, then export CSV or PNG. Modbus and I2C readings can be sent to the same graph. <strong>Trigger</strong> draws a level line and pauses the plot at the first crossing; <strong>Measure</strong> shows min, max, mean and peak-to-peak of the range on screen.</p>
@@ -314,6 +317,9 @@ main.home { max-width:1080px; }
 </details>
 <details><summary>How do I report a problem?</summary>
 <p>Settings → Help → <strong>Send feedback</strong> opens your mail app with a report attached to the message; you read the report first. Without a mail app, use <strong>Create a problem report</strong> to copy it and write to <a href="mailto:linkjig.app@gmail.com.">linkjig.app@gmail.com.</a> If the app closed by itself, also add the report from <strong>Crash reports</strong> in the same menu. The report contains app, system, link and connected-device details: never terminal data, serial numbers or addresses.</p>
+</details>
+<details><summary>Trademarks</summary>
+<p>Product names such as Espressif, Modbus, MQTT, Bluetooth, Nordic, Microchip and FTDI belong to their owners; LinkJig is not affiliated with them.</p>
 </details>
 </main></body>
 </html>
