@@ -204,7 +204,7 @@ main.home { max-width:1080px; }
 <p>Control keys are single bytes: Ctrl+C is <code>\x03</code>, Ctrl+D is <code>\x04</code>, Ctrl+Z is <code>\x1A</code> (Esc is <code>\e</code>). In text (ASCII) mode type <code>\x03</code>, or switch to HEX and type <code>03</code>; set the line ending to <strong>No EOL</strong> if the device expects the byte alone. Save it as a macro to send it with one tap. On Windows, Ctrl+C in the terminal copies the selection; it does not send anything.</p>
 </details>
 <details><summary>Can LinkJig add a checksum or CRC for me?</summary>
-<p>Yes. Pick a checksum in the send bar (SUM8, XOR8, CRC-8, CRC-16/MODBUS, CRC-16/CCITT-FALSE or CRC-32); it is added after your data and before the line ending, and the preview shows the result. The <strong>Checksum calculator</strong> in Settings → Tools works on any bytes without sending.</p>
+<p>Yes. Pick a checksum in the send bar (SUM8, XOR8, CRC-8, CRC-16/MODBUS, CRC-16/CCITT-FALSE or CRC-32); it is added after your data and before the line ending, and the preview shows the result. The <strong>Checksum calculator</strong> in Settings → Tools works on any bytes without sending. In the same menu, <strong>Frame layout</strong> sets a header and the checksum’s place, range and byte order. The calculator also takes your own CRC (one is free, more with Pro), writes it as C code and reads the parameters out of pasted C code.</p>
 </details>
 <details><summary>Why is received data split into several lines (or merged into one)?</summary>
 <p>LinkJig groups received bytes into packets. By default a packet ends when no data arrives for 20 ms (<strong>Time gap</strong>). In Settings → Packet framing you can split at delimiter bytes (for example <code>0D 0A</code>) instead, or show every read as it arrives (<strong>Raw</strong>).</p>
@@ -239,7 +239,7 @@ main.home { max-width:1080px; }
 <p>Yes. Connect a serial port wired to the board's UART (a USB-serial adapter, or a phone with an OTG cable), open <strong>ESP flasher</strong>, choose a <code>.bin</code> file and the flash offset, and write. LinkJig can enter download mode with DTR/RTS, detects the chip, checks the result with MD5 (on ESP32; the ESP8266 built-in loader cannot) and restarts the board. It uses the chip's built-in loader only, so it cannot read the old content back: no backup is made, and LinkJig asks you to confirm before overwriting. Other chips (ESP32-S2, S3, C3…) are reported as unsupported. LinkJig is independent software and is not affiliated with Espressif.</p>
 </details>
 <details><summary>Can I read I2C sensors or program SPI flash?</summary>
-<p>Yes, with a CH341A USB adapter, on Windows and on Android with an OTG cable. <strong>Scan bus</strong> lists the I2C addresses that answer; known chips get a card: BMP280 (temperature, pressure), DS1307/DS3231 clocks (read, set from your PC or phone time) and AT24C EEPROMs (read, write, back up, restore). For SPI flash you can back up the whole chip to a file, erase, write a file and verify. Before any erase or write LinkJig makes you save a backup first and asks you to confirm. Also: MPU-6050 (acceleration, rotation, temperature), ADS1115 (four analog inputs) and an SSD1306 OLED you can write text or a test pattern to.</p>
+<p>Yes, with a CH341A USB adapter, on Windows and on Android with an OTG cable. <strong>Scan bus</strong> lists the I2C addresses that answer; known chips get a card: BMP280 (temperature, pressure), DS1307/DS3231 clocks (read, set from your PC or phone time) and AT24C EEPROMs (read, write, back up, restore). For SPI flash you can back up the whole chip to a file, erase, write a file and verify. Before any erase or write LinkJig makes you save a backup first and asks you to confirm. Also: MPU-6050 (acceleration, rotation, temperature), ADS1115 (four analog inputs) and an SSD1306 OLED you can write text or a test pattern to. The DS1307 clock panel and the OLED panel are locked: on Android each opens for good after two short video ads you choose to watch, then a computer takes the code from your phone. BMP280, raw register read and write, and your own chip profiles need no unlocking.</p>
 </details>
 <details><summary>Can I add chips LinkJig does not know, or use profiles from other people?</summary>
 <p>Yes. Open <strong>Settings → Device profiles</strong>. <strong>Yours</strong> takes a <code>.ljdev</code> file (<strong>Import file</strong>) or pasted text (<strong>Paste text</strong>). <strong>Community</strong> lists profiles from the signed library; nothing is downloaded until you press <strong>Check for new profiles</strong> and then <strong>Download</strong>. <strong>Check</strong> (and Download) first shows what the profile would send, which registers it writes and how risky that is, and saves it only if you agree. A profile is data only and never runs code. One that no maintainer has reviewed shows an orange strip, and before its first write you see the exact bytes and confirm. "Looks safe" never means it works on your chip.</p>
@@ -262,10 +262,10 @@ main.home { max-width:1080px; }
 </details>
 <h2>Macros, triggers and scenarios</h2>
 <details><summary>What is a macro?</summary>
-<p>A saved command on a button. Tap it in the macro bar under the terminal, or press F1–F12 on Windows. Shift+F1–F12 edits the macro.</p>
+<p>A saved command on a button. Tap it in the macro bar under the terminal, or press F1–F12 on Windows. Shift+F1–F12 edits the macro. On the Macros page, F1–F12 alone edits it.</p>
 </details>
 <details><summary>What is a trigger?</summary>
-<p>A rule that watches every received packet for a text, hex (with <code>??</code> wildcards) or regex pattern. When it matches, LinkJig can send a reply, mark the line in the log, beep, save a snapshot or stop a running scenario. Use triggers to answer a device automatically or to simulate one.</p>
+<p>A rule that watches every received packet for a text, an exact line, HEX bytes (with <code>??</code> wildcards), a number in a range or, for advanced users, a regex. When it matches, LinkJig can send a reply, mark the line in the log, beep, save a snapshot or stop a running scenario. Use triggers to answer a device automatically or to simulate one.</p>
 </details>
 <details><summary>What is a scenario?</summary>
 <p>A repeatable test. Each step sends a message, waits for the expected reply within a timeout and marks the step PASS or FAIL. You choose what happens on a failure (continue, retry or stop) and how many loops to run. Save the result as a text report or CSV table.</p>
@@ -281,7 +281,7 @@ main.home { max-width:1080px; }
 </details>
 <h2>Logs and files</h2>
 <details><summary>Where are my logs?</summary>
-<p>Automatic session logging is off by default; turn on <strong>Save every session to disk</strong> in Settings → Terminal. On Windows the logs go to <code>Documents\LinkJig\logs</code> (trigger snapshots in <code>snapshots</code>). On Android they stay inside the app; on the Logs screen, <strong>Save a copy…</strong> lets you send a log or store it elsewhere. You can also save the current terminal from its menu at any time (Ctrl+Shift+S on Windows).</p>
+<p>Automatic session logging is off by default; turn on <strong>Save every session to disk</strong> in Settings → Terminal. On Windows the logs go to <code>Documents\LinkJig\logs</code> (trigger records in <code>trigger-logs</code>). On Android they stay inside the app; on the Logs screen, <strong>Save a copy…</strong> lets you send a log or store it elsewhere. You can also save the current terminal from its menu at any time (Ctrl+Shift+S on Windows).</p>
 </details>
 <details><summary>TXT, CSV or RAW: what does each keep?</summary>
 <p>TXT keeps the terminal as you see it, with times and RX/TX labels. CSV keeps one row per packet with time, direction, length, hex and text, for a spreadsheet. RAW keeps only the received bytes, exactly as they arrived: every byte including <code>0x00</code>, nothing added between packets.</p>
